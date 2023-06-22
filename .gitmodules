@@ -1,3 +1,6 @@
 [submodule "rod_cooperativa"]
 	path = rod_cooperativa
 	url = https://github.com/k1llRod/rod_cooperativa.git
+[submodule "rod_cooperativa_aportes"]
+	path = rod_cooperativa_aportes
+	url = https://github.com/k1llRod/rod_cooperativa_aportes.git

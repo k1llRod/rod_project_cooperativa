@@ -1,0 +1,3 @@
+[submodule "rod_cooperativa"]
+	path = rod_cooperativa
+	url = https://github.com/k1llRod/rod_cooperativa.git

@@ -1,24 +1,59 @@
 <odoo>
     <data>
-<!--
-        <template id="listing">
-          <ul>
-            <li t-foreach="objects" t-as="object">
-              <a t-attf-href="#{ root }/objects/#{ object.id }">
-                <t t-esc="object.display_name"/>
-              </a>
-            </li>
-          </ul>
+        <!--        <template id="assets_frontend_rod" inherit_id="website.assets_frontend" name="Website Rod">-->
+        <!--            <xpath expr="." position="inside">-->
+        <!--                <script type="text/javascript" src="/rod_website/static/src/js/javascript.js"></script>-->
+        <!--            </xpath>-->
+        <!--        </template>-->
+        <template id="rod_snippet_id" inherit_id="website.snippets" name="Snippets COA">
+            <xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']" position="inside">
+                <t t-snippet="rod_website.snippet_rod"/>
+            </xpath>
         </template>
-        <template id="object">
-          <h1><t t-esc="object.display_name"/></h1>
-          <dl>
-            <t t-foreach="object._fields" t-as="field">
-              <dt><t t-esc="field"/></dt>
-              <dd><t t-esc="object[field]"/></dd>
-            </t>
-          </dl>
+        <template id="snippet_rod" name="COA snippet">
+            <div class="s_popup o_newsletter_popup o_snippet_invisible d-none" data-name="COA Popup"
+                 data-vcss="001" data-snippet="s_newsletter_subscribe_popup" id="sPopup1701873068136"
+                 data-invisible="1">
+                <div id="miModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content ">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Novedades</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">x</span>
+                                </button>
+                            </div>
+                            <div class="modal-body modal-content oe_structure" style="padding:0px;">
+                                <section class="s_text_block pt88 pb64 oe_img_bg o_bg_img_center o_colored_level"
+                                         data-snippet="s_text_block" data-name="Text"
+                                         style="background-image: url(&quot;/web/image/website.s_cover_default_image&quot;);">
+                                </section>
+                                <section class="s_text_block o_colored_level" data-snippet="s_text_block"
+                                         data-name="Text"
+                                         style="background-image: none;">
+                                    <div class="container">
+                                        <div class="row s_nb_column_fixed no-gutters">
+                                            <div class="col-lg-8 offset-lg-2 pt32 pb32 o_colored_level">
+<!--                                                <div class="s_newsletter_subscribe_form js_subscribe" data-vxml="001"-->
+<!--                                                     data-list-id="1" data-name="Newsletter Form"-->
+<!--                                                     data-snippet="s_newsletter_subscribe_form">-->
+<!--                                                    <div class="input-group">-->
+<!--                                                        <a role="button" href="/novedades"-->
+<!--                                                           class="btn btn-primary js_subscribe_btn o_submit o_default_snippet_text">-->
+<!--                                                            VER-->
+<!--                                                        </a>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </template>
--->
     </data>
 </odoo>

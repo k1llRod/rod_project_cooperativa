@@ -23,6 +23,10 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/website.xml',
+        # 'views/website.xml',
+        'views/templates.xml'
     ],
+     "assets": {
+        "web.assets_frontend": ["/rod_website/static/src/js/modal.js"]
+    },
 }

@@ -112,7 +112,7 @@
         'web.assets_backend': [
             'base_accounting_kit/static/src/scss/style.scss',
             'base_accounting_kit/static/src/scss/account_asset.scss',
-            'base_accounting_kit/static/lib/bootstrap-toggle-master/css/bootstrap-toggle.min.css',
+            # 'base_accounting_kit/static/lib/bootstrap-toggle-master/css/bootstrap-toggle.min.css',
             'base_accounting_kit/static/src/js/account_dashboard.js',
             'base_accounting_kit/static/src/js/account_asset.js',
             'base_accounting_kit/static/src/js/payment_model.js',

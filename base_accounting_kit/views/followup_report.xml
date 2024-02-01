@@ -84,26 +84,26 @@
         </record>
 
 
-        <record id="customer_statements_search_view" model="ir.ui.view">
-            <field name="name">customer.statements.search</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_res_partner_filter"/>
-            <field name="arch" type="xml">
-                <filter name="supplier" position="after">
-                    <separator/>
-                    <filter string="Overdue Invoices"
-                            name="filter_with_overdue_invoices"
-                            domain="[('followup_status', '=', 'with_overdue_invoices')]"/>
-                    <filter string="In need of action"
-                            name="filter_in_need_of_action"
-                            domain="[('followup_status', '=', 'in_need_of_action')]"/>
-                    <filter string="No action needed"
-                            name="filter_no_action_needed"
-                            domain="[('followup_status', '=', 'no_action_needed')]"/>
-                    <separator/>
-                </filter>
-            </field>
-        </record>
+<!--        <record id="customer_statements_search_view" model="ir.ui.view">-->
+<!--            <field name="name">customer.statements.search</field>-->
+<!--            <field name="model">res.partner</field>-->
+<!--            <field name="inherit_id" ref="base.view_res_partner_filter"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <filter name="supplier" position="after">-->
+<!--                    <separator/>-->
+<!--                    <filter string="Overdue Invoices"-->
+<!--                            name="filter_with_overdue_invoices"-->
+<!--                            domain="[('followup_status', '=', 'with_overdue_invoices')]"/>-->
+<!--                    <filter string="In need of action"-->
+<!--                            name="filter_in_need_of_action"-->
+<!--                            domain="[('followup_status', '=', 'in_need_of_action')]"/>-->
+<!--                    <filter string="No action needed"-->
+<!--                            name="filter_no_action_needed"-->
+<!--                            domain="[('followup_status', '=', 'no_action_needed')]"/>-->
+<!--                    <separator/>-->
+<!--                </filter>-->
+<!--            </field>-->
+<!--        </record>-->
 
         <record id="action_view_list_customer_statements" model="ir.actions.act_window">
             <field name="name">Follow-up Reports</field>

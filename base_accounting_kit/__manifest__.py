@@ -67,7 +67,7 @@
         'views/account_group.xml',
         'views/credit_limit_view.xml',
         'views/account_configuration.xml',
-        'views/account_payment_view.xml',
+        # 'views/account_payment_view.xml',
         'views/res_config_view.xml',
         'views/recurring_payments_view.xml',
         'views/account_followup.xml',

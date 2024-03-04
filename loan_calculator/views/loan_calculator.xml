@@ -1,0 +1,51 @@
+<odoo>
+    <data>
+        <!-- Vista Formulario loan.application  -->
+        <record model="ir.ui.view" id="loan_calculator_form_id">
+            <field name="name">loan.calculator.form</field>
+            <field name="model">loan.calculator</field>
+            <field name="arch" type="xml">
+                <form string="Calculadora de prestamos" class="oe_left oe_edit_only oe_form_required">
+                    <group>
+                        <group string="Datos">
+                            <field name="amount_loan_dollars"/>
+                            <field name="amount_loan"/>
+                            <field name="months_quantity"/>
+                            <field name="index_loan"/>
+                            <field name="index_loan_bs"/>
+                            <field name="fixed_fee"/>
+                            <field name="fixed_fee_bs"/>
+                            <field name="date_application"/>
+                            <field name="date_approval"/>
+                            <field name="surplus_days"/>
+                        </group>
+                        <group string="Valores iniciales">
+
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <!-- Accion para visualizar loan.application -->
+
+        <record id="action_loan_calculator_id" model="ir.actions.act_window">
+            <field name="name">Calculadora de prestamos</field>
+            <field name="res_model">loan.calculator</field>
+            <field name="view_mode">form</field>
+        </record>
+
+        <!-- Menu para visualizar loan.application -->
+        <menuitem name="Calculadora de prestamos"
+                  id="loan_calculator.menu_root"
+                  sequence="5"
+                  web_icon="rod_cooperativa,static/description/coaa.png"/>
+
+        <!-- menu categories -->
+        <menuitem id="loan_calculator.loan_calculator_menu_id"
+                  name="Calculadora de prestamos"
+                  parent="loan_calculator.menu_root"
+                  sequence="1"
+                  action="loan_calculator.action_loan_calculator_id"/>
+
+    </data>
+</odoo>

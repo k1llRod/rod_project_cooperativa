@@ -1,26 +1,31 @@
 <odoo>
     <data>
         <!-- Vista Formulario loan.application  -->
-        <record model="ir.ui.view" id="loan_calculator_form_id">
+        <record model="ir.ui.view" id="loan_calculator_id">
             <field name="name">loan.calculator.form</field>
             <field name="model">loan.calculator</field>
             <field name="arch" type="xml">
-                <form string="Calculadora de prestamos" class="oe_left oe_edit_only oe_form_required">
+                <form string="Calculadora de prestamos">
                     <group>
                         <group string="Datos">
+                            <field name="name" invisible="1"/>
                             <field name="amount_loan_dollars"/>
                             <field name="amount_loan"/>
                             <field name="months_quantity"/>
-                            <field name="index_loan"/>
-                            <field name="index_loan_bs"/>
-                            <field name="fixed_fee"/>
-                            <field name="fixed_fee_bs"/>
                             <field name="date_application"/>
                             <field name="date_approval"/>
-                            <field name="surplus_days"/>
-                        </group>
-                        <group string="Valores iniciales">
+                            <field name="fixed_fee"/>
+                            <field name="fixed_fee_bs"/>
 
+                        </group>
+                        <group string="Calculo aproximado">
+                            <field name="monthly_interest" readonly="1"/>
+                            <field name="contingency_fund" readonly="1"/>
+                            <field name="amount_min_def" readonly="1"/>
+<!--                            <field name="commission_min_def"/>-->
+
+<!--                            <field name="index_loan"/>-->
+<!--                            <field name="index_loan_bs"/>-->
                         </group>
                     </group>
                 </form>

@@ -26,6 +26,7 @@ class LoanCalculator(models.Model):
                                       selection=[('loan_guarantor', 'Prestamo regular'),
                                                  ('mortgage', 'Prestamo hipotecario')])
 
+    mount = fields.Float(string='Cuota fija')
     fixed_fee = fields.Float(string='Cuota fija ($)', compute='_compute_index_loan_fixed_fee')
     fixed_fee_bs = fields.Float(string='Cuota fija (Bs)', compute='_compute_index_loan_fixed_fee_bs')
     index_loan = fields.Float(string='Indice de prestamo ($)', compute='_compute_index_loan_fixed_fee')
@@ -41,6 +42,13 @@ class LoanCalculator(models.Model):
     commission_min_def = fields.Float(string='Comision Min. Defensa %', default=lambda self: float(
         self.env['ir.config_parameter'].sudo().get_param('rod_cooperativa.percentage_commission_min_def')),
                                       digits=(6, 3))
+    amount_total = fields.Float(string='D/MINDEF $', digits=(16, 2))
+    amount_total_bs = fields.Float(string='D/MINDEF Bs', compute='_change_amount_total_bs', digits=(16, 2), store=True)
+    currency_id = fields.Many2one('res.currency', string='Moneda', default=lambda self: self.env.company.currency_id)
+    currency_id_dollar = fields.Many2one('res.currency', string='Moneda en Dólares',
+                                         default=lambda self: self.env.ref('base.USD'))
+    percentage_amount_min_def = fields.Float(string='%MINDEF', digits=(16, 2), store=True)
+
     def _compute_set_dollar(self):
         dollar = self.env['res.currency'].search([('name', '=', 'USD')], limit=1)
         return round(dollar.inverse_rate, 2)
@@ -77,6 +85,12 @@ class LoanCalculator(models.Model):
     def _compute_change_dollars_bolivian(self):
         for rec in self:
             rec.amount_loan = rec.amount_loan_dollars * rec.value_dolar
+            rec.total_interest_month_surpluy = rec.interest_month_surpluy * rec.months_quantity
+            rec.percentage_amount_min_def = rec.fixed_fee * rec.amount_min_def
+            rec.amount_total = round(rec.fixed_fee, 2) + round(rec.percentage_amount_min_def, 2) + round(
+                rec.interest_month_surpluy, 2)
+            rec.fixed_fee = rec.amount_loan_dollars * rec.index_loan
+            rec.pay_slip_balance = rec.fixed_fee_bs * (100 / 40)
 
     @api.onchange('months_quantity', 'with_guarantor')
     def _compute_index_loan_fixed_fee(self):
@@ -125,7 +139,36 @@ class LoanCalculator(models.Model):
         for rec in self:
             rec.fixed_fee_bs = rec.fixed_fee * rec.value_dolar
 
+
     @api.onchange('amount_loan_dollars')
     def _onchange_amount_loan_dollars(self):
         self.fixed_fee = self.amount_loan_dollars * self.index_loan
         self.pay_slip_balance = self.fixed_fee_bs * (100 / 40)
+
+
+    @api.onchange('amount_total')
+    def _change_amount_total_bs(self):
+        for rec in self:
+            rec.amount_total_bs = rec.amount_total * rec.currency_id_dollar.inverse_rate
+
+    @api.depends('interest_month_surpluy', 'months_quantity')
+    def _compute_total_interest_month_surpluy(self):
+        for rec in self:
+            rec.total_interest_month_surpluy = rec.interest_month_surpluy * rec.months_quantity
+            rec.percentage_amount_min_def = rec.fixed_fee * rec.amount_min_def
+            rec.amount_total = round(rec.fixed_fee, 2) + round(rec.percentage_amount_min_def, 2) + round(
+                rec.interest_month_surpluy, 2)
+
+    def button_value_dolar(self):
+        dollar = self.env['res.currency'].search([('name', '=', 'USD')], limit=1)
+        self.value_dolar = round(dollar.inverse_rate, 2)
+
+    def reset_values(self):
+        for rec in self:
+            rec.amount_loan_dollars = 0
+            rec.months_quantity = 0
+            rec.months_quantity = 0
+            rec.date_approval = False
+            rec.interest_month_surpluy = 0
+            rec.amount_total = 0
+

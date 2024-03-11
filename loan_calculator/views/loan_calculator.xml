@@ -5,29 +5,55 @@
             <field name="name">loan.calculator.form</field>
             <field name="model">loan.calculator</field>
             <field name="arch" type="xml">
-                <form string="Calculadora de prestamos">
-                    <group>
-                        <group string="Datos">
-                            <field name="name" invisible="1"/>
-                            <field name="amount_loan_dollars"/>
-                            <field name="amount_loan"/>
-                            <field name="months_quantity"/>
-                            <field name="date_application"/>
-                            <field name="date_approval"/>
-                            <field name="fixed_fee"/>
-                            <field name="fixed_fee_bs"/>
+                <form string="Calculadora de prestamos" create="0" write="0" >
+                    <header>
+                        <button name="reset_values" string="Reset" type="object" />
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="button_value_dolar" class="oe_stat_button" type="object" icon="fa-usd">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field string=" " name="value_dolar" widget="statinfo"/>
+                                    </span>
+                                    <span class="o_stat_text">
+                                        Dolar
+                                    </span>
+                                </div>
+                            </button>
+                        </div>
+                        <group>
+                            <group string="Datos">
+                                <field name="name" invisible="1"/>
+                                <field name="amount_loan_dollars"/>
+                                <field name="amount_loan"/>
+                                <field name="months_quantity"/>
+                                <field name="date_application"/>
+                                <field name="date_approval"/>
+                                <field name="fixed_fee" widget="monetary"
+                                       options="{'currency_field': 'currency_id_dollar'}"/>
+                                <field name="fixed_fee_bs" widget="monetary"/>
+                                <field name="pay_slip_balance" readonly="1"/>
+                                <field name="surplus_days" readonly="1"/>
+                                <field name="interest_month_surpluy"/>
+                                <field name="total_interest_month_surpluy"/>
+<!--                                <field name="mount"/>-->
+                                <field name="percentage_amount_min_def"/>
+                                <field name="amount_total"/>
+                                <field name="amount_total_bs"/>
 
-                        </group>
-                        <group string="Calculo aproximado">
-                            <field name="monthly_interest" readonly="1"/>
-                            <field name="contingency_fund" readonly="1"/>
-                            <field name="amount_min_def" readonly="1"/>
-<!--                            <field name="commission_min_def"/>-->
+                            </group>
+                            <group string="Calculo aproximado">
+                                <field name="monthly_interest" readonly="1"/>
+                                <field name="contingency_fund" readonly="1"/>
+                                <field name="amount_min_def" readonly="1"/>
+                                <!--                            <field name="commission_min_def"/>-->
 
-<!--                            <field name="index_loan"/>-->
-<!--                            <field name="index_loan_bs"/>-->
+                                <!--                            <field name="index_loan"/>-->
+                                <!--                            <field name="index_loan_bs"/>-->
+                            </group>
                         </group>
-                    </group>
+                    </sheet>
                 </form>
             </field>
         </record>

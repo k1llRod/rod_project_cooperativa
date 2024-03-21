@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="seq_loan_application_emergency" model="ir.sequence">
+            <field name="name">Secuencia de solicitud de prestamos de emergencia</field>
+            <field name="code">loan.application.emergency</field>
+            <field name="prefix">EMERCOA4</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>

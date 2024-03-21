@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+      <!-- Top menu item -->
+      <menuitem name="Prestamos de emergencia"
+                id="rod_loan_emergency.menu_root"
+                sequence="6"
+                web_icon="rod_cooperativa,static/description/coaa.png" />
+
+      <menuitem id="rod_loan_emergency.rod_loan_emergency"
+                name="Prestamos de emergencia"
+                parent="rod_loan_emergency.menu_root"
+                sequence="1"
+                action="action_loan_emergency_application"/>
+
+      <menuitem id="rod_loan_emergency.rod_loan_payment_emergency"
+                name="Reportes"
+                parent="rod_loan_emergency.menu_root"
+                sequence="2"
+                action="action_loan_payment_emergency"/>
+
+
+      <!-- menu categories -->
+<!--      <menuitem id="rod_cooperativa.rod_cooperativa_prestamos"-->
+<!--                name="Prestamos"-->
+<!--                parent="rod_cooperativa.menu_root"-->
+<!--                sequence="1"-->
+<!--                action="rod_cooperativa.action_loan_application"/>-->
+
+<!--      <menuitem id="rod_cooperativa.rod_cooperativa_loan_report"-->
+<!--                name="Reportes"-->
+<!--                parent="rod_cooperativa.menu_root"-->
+<!--                sequence="2"/>-->
+
+<!--      <menuitem id="rod_cooperativa.rod_cooperativa_loan_report_table"-->
+<!--                name="Tabla de pagos"-->
+<!--                parent="rod_cooperativa.rod_cooperativa_loan_report"-->
+<!--                sequence="1"-->
+<!--                action="rod_cooperativa.action_loan_payment"/>-->
+
+<!--      <menuitem id="rod_cooperativa.rod_cooperativa_ministry_registry_filing_cabinet"-->
+<!--                name="Archivador"-->
+<!--                parent="rod_cooperativa.menu_root"-->
+<!--                sequence="3"/>-->
+
+<!--      <menuitem id="rod_cooperativa.rod_cooperativa_nominal_relationship_mindef_loan"-->
+<!--                name="Carga masiva"-->
+<!--                parent="rod_cooperativa.rod_cooperativa_ministry_registry_filing_cabinet"-->
+<!--                sequence="1"-->
+<!--                action="rod_cooperativa.action_nominal_relationship_mindef_loan"/>-->
+
+<!--      <menuitem id="rod_cooperativa.rod_cooperativa_generate_loan_report"-->
+<!--                name="Generar reporte"-->
+<!--                parent="rod_cooperativa.rod_cooperativa_ministry_registry_filing_cabinet"-->
+<!--                sequence="2"-->
+<!--                action="rod_cooperativa.action_loan_payment"/>-->
+
+
+<!--      <menuitem id="rod_cooperativa.rod_cooperativa_configuration"-->
+<!--                name="Configuración"-->
+<!--                parent="rod_cooperativa.menu_root"-->
+<!--                sequence="5"-->
+<!--                action="rod_cooperativa.action_loan_application"/>-->
+
+<!--      <menuitem id="rod_cooperativa.rod_cooperativa_settings"-->
+<!--                name="Ajustes"-->
+<!--                parent="rod_cooperativa.rod_cooperativa_configuration"-->
+<!--                sequence="1"-->
+<!--                action="rod_cooperativa.action_cooperativa_configuration"/>-->
+<!--      &lt;!&ndash;      <menuitem id="rod_cooperativa.rod_cooperativa_type_loan" name="Tabla de tipos de prestamo" parent="rod_cooperativa.rod_cooperativa_configuration" sequence="2" action="rod_cooperativa.action_type_loan"/>&ndash;&gt;-->
+<!--      <menuitem id="rod_cooperativa.rod_cooperativa_partner_category"-->
+<!--                name="Categoria de socios"-->
+<!--                parent="rod_cooperativa.rod_cooperativa_configuration"-->
+<!--                sequence="2"-->
+<!--                action="rod_cooperativa.action_partner_category"/>-->
+
+<!--      ICONO ASOCIADOS-->
+<!--      <menuitem name="Socios"-->
+<!--                id="rod_cooperativa.menu_root_partner_coa"-->
+<!--                sequence="1"-->
+<!--                web_icon="rod_cooperativa,static/description/coaa.png" />-->
+<!--      <menuitem id="rod_cooperativa.rod_cooperativa_socios"-->
+<!--                name="Socios"-->
+<!--                parent="rod_cooperativa.menu_root_partner_coa"-->
+<!--                sequence="1"-->
+<!--                action="rod_cooperativa.action_partner_coa"/>-->
+  </data>
+</odoo>

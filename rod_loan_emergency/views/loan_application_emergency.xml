@@ -5,13 +5,13 @@
             <field name="name">loan.application.emergency.tree</field>
             <field name="model">loan.application.emergency</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree create="0">
                     <header>
 <!--                        <button name="import_loan" string="Conciliar" class="oe_highlight" type="object" groups="rod_cooperativa.group_rod_cooperativa_administrator"/>-->
 <!--                        <button name="massive_approve_loan" string="Aprobacion masiva" type="object" groups="rod_cooperativa.group_rod_cooperativa_administrator"/>-->
                     </header>
                     <field name="name"/>
-                    <field name="partner_id"/>
+                    <field name="partner_id" readonly="1"/>
                     <field name="months_quantity"/>
                     <field name="interest_rate"/>
                     <field name="amount"/>
@@ -30,7 +30,7 @@
             <field name="name">loan.application.emergency.form</field>
             <field name="model">loan.application.emergency</field>
             <field name="arch" type="xml">
-                <form string="Solicitud de presupuesto" class="oe_left oe_edit_only oe_form_required">
+                <form string="Solicitud de presupuesto" class="oe_left oe_edit_only oe_form_required" create="0">
                     <header>
 <!--                        <button name="verification_pass" string="Aprobar" class="oe_highlight" type="object" attrs="{'invisible':[('state','!=','init')]}" groups="rod_cooperativa.group_rod_cooperativa_operator"/>-->
 <!--                        <button name="approval_state" string="Aprobar prestamo" class="oe_highlight" type="object" attrs="{'invisible': [('state','!=','verificate')]}" groups="rod_cooperativa.group_rod_cooperativa_administrator"/>-->

@@ -87,7 +87,8 @@ class LoanApplicationEmergency(models.Model):
 
     def approve_loan_emergency(self):
         for rec in self:
-            if rec.letter_of_request == False: raise ValidationError('Falta carta de solicitud')
+            if rec.ci_photocopy == False: raise ValidationError('Falta solicitud de prestamo')
+            # if rec.letter_of_request == False: raise ValidationError('Falta carta de solicitud')
             if rec.last_copy_paid_slip == False: raise ValidationError('Falta ultima copia de boleta de pago')
 
             for i in range(1, rec.months_quantity + 1):

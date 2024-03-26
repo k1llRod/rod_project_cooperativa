@@ -35,6 +35,7 @@ class LoanApplicationEmergency(models.Model):
     surplus_amount = fields.Float(string='Monto excedente')
     global_interest = fields.Float(string='Interes global')
     monthly_interest = fields.Float(string='Interes mensual')
+
     interest_month_surpluy = fields.Float(string='Interes mensual excedente')
     capital_month = fields.Float(string='Capital mensual')
 

@@ -19,7 +19,7 @@
                     <field name="monthly_interest" sum="Total"/>
 <!--                    <field name="capital_index_initial" widget="monetary" options="{'currency_field': 'currency_id_dollar'}"/>-->
                     <field name="capital_balance" sum="Total"/>
-                    <field name="interest_month_surpluy" optional="hidden"/>
+                    <field name="interest_month_surpluy" />
                     <field name="commission_min_def" widget="monetary" options="{'currency_field': 'currency_id_dollar'}"/>
 <!--                    <field name="amount_returned_coa" optional="hidden"/>-->
                     <field name="loan_application_ids" invisible="1"/>

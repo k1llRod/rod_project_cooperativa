@@ -75,7 +75,7 @@ class LoanApplicationEmergency(models.Model):
                     point_day = last_day - record.date.day
                     record.surplus_days = point_day
                     calculte_interest = round(record.amount * (record.interest_rate))
-                    record.interest_month_surpluy = (calculte_interest / 30) * (
+                    record.interest_month_surpluy = (calculte_interest / last_day) * (
                                     point_day / record.months_quantity)
                     record.monthly_interest = calculte_interest
                     record.capital_month = record.fixed_fee - record.monthly_interest
@@ -94,7 +94,7 @@ class LoanApplicationEmergency(models.Model):
 
             for i in range(1, rec.months_quantity + 1):
                 date = rec.date + relativedelta(months=i)
-                commission = rec.fixed_fee * (rec.commission_min_def / 100)
+                commission = (round(rec.fixed_fee,2) + round(rec.interest_month_surpluy,2)) * (rec.commission_min_def / 100)
                 if len(rec.loan_payment_ids) == 0:
                     capital_init = rec.amount
                     # date_payment = datetime.today()
@@ -118,7 +118,7 @@ class LoanApplicationEmergency(models.Model):
                     capital = rec.fixed_fee - interest
                     capital_balance = capital_init - capital
 
-                self.env['loan.payment.emergency'].create({
+                action = self.env['loan.payment.emergency'].create({
                     'name': 'Cuota ' + str(i),
                     'date': date_payment,
                     'capital_index_initial': capital_index_initial,
@@ -133,6 +133,7 @@ class LoanApplicationEmergency(models.Model):
                     # 'commission_min_def': amount_commission,
                     'state': 'draft',
                 })
+                action.compute_min_def()
 
         # self.write({'state': 'approved'})
 

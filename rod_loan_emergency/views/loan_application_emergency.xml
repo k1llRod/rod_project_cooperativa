@@ -35,11 +35,12 @@
 <!--                        <button name="verification_pass" string="Aprobar" class="oe_highlight" type="object" attrs="{'invisible':[('state','!=','init')]}" groups="rod_cooperativa.group_rod_cooperativa_operator"/>-->
 <!--                        <button name="approval_state" string="Aprobar prestamo" class="oe_highlight" type="object" attrs="{'invisible': [('state','!=','verificate')]}" groups="rod_cooperativa.group_rod_cooperativa_administrator"/>-->
 <!--                        <button name="refinance" string="Refinanciar" type="object" attrs="{'invisible': [('state','!=','progress')]}" groups="rod_cooperativa.group_rod_cooperativa_administrator,rod_cooperativa.group_rod_cooperativa_operator"/>-->
-<!--                        <button name="return_application" string="Devolver" type="object" attrs="{'invisible': [('state','!=','verificate')]}"/>-->
+                        <button name="approve_loan" string="Aprobar prestamo" type="object" attrs="{'invisible': ['|',('state','=','approved'),('state','=','rejected')]}"/>
                         <button name="return_draft" string="Borrador" type="object" attrs="{'invisible': [('state','=','draft')]}" groups="rod_cooperativa.group_rod_cooperativa_administrator"/>
                         <button name="reset_payroll" string="Reset" type="object" attrs="{'invisible': [('state','!=','draft')]}"/>
-<!--                        <button name="return_approval" string="Retornar aprobacion" type="object" groups="rod_cooperativa.group_rod_cooperativa_administrator,rod_cooperativa.group_rod_cooperativa_operator"/>-->
-                        <button name="approve_loan_emergency" string="Validar" type="object" class="oe_highlight" attrs="{'invisible': ['|',('state','=','approved'),('state','=','rejected')]}"/>
+                        <button name="reject_loan" string="Rechazar solicitud" type="object" attrs="{'invisible': [('state','!=','draft')]}" />
+                        <button name="approve_loan_emergency" string="Plan de pagos" type="object" class="oe_highlight" attrs="{'invisible': [('state','!=','draft')]}" />
+
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>
@@ -88,25 +89,26 @@
                         <group>
                             <group string="Prestamo de emergencia">
                                 <!--                                <field name="type_loan" attrs="{'readonly': ['|',('state','=','progress'),('state','=','done'),('state','=','init')]}"/>-->
-                                <field name="partner_id"/>
-                                <field name="code_contact"/>
+                                <field name="partner_id" readonly="1"/>
+                                <field name="code_contact" />
                                 <field name="category_partner"/>
                                 <field name="ci_partner"/>
                                 <field name="partner_status_especific"/>
                                 <field name="guarantor_one" attrs="{'invisible': [('partner_status_especific','!=','emergency_civil')],
                                                                     'required': [('partner_status_especific','=','emergency_civil')]}"/>
-                                <field name="code_garantor_one"/>
-                                <field name="amount" />
-                                <field name="months_quantity" />
-                                <field name="date"/>
-                                <field name="interest_rate" />
-                                <field name="commission_min_def"/>
-                                <field name="surplus_days"/>
+                                <field name="code_garantor_one" attrs="{'invisible': [('partner_status_especific','!=','emergency_civil')],
+                                                                    'required': [('partner_status_especific','=','emergency_civil')]}"/>
+                                <field name="amount" attrs="{'readonly': [('state','!=','draft')]}"/>
+                                <field name="months_quantity" attrs="{'readonly': [('state','!=','draft')]}"/>
+                                <field name="date" attrs="{'readonly': [('state','!=','draft')]}"/>
+                                <field name="interest_rate" attrs="{'readonly': [('state','!=','draft')]}"/>
+                                <field name="commission_min_def" attrs="{'readonly': [('state','!=','draft')]}"/>
+                                <field name="surplus_days" attrs="{'readonly': [('state','!=','draft')]}"/>
 <!--                                <field name="surplus_amount"/>-->
-                                <field name="monthly_interest"/>
-                                <field name="interest_month_surpluy"/>
-                                <field name="capital_month"/>
-                                <field name="fixed_fee"/>
+                                <field name="monthly_interest" attrs="{'readonly': [('state','!=','draft')]}"/>
+                                <field name="interest_month_surpluy" attrs="{'readonly': [('state','!=','draft')]}"/>
+                                <field name="capital_month" attrs="{'readonly': [('state','!=','draft')]}"/>
+                                <field name="fixed_fee" attrs="{'readonly': [('state','!=','draft')]}"/>
                             </group>
                             <group string="Respaldos">
 <!--                                <field name="letter_of_request"/>-->

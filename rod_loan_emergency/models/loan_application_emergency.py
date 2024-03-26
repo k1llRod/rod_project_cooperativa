@@ -66,7 +66,7 @@ class LoanApplicationEmergency(models.Model):
         if self.months_quantity > 0:
             self.fixed_fee = self.amount * self.interest_rate / (1 - (1 + self.interest_rate) ** -self.months_quantity)
 
-    @api.onchange('date')
+    @api.onchange('date','amount','months_quantity','interest_rate')
     def _compute_surplus_days(self):
         for record in self:
             try:
@@ -134,7 +134,7 @@ class LoanApplicationEmergency(models.Model):
                     'state': 'draft',
                 })
 
-        self.write({'state': 'approved'})
+        # self.write({'state': 'approved'})
 
     def reset_payroll(self):
         for rec in self:
@@ -143,3 +143,11 @@ class LoanApplicationEmergency(models.Model):
 
     def return_draft(self):
         self.state = 'draft'
+
+    def approve_loan(self):
+        for rec in self:
+            rec.state = 'approved'
+
+    def reject_loan(self):
+        for rec in self:
+            rec.state ='rejected'

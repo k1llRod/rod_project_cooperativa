@@ -20,12 +20,13 @@ class LoanPaymentEmergency(models.Model):
     capital_index_initial = fields.Float(string='Capital index')
     capital_balance = fields.Float(string='Saldo capital', digits=(16, 2), store=True)
     fixed_fee = fields.Float(string='Cuota fija')
-    monthly_interest = fields.Float(string='Interes Mensual', store=True)
+    monthly_interest = fields.Float(string='Interes', store=True)
     interest = fields.Float(string="Interes")
     interest_month_surpluy = fields.Float(string='Interes mensual excedente')
     commission_min_def = fields.Float(string='Comision Min. Defensa %',
                                       digits=(6, 3))
-    payment_mindef = fields.Float(string='Descuento MINDEF')
+    total_commission_min_def = fields.Float(string='Comision Min. Defensa', compute='compute_min_def' ,digits=(16, 2), store=True)
+    discount_mindef = fields.Float(string='Descuento MINDEF', compute='compute_min_def')
     state = fields.Selection(
         [('draft', 'Borrador'), ('transfer', 'Transferencia bancaria'),
          ('ministry_defense', 'Ministerio de defensa'), ('debt_settlement_mindef', 'Liquidacion de deuda MINDEF'),
@@ -58,5 +59,11 @@ class LoanPaymentEmergency(models.Model):
         for rec in self:
             rec.period = rec.date.strftime('%m/%Y')
 
-    @api.onchange('')
+    @api.depends('commission_min_def')
+    def compute_min_def(self):
+        for rec in self:
+            rec.total_commission_min_def = rec.commission_min_def + rec.fixed_fee
+            rec.discount_mindef = rec.total_commission_min_def + rec.interest_month_surpluy
+
+
 

@@ -36,10 +36,10 @@
 <!--                        <button name="approval_state" string="Aprobar prestamo" class="oe_highlight" type="object" attrs="{'invisible': [('state','!=','verificate')]}" groups="rod_cooperativa.group_rod_cooperativa_administrator"/>-->
 <!--                        <button name="refinance" string="Refinanciar" type="object" attrs="{'invisible': [('state','!=','progress')]}" groups="rod_cooperativa.group_rod_cooperativa_administrator,rod_cooperativa.group_rod_cooperativa_operator"/>-->
 <!--                        <button name="return_application" string="Devolver" type="object" attrs="{'invisible': [('state','!=','verificate')]}"/>-->
-<!--                        <button name="return_draft" string="Borrador" type="object" attrs="{'invisible': [('state','!=','progress')]}" groups="rod_cooperativa.group_rod_cooperativa_administrator"/>-->
-<!--                        <button name="reset_payroll" string="Reset" type="object" groups="rod_cooperativa.group_rod_cooperativa_administrator,rod_cooperativa.group_rod_cooperativa_operator"/>-->
+                        <button name="return_draft" string="Borrador" type="object" attrs="{'invisible': [('state','=','draft')]}" groups="rod_cooperativa.group_rod_cooperativa_administrator"/>
+                        <button name="reset_payroll" string="Reset" type="object" attrs="{'invisible': [('state','!=','draft')]}"/>
 <!--                        <button name="return_approval" string="Retornar aprobacion" type="object" groups="rod_cooperativa.group_rod_cooperativa_administrator,rod_cooperativa.group_rod_cooperativa_operator"/>-->
-                        <button name="approve_loan_emergency" string="Validar" type="object" class="oe_highlight" />
+                        <button name="approve_loan_emergency" string="Validar" type="object" class="oe_highlight" attrs="{'invisible': ['|',('state','=','approved'),('state','=','rejected')]}"/>
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>

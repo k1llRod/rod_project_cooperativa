@@ -21,6 +21,8 @@
                     <field name="capital_balance" sum="Total"/>
                     <field name="interest_month_surpluy" />
                     <field name="commission_min_def" widget="monetary" options="{'currency_field': 'currency_id_dollar'}"/>
+                    <field name="total_commission_min_def"/>
+                    <field name="discount_mindef"/>
 <!--                    <field name="amount_returned_coa" optional="hidden"/>-->
                     <field name="loan_application_ids" invisible="1"/>
                     <field name="state" decoration-info="state == 'init' or state == 'in_queue'" decoration-success="state == 'progress' or state == 'done'" widget="badge"/>

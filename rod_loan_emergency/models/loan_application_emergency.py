@@ -74,9 +74,8 @@ class LoanApplicationEmergency(models.Model):
                     last_day = calendar.monthrange(record.date.year, record.date.month)[1]
                     point_day = last_day - record.date.day
                     record.surplus_days = point_day
-                    calculte_interest = record.amount * (
-                            (record.interest_rate))
-                    record.interest_month_surpluy = (calculte_interest / last_day) * (
+                    calculte_interest = round(record.amount * (record.interest_rate))
+                    record.interest_month_surpluy = (calculte_interest / 30) * (
                                     point_day / record.months_quantity)
                     record.monthly_interest = calculte_interest
                     record.capital_month = record.fixed_fee - record.monthly_interest
@@ -87,6 +86,7 @@ class LoanApplicationEmergency(models.Model):
                 return 0
 
     def approve_loan_emergency(self):
+        if self.loan_payment_ids: raise ValidationError('Se tienen registros, primero deben ser eliminados.')
         for rec in self:
             if rec.ci_photocopy == False: raise ValidationError('Falta solicitud de prestamo')
             # if rec.letter_of_request == False: raise ValidationError('Falta carta de solicitud')
@@ -135,3 +135,11 @@ class LoanApplicationEmergency(models.Model):
                 })
 
         self.write({'state': 'approved'})
+
+    def reset_payroll(self):
+        for rec in self:
+            rec.loan_payment_ids.unlink()
+            rec.state = 'draft'
+
+    def return_draft(self):
+        self.state = 'draft'

@@ -14,13 +14,17 @@
                     <field name="date"/>
                     <field name="period"/>
                     <field name="capital_init"/>
-                    <field name="fixed_fee" widget="monetary" options="{'currency_field': 'currency_id_dollar'}" sum="Total"/>
+                    <field name="commission_min_def" widget="monetary" options="{'currency_field': 'currency_id_dollar'}"/>
                     <field name="capital_month" optional="show" widget="monetary" options="{'currency_field': 'currency_id_dollar'}" sum="Total"/>
                     <field name="monthly_interest" sum="Total"/>
+                    <field name="interest_month_surpluy" />
+                    <field name="fixed_fee" widget="monetary" options="{'currency_field': 'currency_id_dollar'}" sum="Total"/>
+
+
 <!--                    <field name="capital_index_initial" widget="monetary" options="{'currency_field': 'currency_id_dollar'}"/>-->
                     <field name="capital_balance" sum="Total"/>
-                    <field name="interest_month_surpluy" />
-                    <field name="commission_min_def" widget="monetary" options="{'currency_field': 'currency_id_dollar'}"/>
+
+
                     <field name="total_commission_min_def"/>
                     <field name="discount_mindef"/>
 <!--                    <field name="amount_returned_coa" optional="hidden"/>-->

@@ -15,17 +15,17 @@ class LoanPaymentEmergency(models.Model):
     loan_application_ids = fields.Many2one('loan.application.emergency', string='Solicitud de prestamo de emergencia', required=True)
     date = fields.Date(string='Fecha de pago', required=True)
     period = fields.Char(string='Periodo', compute='_compute_period',store=True)
-    capital_month = fields.Float(string='Capital')
-    capital_init = fields.Float(string='Capital inicial')
+    capital_month = fields.Float(string='CAPITAL MENS.')
+    capital_init = fields.Float(string='Monto prestado')
     capital_index_initial = fields.Float(string='Capital index')
-    capital_balance = fields.Float(string='Saldo capital', digits=(16, 2), store=True)
-    fixed_fee = fields.Float(string='Cuota fija')
-    monthly_interest = fields.Float(string='Interes', store=True)
+    capital_balance = fields.Float(string='SALDO CAPITAL', digits=(16, 2), store=True)
+    fixed_fee = fields.Float(string='CUATO FIJA')
+    monthly_interest = fields.Float(string='INTERES MENSUAL', store=True)
     interest = fields.Float(string="Interes")
-    interest_month_surpluy = fields.Float(string='Interes mensual excedente')
-    commission_min_def = fields.Float(string='Comision Min. Defensa %',
+    interest_month_surpluy = fields.Float(string='DIAS INTERES')
+    commission_min_def = fields.Float(string='MIND 0.25',
                                       digits=(6, 3))
-    total_commission_min_def = fields.Float(string='Comision Min. Defensa' ,digits=(16, 2), store=True)
+    total_commission_min_def = fields.Float(string='DESC MINDEF' ,digits=(16, 2), store=True)
     discount_mindef = fields.Float(string='Descuento MINDEF')
     state = fields.Selection(
         [('draft', 'Borrador'), ('transfer', 'Transferencia bancaria'),

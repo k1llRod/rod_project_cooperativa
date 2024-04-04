@@ -40,7 +40,7 @@ class LoanApplicationEmergency(models.Model):
     capital_month = fields.Float(string='Capital mensual')
 
 
-    commission_min_def = fields.Float(string='Comision Min. Defensa %', default=0.25,
+    commission_min_def = fields.Float(string='MIND 0.25', default=0.25,
                                       digits=(6, 3))
 
     # letter_of_request = fields.Boolean(string='Carta de solicitud', tracking=True)
@@ -75,8 +75,9 @@ class LoanApplicationEmergency(models.Model):
                     point_day = last_day - record.date.day
                     record.surplus_days = point_day
                     calculte_interest = round(record.amount * (record.interest_rate))
-                    record.interest_month_surpluy = (calculte_interest / last_day) * (
-                                    point_day / record.months_quantity)
+                    if record.monthly_interest > 0:
+                        record.interest_month_surpluy = (calculte_interest / last_day) * (
+                                        point_day / record.months_quantity)
                     record.monthly_interest = calculte_interest
                     record.capital_month = record.fixed_fee - record.monthly_interest
                 else:

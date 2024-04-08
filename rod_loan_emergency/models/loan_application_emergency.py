@@ -25,7 +25,7 @@ class LoanApplicationEmergency(models.Model):
                                                 related='partner_id.partner_status_especific', store=True)
     amount = fields.Float(string='Monto de prestamo')
     months_quantity = fields.Integer(string='Cantidad de meses')
-    interest_rate = fields.Float(string='Tasa de interes', default=0.03, digits=(6, 3))
+    interest_rate = fields.Float(string='Tasa de interes', default=0.035, digits=(6, 3))
     date = fields.Date(string='Fecha de prestamo', default=fields.Date.context_today)
     state = fields.Selection([('draft', 'Borrador'), ('approved', 'Aprobado'), ('rejected', 'Rechazado')], string='Estado', default='draft')
     guarantor_one = fields.Many2one('res.partner', string='Garante 1', tracking=True)
@@ -61,11 +61,10 @@ class LoanApplicationEmergency(models.Model):
         res = super(LoanApplicationEmergency, self).create(vals)
         return res
 
-    @api.onchange('amount', 'months_quantity', 'interest_rate')
-    def _onchange_amount(self):
-        if self.months_quantity > 0:
-            self.fixed_fee = self.amount * self.interest_rate / (1 - (1 + self.interest_rate) ** -self.months_quantity)
-
+    # @api.onchange('amount', 'months_quantity', 'interest_rate')
+    # def _onchange_amount(self):
+    #     if self.months_quantity > 0:
+    #         self.fixed_fee = self.amount * self.interest_rate / (1 - (1 + self.interest_rate) ** -self.months_quantity)
     @api.onchange('date','amount','months_quantity','interest_rate')
     def _compute_surplus_days(self):
         for record in self:
@@ -75,11 +74,13 @@ class LoanApplicationEmergency(models.Model):
                     point_day = last_day - record.date.day
                     record.surplus_days = point_day
                     calculte_interest = round(record.amount * (record.interest_rate))
-                    if record.monthly_interest > 0:
+                    if record.months_quantity > 0:
+                        record.fixed_fee = record.amount * record.interest_rate / (1 - (1 + record.interest_rate) ** -record.months_quantity)
+                    if record.amount > 0:
                         record.interest_month_surpluy = (calculte_interest / last_day) * (
                                         point_day / record.months_quantity)
-                    record.monthly_interest = calculte_interest
-                    record.capital_month = record.fixed_fee - record.monthly_interest
+                        record.monthly_interest = calculte_interest
+                        record.capital_month = round(record.fixed_fee,2) - record.monthly_interest
                 else:
                     record.surplus_days = 0
                     record.interest_month_surpluy = 0
@@ -140,6 +141,15 @@ class LoanApplicationEmergency(models.Model):
 
     def reset_payroll(self):
         for rec in self:
+            rec.amount = 0
+            rec.months_quantity = 0
+            # rec.date = fields.Date.context_today()
+            rec.interest_rate = 0.035
+            rec.surplus_days = 0
+            rec.monthly_interest = 0
+            rec.interest_month_surpluy = 0
+            rec.capital_month = 0
+            rec.fixed_fee = 0
             rec.loan_payment_ids.unlink()
             rec.state = 'draft'
 

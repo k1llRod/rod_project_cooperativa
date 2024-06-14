@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+      <!-- Top menu item -->
+      <menuitem name="Contabilidad COA"
+                id="rod_account_coa.menu_root"
+                sequence="6"
+                web_icon="rod_account_coa,static/description/coaa.png" />
+      <!-- menu categories -->
+      <menuitem id="rod_account_coa.rod_contabilidad_coa"
+                name="Contabilidad"
+                parent="rod_account_coa.menu_root"
+                sequence="1"
+                action="account.open_account_journal_dashboard_kanban"/>
+      <menuitem id="rod_account_coa.rod_account_revenue"
+                name="Ingresos"
+                parent="rod_account_coa.menu_root"
+                sequence="2"/>
+      <menuitem id="rod_account_coa.rod_account_revenue_form"
+                name="Ingresos"
+                parent="rod_account_coa.rod_account_revenue"
+                sequence="1"
+                action="account.action_account_payments"/>
+
+      <menuitem id="rod_account_coa.rod_account_expense"
+                name="Egresos"
+                parent="rod_account_coa.menu_root"
+                sequence="3"
+                action="account.action_account_payments_payable"/>
+      <menuitem id="rod_account_coa.rod_account_account_build"
+                name="Contabilidad"
+                parent="rod_account_coa.menu_root"
+                sequence="4">
+          <menuitem id="rod_account_coa.rod_account_entry"
+                    name="Asientos contables"
+                    sequence="1"
+                    action="account.action_move_journal_line"/>
+          <menuitem id="rod_account_coa.rod_account_account"
+                    name="Apuntes contables"
+                    sequence="2"
+                    action="account.action_account_moves_all"/>
+          <menuitem id="rod_account_coa.menu_finance_entries_accounting_miscellaneous"
+                    name="Diarios contables"
+                    sequence="4">
+                <menuitem id="rod_account_coa.rod_account_misc"
+                    name="Varios"
+                    sequence="1"
+                    action="account.action_account_moves_journal_misc"/>
+          </menuitem>
+          <menuitem id="rod_account_coa.menu_ledger_general"
+                    name="Libros mayores"
+                    sequence="6">
+                <menuitem id="rod_account_coa.rod_account_ledger_general"
+                    name="Libro mayor"
+                    sequence="1"
+                    action="account.action_account_moves_ledger_general"/>
+              <menuitem id="rod_account_coa.rod_account_ledger_partner"
+                    name="Libro mayor de empresa"
+                    sequence="2"
+                    action="account.action_account_moves_ledger_partner"/>
+
+          </menuitem>
+
+      </menuitem>
+      <menuitem id="rod_account_coa.rod_account_configuration_account"
+                name="Configuracion"
+                parent="rod_account_coa.menu_root"
+                sequence="7">
+          <menuitem id="rod_account_coa.rod_account_account_form"
+                    name="Plan de cuentas"
+                    sequence="1"
+                    action="account.action_account_form"/>
+          <menuitem id="rod_account_coa.rod_account_journal_form"
+                    name="Diarios contables"
+                    sequence="2"
+                    action="account.action_account_journal_form"/>
+
+          <menuitem id="rod_account_coa.menu_account_analitycs"
+                    name="Contabilidad analitica"
+                    sequence="3">
+                <menuitem id="rod_account_coa.rod_account_analytic_account_form"
+                    name="Cuentas analiticas"
+                    sequence="1"
+                    action="analytic.action_account_analytic_account_form"/>
+
+
+          </menuitem>
+
+      </menuitem>
+
+
+
+  </data>
+</odoo>

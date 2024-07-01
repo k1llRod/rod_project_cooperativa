@@ -8,7 +8,15 @@
             <field name="arch" type="xml">
                 <xpath expr="//button[@name='action_post']" position="after">
                     <button name="wizard_payroll_all" string="Ingreso aportes" class="oe_highlight" type="object"/>
+                    <button name="wizard_payroll_all" string="Ingreso prestamos" class="oe_highlight" type="object"/>
                 </xpath>
+                <xpath expr="//button[@name='open_payment_view']" position="after">
+                    <button name="open_payroll_payment_view" class="oe_stat_button" icon="fa-bars" type="object" string="1 Aporte">
+                    </button>
+                </xpath>
+<!--                <xpath expr="//field[@name='name']" position="after">-->
+<!--                    <field name="payroll_payment_id"/>-->
+<!--                </xpath>-->
 
             </field>
         </record>

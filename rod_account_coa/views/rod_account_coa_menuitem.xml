@@ -21,6 +21,11 @@
                 parent="rod_account_coa.rod_account_revenue"
                 sequence="1"
                 action="account.action_account_payments"/>
+      <menuitem id="rod_account_coa.rod_account_payments_coa"
+                name="Ingresos COA"
+                parent="rod_account_coa.rod_account_revenue"
+                sequence="2"
+                action="rod_account_coa.action_account_payments_coa"/>
 
       <menuitem id="rod_account_coa.rod_account_expense"
                 name="Egresos"

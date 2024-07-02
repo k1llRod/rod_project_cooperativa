@@ -5,9 +5,12 @@ class AccountMove(models.Model):
 
     # journal_id = fields.Many2one('account.journal', string='Diario', default=_get_default_journal)
     payroll_payment_id = fields.Many2one('payroll.payments', string='Pago de planilla')
+    glosa = fields.Text(string='Glosa')
     def wizard_payroll_all(self):
+        a = 1
         context = {
             'default_account_move_id': self.id,
+            'default_account_journal_id': self.journal_id.id,
         }
         return {
             'type': 'ir.actions.act_window',

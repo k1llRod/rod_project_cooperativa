@@ -14,9 +14,9 @@
                     <button name="open_payroll_payment_view" class="oe_stat_button" icon="fa-bars" type="object" string="1 Aporte">
                     </button>
                 </xpath>
-<!--                <xpath expr="//field[@name='name']" position="after">-->
-<!--                    <field name="payroll_payment_id"/>-->
-<!--                </xpath>-->
+                <xpath expr="//field[@name='ref'][2]" position="after">
+                    <field name="glosa"/>
+                </xpath>
 
             </field>
         </record>

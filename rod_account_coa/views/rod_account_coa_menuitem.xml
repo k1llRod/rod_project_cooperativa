@@ -5,7 +5,7 @@
       <menuitem name="Contabilidad COA"
                 id="rod_account_coa.menu_root"
                 sequence="6"
-                web_icon="rod_account_coa,static/description/coaa.png" />
+                web_icon="rod_account_coa,static/src/img/account-coa.png" />
       <!-- menu categories -->
       <menuitem id="rod_account_coa.rod_contabilidad_coa"
                 name="Contabilidad"

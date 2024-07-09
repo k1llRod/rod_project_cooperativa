@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="rod_decoration_partners.list">
+      <field name="name">rod_decoration_partners list</field>
+      <field name="model">rod_decoration_partners.rod_decoration_partners</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="rod_decoration_partners.action_window">
+      <field name="name">rod_decoration_partners window</field>
+      <field name="res_model">rod_decoration_partners.rod_decoration_partners</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="rod_decoration_partners.action_server">
+      <field name="name">rod_decoration_partners server</field>
+      <field name="model_id" ref="model_rod_decoration_partners_rod_decoration_partners"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="rod_decoration_partners" id="rod_decoration_partners.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="rod_decoration_partners.menu_1" parent="rod_decoration_partners.menu_root"/>
+    <menuitem name="Menu 2" id="rod_decoration_partners.menu_2" parent="rod_decoration_partners.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="rod_decoration_partners.menu_1_list" parent="rod_decoration_partners.menu_1"
+              action="rod_decoration_partners.action_window"/>
+    <menuitem name="Server to list" id="rod_decoration_partners" parent="rod_decoration_partners.menu_2"
+              action="rod_decoration_partners.action_server"/>
+-->
+  </data>
+</odoo>

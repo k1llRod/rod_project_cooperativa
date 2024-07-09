@@ -1,0 +1,64 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="resolution_id">
+        <field name="name">Lista de resoluciones</field>
+        <field name="model">resolution</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+      <record model="ir.ui.view" id="decoration_partners_id">
+          <field name="name">decoration.form</field>
+          <field name="model">decoration.partners</field>
+          <field name="arch" type="xml">
+              <tree>
+                  <field name="name"/>
+                  <field name="description"/>
+                  <field name="partner_id"/>
+                  <field name="type_decoration"/>
+                  <field name="resolution_ids"/>
+              </tree>
+          </field>
+      </record>
+
+      <!-- actions opening views on models -->
+      <record model="ir.actions.act_window" id="action_resolution">
+          <field name="name">resolution.action</field>
+          <field name="res_model">resolution</field>
+          <field name="view_mode">tree,form</field>
+      </record>
+
+      <menuitem id="rod_decoration_partners.rod_decoration_partners_id"
+                name="Condecoraciones"
+                parent="contacts.menu_contacts"
+                sequence="4"
+                />
+      <menuitem id="rod_decoration_partners.rod_decoration_partners_resolution"
+                name="Resoluciones"
+                parent="rod_decoration_partners.rod_decoration_partners_id"
+                sequence="3"
+                action="rod_decoration_partners.action_resolution"
+                />
+
+
+    <!-- server action to the one above -->
+<!--      <record model="ir.actions.server" id="rod_decoration_partners.action_server">-->
+<!--          <field name="name">rod_decoration_partners server</field>-->
+<!--          <field name="model_id" ref="model_rod_decoration_partners_rod_decoration_partners"/>-->
+<!--          <field name="state">code</field>-->
+<!--          <field name="code">-->
+<!--              action = {-->
+<!--              "type": "ir.actions.act_window",-->
+<!--              "view_mode": "tree,form",-->
+<!--              "res_model": model._name,-->
+<!--              }-->
+<!--          </field>-->
+<!--      </record>-->
+
+  </data>
+</odoo>

@@ -28,7 +28,7 @@
         'views/rod_account_coa_menuitem.xml',
         'views/account_payment_coa.xml',
         'views/account_move.xml',
-        # 'views/account_payment.xml',
+        'views/account_payment.xml',
         'wizard/wizard_payroll.xml',
         # 'views/templates.xml',
     ],

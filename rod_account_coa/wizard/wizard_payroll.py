@@ -44,7 +44,7 @@ class WizardPayroll(models.TransientModel):
     def action_confirm(self):
         for record in self:
             record.account_move_id.name = ''
-            record.account_move_id.write({
+            record.account_move_id.create({
                 'journal_id': record.account_journal_id.id,
                 'line_ids': [(0, 0, {
                     'account_id': record.account_income_id.id,
@@ -78,4 +78,6 @@ class WizardPayroll(models.TransientModel):
                 }),
                 ]
             })
+
+
 

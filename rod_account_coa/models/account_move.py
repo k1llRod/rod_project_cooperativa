@@ -1,4 +1,5 @@
 from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 
 class AccountMove(models.Model):
     _inherit = 'account.move'
@@ -6,6 +7,39 @@ class AccountMove(models.Model):
     # journal_id = fields.Many2one('account.journal', string='Diario', default=_get_default_journal)
     payroll_payment_id = fields.Many2one('payroll.payments', string='Pago de planilla')
     glosa = fields.Text(string='Glosa')
+
+    @api.model
+    def _get_default_journal(self):
+        ''' Get the default journal.
+        It could either be passed through the context using the 'default_journal_id' key containing its id,
+        either be determined by the default type.
+        '''
+        move_type = self._context.get('default_move_type', 'entry')
+        if move_type in self.get_sale_types(include_receipts=True):
+            journal_types = ['sale']
+        elif move_type in self.get_purchase_types(include_receipts=True):
+            journal_types = ['purchase']
+        else:
+            journal_types = self._context.get('default_move_journal_types', ['general'])
+
+        if self._context.get('default_journal_id'):
+            journal = self.env['account.journal'].browse(self._context['default_journal_id'])
+
+            if move_type != 'entry' and journal.type not in journal_types:
+                raise UserError(_(
+                    "Cannot create an invoice of type %(move_type)s with a journal having %(journal_type)s as type.",
+                    move_type=move_type,
+                    journal_type=journal.type,
+                ))
+        else:
+            journal = self._search_default_journal(journal_types)
+
+        return journal
+
+    journals_ids = fields.Many2one('account.journal', string='Diario contable', required=True, readonly=True,
+                                 states={'draft': [('readonly', False)]},
+                                 check_company=True,
+                                 default=_get_default_journal)
     def wizard_payroll_all(self):
         context = {
             'default_account_move_id': self.id,
@@ -27,6 +61,26 @@ class AccountMove(models.Model):
             'res_id': self.payroll_payment_id.id,
             'views': [(False, 'form')],
         }
+    @api.onchange('journals_ids')
+    def _onchange_journals_ids(self):
+        if self.journals_ids:
+            self.journal_id = self.journals_ids
+
+    @api.onchange('journals_ids')
+    def _onchange_journals(self):
+        if self.journal_id and self.journal_id.currency_id:
+            new_currency = self.journal_id.currency_id
+            if new_currency != self.currency_id:
+                self.currency_id = new_currency
+                self._onchange_currency()
+        if self.state == 'draft' and self._get_last_sequence(lock=False) and self.name and self.name != '/':
+            self.name = '/'
+
+    @api.model
+    def create(self, vals):
+        if 'journals_ids' in vals:
+            vals['journal_id'] = vals['journals_ids']
+        return super(AccountMove, self).create(vals)
 
     # def action_post(self):
     #     res = super(AccountMove, self).action_post()

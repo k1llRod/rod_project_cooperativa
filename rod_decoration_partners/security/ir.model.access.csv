@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_resolution,resolution,model_resolution,rod_cooperativa_aportes.group_rod_cooperativa_aportes_administrator,1,1,1,1
 access_decoration_partners,decoration.partners,model_decoration_partners,rod_cooperativa_aportes.group_rod_cooperativa_aportes_administrator,1,1,1,1
+access_auxiliar_partners,auxiliar.partners,model_auxiliar_partners,rod_cooperativa_aportes.group_rod_cooperativa_aportes_administrator,1,1,1,1

@@ -1,62 +1,72 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-    <record model="ir.ui.view" id="decoration_partners_tree_id">
-        <field name="name">Lista de condecoraciones</field>
-        <field name="model">decoration.partners</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="name" readonly="1"/>
-                <field name="description"/>
-                <field name="date"/>
-                <field name="partner_id" invisible="1" readonly="1"/>
-                <field name="type_decoration"/>
-                <field name="resolution_ids"/>
-            </tree>
-        </field>
-    </record>
-      <record model="ir.ui.view" id="decoration_partners_id">
-          <field name="name">decoration.form</field>
+      <record model="ir.ui.view" id="decoration_partners_tree_id">
+          <field name="name">Lista de condecoraciones</field>
           <field name="model">decoration.partners</field>
           <field name="arch" type="xml">
               <tree>
-                  <field name="name"/>
+                  <field name="name" readonly="1"/>
                   <field name="description"/>
                   <field name="date"/>
-                  <field name="partner_id" invisible="1" readonly="1"/>
+                  <field name="partner_id" invisible="1"/>
                   <field name="type_decoration"/>
                   <field name="resolution_ids"/>
               </tree>
           </field>
       </record>
+      <record model="ir.ui.view" id="decoration_partners_form_id">
+          <field name="name">decoration.form</field>
+          <field name="model">decoration.partners</field>
+          <field name="arch" type="xml">
+              <form string="Nueva condecoracion">
+                  <sheet>
+                      <group string="Datos condecoracion">
+                          <div class="oe_title">
+                              <h1>
+                                  <field name="name" readonly="1"/>
+                              </h1>
+                          </div>
+                          <!--                              <field name="name" readonly="1"/>-->
+                          <field name="description"/>
+                          <field name="date"/>
+<!--                          <field name="partner_id"/>-->
+                          <field name="type_decoration"/>
+<!--                          <field name="archive_decoration" filename="file_name"/>-->
+                          <field name="resolution_ids"/>
+                      </group>
+                  </sheet>
+              </form>
+          </field>
+      </record>
 
       <!-- actions opening views on models -->
       <record model="ir.actions.act_window" id="action_decoration_partners_id">
-          <field name="name">decoration.partners.action</field>
+          <field name="name">Condecoraciones</field>
           <field name="res_model">decoration.partners</field>
           <field name="view_mode">tree,form</field>
       </record>
 
-      <record model="ir.ui.view" id="res_partner_form_inh_decoration_partners">
-            <field name="name">res.partner.tree.inh.decoration.partners</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="rod_cooperativa.res_partner_form_inh"/>
-            <field name="arch" type="xml">
-                <xpath expr="//sheet/notebook/page[1]" position="after">
-                    <page string="Condecoraciones">
-                        <field name="decoration_ids" >
-                            <tree string="Condecoraciones" editable="bottom">
-                                <field name="name" readonly="1"/>
-                                <field name="description"/>
-                                <field name="date"/>
-                                <field name="type_decoration"/>
-                                <field name="resolution_ids" options="{'no_create': True, 'no_create_edit': True,'no_quick_create': True}"/>
-                            </tree>
-                        </field>
-                    </page>
-                </xpath>
-            </field>
-        </record>
+<!--      <record model="ir.ui.view" id="res_partner_form_inh_decoration_partners">-->
+<!--            <field name="name">res.partner.tree.inh.decoration.partners</field>-->
+<!--            <field name="model">res.partner</field>-->
+<!--            <field name="inherit_id" ref="rod_cooperativa.res_partner_form_inh"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//sheet/notebook/page[1]" position="after">-->
+<!--                    <page string="Condecoraciones">-->
+<!--                        <field name="decoration_ids" >-->
+<!--                            <tree string="Condecoraciones" editable="bottom">-->
+<!--                                <field name="name" readonly="1"/>-->
+<!--                                <field name="description"/>-->
+<!--                                <field name="date"/>-->
+<!--                                <field name="type_decoration"/>-->
+<!--                                <field name="resolution_ids" options="{'no_create': True, 'no_create_edit': True,'no_quick_create': True}"/>-->
+<!--                            </tree>-->
+<!--                        </field>-->
+<!--                    </page>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
 
     <!-- server action to the one above -->
 <!--      <record model="ir.actions.server" id="rod_decoration_partners.action_server">-->

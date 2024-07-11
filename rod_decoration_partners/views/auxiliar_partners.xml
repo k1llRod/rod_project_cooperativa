@@ -1,0 +1,55 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+      <record model="ir.ui.view" id="auxiliar_partners_form_id">
+          <field name="name">Lista de condecorados</field>
+          <field name="model">auxiliar.partners</field>
+          <field name="arch" type="xml">
+              <tree>
+                  <field name="name"/>
+                  <field name="grade"/>
+                  <field name="date"/>
+                  <field name="partner_id"/>
+              </tree>
+          </field>
+      </record>
+      <record model="ir.ui.view" id="auxiliar_partners_tree_id">
+          <field name="name">Formulario de condecorados</field>
+          <field name="model">auxiliar.partners</field>
+          <field name="arch" type="xml">
+              <form string="Condecorado">
+                  <sheet>
+                      <group>
+                          <group string="Datos personales">
+                              <div class="oe_title">
+                                  <h1>
+                                      <field name="name"/>
+                                  </h1>
+                              </div>
+<!--                              <field name="name" readonly="1"/>-->
+                              <field name="grade"/>
+                              <field name="date"/>
+                              <field name="partner_id"/>
+
+                          </group>
+                      </group>
+                      <notebook>
+                          <page string="Condecoraciones">
+                              <field name="decoration_ids"/>
+                          </page>
+                      </notebook>
+                  </sheet>
+              </form>
+          </field>
+      </record>
+
+      <!-- actions opening views on models -->
+      <record model="ir.actions.act_window" id="action_auxiliar_partners_id">
+          <field name="name">Condecorados</field>
+          <field name="res_model">auxiliar.partners</field>
+          <field name="view_mode">tree,form</field>
+      </record>
+
+
+  </data>
+</odoo>

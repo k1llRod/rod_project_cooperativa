@@ -27,6 +27,7 @@
         'security/ir.model.access.csv',
         'views/resolution.xml',
         'views/decoration_partners.xml',
+        'views/auxiliar_partners.xml',
         'data/sequence.xml',
     ],
     # only loaded in demonstration mode

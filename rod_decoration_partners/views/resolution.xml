@@ -1,7 +1,7 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-    <record model="ir.ui.view" id="resolution_id">
+    <record model="ir.ui.view" id="resolution_tree_id">
         <field name="name">Lista de resoluciones</field>
         <field name="model">resolution</field>
         <field name="arch" type="xml">
@@ -9,26 +9,35 @@
                 <field name="name"/>
                 <field name="description"/>
                 <field name="date"/>
+                <field name="file_name"/>
             </tree>
         </field>
     </record>
-      <record model="ir.ui.view" id="decoration_partners_id">
-          <field name="name">decoration.form</field>
-          <field name="model">decoration.partners</field>
+      <record model="ir.ui.view" id="resolution_form_id">
+          <field name="name">Formulario resolucion</field>
+          <field name="model">resolution</field>
           <field name="arch" type="xml">
-              <tree>
-                  <field name="name"/>
-                  <field name="description"/>
-                  <field name="partner_id"/>
-                  <field name="type_decoration"/>
-                  <field name="resolution_ids"/>
-              </tree>
+                  <form string="Formulario de resolucion">
+                      <sheet>
+                          <group>
+                              <div class="oe_title">
+                                  <h1>
+                                      <field name="name"/>
+                                  </h1>
+                              </div>
+                              <field name="description"/>
+                              <field name="date"/>
+                              <field name="file_name" invisible="1"/>
+                              <field name="archive_decoration" filename="file_name"/>
+                          </group>
+                      </sheet>
+                  </form>
           </field>
       </record>
 
       <!-- actions opening views on models -->
       <record model="ir.actions.act_window" id="action_resolution">
-          <field name="name">resolution.action</field>
+          <field name="name">Resoluciones</field>
           <field name="res_model">resolution</field>
           <field name="view_mode">tree,form</field>
       </record>
@@ -38,10 +47,16 @@
                 parent="contacts.menu_contacts"
                 sequence="4"
                 />
+      <menuitem id="rod_decoration_partners.rod_decoration_partners_resolution_id"
+                name="Condecorados"
+                parent="rod_decoration_partners.rod_decoration_partners_id"
+                sequence="3"
+                action="rod_decoration_partners.action_auxiliar_partners_id"
+                />
       <menuitem id="rod_decoration_partners.rod_decoration_partners_resolution"
                 name="Resoluciones"
                 parent="rod_decoration_partners.rod_decoration_partners_id"
-                sequence="3"
+                sequence="4"
                 action="rod_decoration_partners.action_resolution"
                 />
 

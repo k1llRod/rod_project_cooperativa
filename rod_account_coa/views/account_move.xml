@@ -9,7 +9,7 @@
                 <xpath expr="//field[@name='ref'][2]" position="after">
                     <field name="glosa"/>
                     <field name="payroll_payment_id" readonly="1"/>
-                    <field name="journals_ids"/>
+<!--                    <field name="journals_ids"/>-->
                 </xpath>
                 <xpath expr="//button[@name='action_post']" position="after">
                     <button name="wizard_payroll_all" string="Ingreso aportes" class="oe_highlight" type="object" attrs="{'invisible': [('state','!=','draft')]}"/>

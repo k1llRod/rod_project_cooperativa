@@ -66,16 +66,6 @@ class AccountMove(models.Model):
         if self.journals_ids:
             self.journal_id = self.journals_ids
 
-    @api.onchange('journals_ids')
-    def _onchange_journals(self):
-        if self.journal_id and self.journal_id.currency_id:
-            new_currency = self.journal_id.currency_id
-            if new_currency != self.currency_id:
-                self.currency_id = new_currency
-                self._onchange_currency()
-        if self.state == 'draft' and self._get_last_sequence(lock=False) and self.name and self.name != '/':
-            self.name = '/'
-
     @api.model
     def create(self, vals):
         if 'journals_ids' in vals:

@@ -43,8 +43,7 @@ class WizardPayroll(models.TransientModel):
 
     def action_confirm(self):
         for record in self:
-            record.account_move_id.name = ''
-            record.account_move_id.create({
+            rec = record.account_move_id.create({
                 'journal_id': record.account_journal_id.id,
                 'line_ids': [(0, 0, {
                     'account_id': record.account_income_id.id,
@@ -78,6 +77,14 @@ class WizardPayroll(models.TransientModel):
                 }),
                 ]
             })
+        self.account_move_id.unlink()
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'account.move',
+            'view_mode': 'form',
+            'res_id': rec.id,
+            'views': [(False, 'form')],
+        }
 
 
 

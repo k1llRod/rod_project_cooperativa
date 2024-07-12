@@ -43,6 +43,42 @@
           </field>
       </record>
 
+      <record id="auxiliar_partner_search_id" model="ir.ui.view">
+            <field name="name">auxiliar.partner.search</field>
+            <field name="model">auxiliar.partners</field>
+            <!--            <field name="inherit_id" ref="base.view_res_partner_filter"/>-->
+            <field name="arch" type="xml">
+                <search string="Buscar condecorados">
+                    <field name="name"/>
+<!--                    <filter name="capital_initial_greater_zero"-->
+<!--                            string="Capital inicial mayor que '0'"-->
+<!--                            domain="[('capital_initial','>',0)]"/>-->
+<!--                    <separator />-->
+<!--                    <filter name="partner_active_service"-->
+<!--                            string="Asociados servicio activo"-->
+<!--                            domain="[('partner_status_especific', '=', 'active_service')]"/>-->
+<!--                    <filter name="partner_passive_reserve_a"-->
+<!--                            string="Asociados Pasivo categoria 'A'"-->
+<!--                            domain="[('partner_status_especific','=','passive_reserve_a')]"/>-->
+<!--                    <filter name="partner_passive_reserve_b"-->
+<!--                            string="Asociados Pasivo categoria 'B'"-->
+<!--                            domain="[('partner_status_especific','=','passive_reserve_b')]"/>-->
+
+
+<!--                    <group expand="0" string="Group By">-->
+<!--                        <filter string="Tipo de asociado"-->
+<!--                                name="group_partner_status"-->
+<!--                                context="{'group_by': 'partner_status_especific'}"/>-->
+<!--                        <filter string="Por ciudad"-->
+<!--                                name="group_city"-->
+<!--                                context="{'group_by': 'city'}"/>-->
+<!--                    </group>-->
+                </search>
+            </field>
+        </record>
+
+
+
       <!-- actions opening views on models -->
       <record model="ir.actions.act_window" id="action_auxiliar_partners_id">
           <field name="name">Condecorados</field>

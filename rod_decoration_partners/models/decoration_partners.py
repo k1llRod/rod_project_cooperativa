@@ -13,6 +13,7 @@ class DecorationPartners(models.Model):
     name_partner_decoration = fields.Char(string='Nombre completo', required=True)
     description = fields.Text(string='Descripcion', required=True)
     date = fields.Date(string='Fecha', required=True)
+    gestion = fields.Char(string='Gestion', required=True)
     partner_id = fields.Many2one('res.partner', string='Socio')
     type_decoration = fields.Selection([('first','Primera'),
                                         ('second','Segunda'),
@@ -28,3 +29,10 @@ class DecorationPartners(models.Model):
         vals['name'] = name
         res = super(DecorationPartners, self).create(vals)
         return res
+
+    @api.onchange('date')
+    def _onchange_date(self):
+        if self.date:
+            self.gestion = self.date.year
+        else:
+            self.gestion = False

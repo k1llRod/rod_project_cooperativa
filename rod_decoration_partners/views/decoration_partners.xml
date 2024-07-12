@@ -9,6 +9,7 @@
                   <field name="name" readonly="1"/>
                   <field name="description"/>
                   <field name="date"/>
+                  <field name="gestion"/>
                   <field name="partner_id" invisible="1"/>
                   <field name="type_decoration"/>
                   <field name="resolution_ids"/>
@@ -30,7 +31,7 @@
                           <!--                              <field name="name" readonly="1"/>-->
                           <field name="description"/>
                           <field name="date"/>
-<!--                          <field name="partner_id"/>-->
+                          <field name="gestion"/>
                           <field name="type_decoration"/>
 <!--                          <field name="archive_decoration" filename="file_name"/>-->
                           <field name="resolution_ids"/>

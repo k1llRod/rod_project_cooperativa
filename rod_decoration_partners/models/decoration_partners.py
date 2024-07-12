@@ -10,10 +10,10 @@ class DecorationPartners(models.Model):
     }
 
     name = fields.Char(string='Condecoracion')
-    name_partner_decoration = fields.Char(string='Nombre completo', required=True)
+    name_partner_decoration = fields.Char(string='Nombre completo', related='auxiliar_partner_ids.name', store=True)
     description = fields.Text(string='Descripcion', required=True)
     date = fields.Date(string='Fecha', required=True)
-    gestion = fields.Char(string='Gestion', required=True)
+    gestion = fields.Char(string='Gestion', required=True, store=True)
     partner_id = fields.Many2one('res.partner', string='Socio')
     type_decoration = fields.Selection([('first','Primera'),
                                         ('second','Segunda'),

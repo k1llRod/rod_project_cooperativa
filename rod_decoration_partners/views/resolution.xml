@@ -59,6 +59,12 @@
                 sequence="4"
                 action="rod_decoration_partners.action_resolution"
                 />
+      <menuitem id="rod_decoration_partners.rod_decoration_partners_report"
+                name="Reportes"
+                parent="rod_decoration_partners.rod_decoration_partners_id"
+                sequence="5"
+                action="rod_decoration_partners.action_decoration_partners_id"
+                />
 
 
     <!-- server action to the one above -->

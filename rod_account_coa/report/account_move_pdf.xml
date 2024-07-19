@@ -114,7 +114,7 @@
                                 <table style="width:100%;border:1px solid black;">
                                     <tr>
                                         <td>LA SUMA DE:</td>
-                                        <td><span t-esc="p.amount_to_text(p.debit)"/></td>
+                                        <td><span t-esc="o.literal_number"/></td>
                                     </tr>
                                     <tr>
                                         <td>NUMERO DE CHEQUE:</td>

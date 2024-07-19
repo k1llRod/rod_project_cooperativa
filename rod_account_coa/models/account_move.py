@@ -1,5 +1,6 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
+from num2words import num2words
 
 class AccountMove(models.Model):
     _inherit = 'account.move'
@@ -7,6 +8,7 @@ class AccountMove(models.Model):
     # journal_id = fields.Many2one('account.journal', string='Diario', default=_get_default_journal)
     payroll_payment_id = fields.Many2one('payroll.payments', string='Pago de planilla')
     glosa = fields.Text(string='Glosa')
+    literal_number = fields.Char(string='Amount literal', compute='_compute_literal_number')
 
     @api.model
     def _get_default_journal(self):
@@ -80,3 +82,11 @@ class AccountMove(models.Model):
     def print_account_move(self):
         a = 1
         return self.env.ref('rod_account_coa.action_report_pdf_account_move').report_action(self)
+
+    @api.depends('amount_total')
+    def _compute_literal_number(self):
+        for record in self:
+            record.literal_number = num2words(round(record.amount_total), lang='es').upper()
+            decimal = str(round(record.amount_total % 1 * 100))
+            record.literal_number= record.literal_number + ', CON ' + decimal + '/100 BOLIVIANOS'
+            # record.literal_number = decimal_text

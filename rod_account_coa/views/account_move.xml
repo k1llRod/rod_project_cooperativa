@@ -25,7 +25,9 @@
                 <xpath expr="//field[@name='line_ids']/tree/field[@name='credit']" position="attributes">
                     <attribute name="string">Haber</attribute>
                 </xpath>
-
+                <xpath expr="//button[@name='button_draft']" position="after">
+                    <button name="print_account_move" string="Comprobante de pago" type="object" groups="account.group_account_invoice" attrs="{'invisible' : [('show_reset_to_draft_button', '=', False)]}" data-hotkey="q" class="oe_highlight"/>
+                </xpath>
 
             </field>
         </record>

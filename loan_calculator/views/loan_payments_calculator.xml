@@ -1,0 +1,167 @@
+<odoo>
+    <data>
+        <!-- Vista Árbol de Modelo loan application -->
+
+        <record model="ir.ui.view" id="loan_payment_tree_id">
+            <field name="name">loan.payment.tree</field>
+            <field name="model">loan.payment</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" decoration-info="state in ('transfer', 'ministry_defense')" >
+                    <field name="loan_application_ids" optional="hide"/>
+                    <field name="partner_id" optional="hide"/>
+                    <field name="type_loan" optional="hide"/>
+                    <field name="with_guarantor" optional="hide"/>
+                    <field name="name" optional="hide"/>
+                    <field name="currency_id" invisible="1" groups="base.group_multi_currency"/>
+                    <field name="currency_id_dollar" invisible="1" groups="base.group_multi_currency"/>
+                    <field name="date"/>
+                    <field name="period"/>
+                    <field name="capital_initial" optional="show" widget="monetary" options="{'currency_field': 'currency_id_dollar'}"/>
+                    <field name="mount" widget="monetary" options="{'currency_field': 'currency_id_dollar'}" sum="Total"/>
+                    <field name="interest" sum="Total"/>
+                    <field name="interest_base" optional="hidden"/>
+                    <field name="interest_mortgage" optional="hidden"/>
+                    <field name="interest_base_mortgage" optional="hidden"/>
+                    <field name="res_social" optional="hidden"/>
+                    <field name="res_mortgage" optional="hidden"/>
+                    <field name="balance_capital" widget="monetary" options="{'currency_field': 'currency_id_dollar'}"/>
+                    <field name="interest_month_surpluy" sum="Total"/>
+                    <field name="percentage_amount_min_def" optional="hidden"/>
+                    <field name="commission_min_def" optional="hidden" sum="Total"/>
+<!--                    <field name="coa_commission" optional="hidden" sum="Total"/>-->
+                    <field name="amount_total" widget="monetary" options="{'currency_field': 'currency_id_dollar'}" sum="Total"/>
+                    <field name="amount_total_bs" widget="monetary" sum="Total"/>
+
+                    <field name="amount_returned_coa" optional="hidden"/>
+                    <field name="capital_index_initial" optional="hidden"/>
+                    <field name="loan_application_ids" invisible="1"/>
+                    <field name="state" decoration-info="state == 'init' or state == 'in_queue'" decoration-success="state == 'progress' or state == 'done'" widget="badge"/>
+                    <button name="open_loan_payment" type="object" class="oe_highlight"
+                                                icon="fa-eye"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista Formulario loan.application  -->
+
+        <record model="ir.ui.view" id="loan_payment_form_id">
+            <field name="name">loan.payment.form</field>
+            <field name="model">loan.payment</field>
+            <field name="arch" type="xml">
+                <form string="Solicitud de presupuesto" class="oe_left oe_edit_only oe_form_required">
+                    <header>
+                        <button name="confirm_payment" string="Por transferencia bancaria" type="object"
+                                class="oe_highlight"
+                                attrs="{'invisible': ['|',('state', '!=', 'draft'),('flag_state', '!=', 'progress')]}"
+                                groups="rod_cooperativa.group_rod_cooperativa_administrator,rod_cooperativa.group_rod_cooperativa_operator"
+                                />
+                        <button name="confirm_ministry_defense" string="Por ministerio de defensa" type="object"
+                                class="oe_highlight"
+                                attrs="{'invisible': ['|',('state', '!=', 'draft'),('flag_state', '!=', 'progress')]}"
+                                groups="rod_cooperativa.group_rod_cooperativa_administrator,rod_cooperativa.group_rod_cooperativa_operator"
+                                />
+                        <button name="debt_settlement_min_def" string="Liquidacion de deuda por MINDEF" type="object"
+                                class="oe_highlight"
+                                attrs="{'invisible': ['|',('state', '!=', 'draft'),('flag_state', '!=', 'progress')]}"
+                                groups="rod_cooperativa.group_rod_cooperativa_administrator,rod_cooperativa.group_rod_cooperativa_operator"
+                                />
+                        <button name="debt_settlement_deposit" string="Liquidacion de deuda por deposito" type="object"
+                                class="oe_highlight"
+                                attrs="{'invisible': ['|',('state', '!=', 'draft'),('flag_state', '!=', 'progress')]}"
+                                groups="rod_cooperativa.group_rod_cooperativa_administrator,rod_cooperativa.group_rod_cooperativa_operator"
+                                />
+
+                        <field name="state" widget="statusbar" statusbar_visible="draft,transfer,ministry_defense"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="loan_application_ids"/>
+                                <field name="flag_state"/>
+                                <field name="currency_id" invisible="1" groups="base.group_multi_currency"/>
+                                <field name="currency_id_dollar" invisible="1" groups="base.group_multi_currency"/>
+                                <field name="date"/>
+                                <field name="period"/>
+                                <field name="capital_index_initial"/>
+                                <field name="interest"/>
+                                <field name="interest_base"/>
+                                <field name="res_social"/>
+                                <field name="res_mortgage" />
+                                <field name="capital_initial" widget="monetary"
+                                       options="{'currency_field': 'currency_id_dollar'}"/>
+                                <field name="balance_capital" widget="monetary"
+                                       options="{'currency_field': 'currency_id_dollar'}"/>
+                                <field name="mount" widget="monetary"
+                                       options="{'currency_field': 'currency_id_dollar'}"/>
+                                <field name="interest_month_surpluy" sum="Total"/>
+                                <field name="percentage_amount_min_def"/>
+                                <field name="commission_min_def"/>
+                                <field name="loan_application_ids" invisible="1"/>
+<!--                                <field name="type_payment" />-->
+                                <field name="amount_total" widget="monetary"
+                                       options="{'currency_field': 'currency_id_dollar'}"/>
+                                <field name="amount_total_bs" widget="monetary"/>
+                                <field name="amount_returned_coa"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="loan_payment_view_search_cooperativa" model="ir.ui.view">
+            <field name="name">loan.payment.view.search.cooperativa</field>
+            <field name="model">loan.payment</field>
+            <!--            <field name="inherit_id" ref="base.view_res_partner_filter"/>-->
+            <field name="arch" type="xml">
+                <search string="Buscar asociados">
+                    <field name="code_contact"/>
+                    <field name="ci_partner" string="C.I."/>
+                    <field name="partner_id"/>
+<!--                    <filter name="quantity_capital_initial"-->
+<!--                            string="Capital inicial"-->
+<!--                            domain="[('capital_initial', '!=', 0)]"/>-->
+                    <separator />
+<!--                    <filter name="partner_active_service"-->
+<!--                            string="Asociados servicio activo"-->
+<!--                            domain="[('partner_status_especific', '=', 'active_service')]"/>-->
+<!--                    <filter name="partner_passive_reserve_a"-->
+<!--                            string="Asociados Pasivo categoria 'A'"-->
+<!--                            domain="[('partner_status_especific','=','passive_reserve_a')]"/>-->
+<!--                    <filter name="partner_passive_reserve_b"-->
+<!--                            string="Asociados Pasivo categoria 'B'"-->
+<!--                            domain="[('partner_status_especific','=','passive_reserve_b')]"/>-->
+                    <group expand="0" string="Group By">
+                        <filter string="Por asociado"
+                                name="group_partner_status"
+                                context="{'group_by': 'partner_id'}"/>
+
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_draft_massive_loan" model="ir.actions.server">
+            <field name="name">Draft massive loan</field>
+            <field name="model_id" ref="model_loan_payment"/>
+            <field name="binding_model_id" ref="model_loan_payment"/>
+            <field name="state">code</field>
+            <field name="code">action = records.draft_massive()</field>
+        </record>
+
+        <!-- Accion para visualizar loan.application -->
+
+        <record id="action_loan_payment" model="ir.actions.act_window">
+            <field name="name">Pagos</field>
+            <field name="res_model">loan.payment</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_pdf_account_move" model="ir.actions.report">
+        <field name="name">Comprobante de pago</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">rod_account_coa.report_pdf_account_move</field>
+        <field name="report_file">rod_account_coa.report.report_pdf_account_move</field>
+        <field name="binding_model_id" ref="model_account_move"/>
+<!--        <field name="paperformat_id" ref="rod_cooperativa_aportes.paperformat_certificate" />-->
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

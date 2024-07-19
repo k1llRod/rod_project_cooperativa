@@ -78,6 +78,9 @@ class WizardPayroll(models.TransientModel):
                 ]
             })
         self.account_move_id.unlink()
+        search_payments = self.env['payroll.payments'].search([('period_register', '=', record.period),('partner_status_especific','=','active_service'),('state','=','ministry_defense')])
+        for payment in search_payments:
+            payment.write({'account_move_id': rec.id})
         return {
             'type': 'ir.actions.act_window',
             'res_model': 'account.move',

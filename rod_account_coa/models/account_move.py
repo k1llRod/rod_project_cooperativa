@@ -76,3 +76,7 @@ class AccountMove(models.Model):
     #     res = super(AccountMove, self).action_post()
     #     a = 1
     #     return res
+
+    def print_account_move(self):
+        a = 1
+        return self.env.ref('rod_account_coa.action_report_pdf_account_move').report_action(self)

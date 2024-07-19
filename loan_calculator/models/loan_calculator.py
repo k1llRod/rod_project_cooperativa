@@ -62,6 +62,9 @@ class LoanCalculator(models.Model):
                                                      'rod_cooperativa.monthly_interest_mortgage')), digits=(6, 3))
     mortgage_loan = fields.Float(string='Prestamo hipotecario %', default=lambda self: float(
         self.env['ir.config_parameter'].sudo().get_param('rod_cooperativa.mortgage_loan')))
+
+    loan_payment_ids = fields.One2many('loan.payment.calculator', 'loan_calculator_ids', string='Pagos')
+    special_case = fields.Boolean(string='Caso especial')
     @api.onchange('month_refinance','amount_refinance')
     def _compute_index_loan_fixed_fee(self):
         try:
@@ -171,4 +174,49 @@ class LoanCalculator(models.Model):
             rec.date_approval = False
             rec.interest_month_surpluy = 0
             rec.amount_total = 0
+            rec.loan_payment_ids.unlink()
+    def approve_loan(self):
+        for rec in self:
+            if rec.date_approval < rec.date_application: raise ValidationError('La FECHA DE APROBACION no puede ser anterior a la FECHA DE SOLICITUD')
+            for i in range(1, rec.months_quantity + 1):
+                commission_min_def = float(
+                    self.env['ir.config_parameter'].sudo().get_param('rod_cooperativa.commission_min_def'))
+                # amount_commission = (commission_min_def / 100) * rec.amount_total_bs
+                coa_commission = (1.25 / 100) * rec.fixed_fee
+                percentage_amount_min_def = rec.fixed_fee * rec.amount_min_def
+                if len(rec.loan_payment_ids) == 0:
+                    capital_init = rec.amount_loan_dollars
+                    # date_payment = datetime.today()
+                    date_payment = rec.date_approval
+                    if rec.special_case == True:
+                        if date_payment.day >= 1 and date_payment.day <= 15:
+                            date_payment = rec.date_approval
+                        else:
+                            raise ValidationError('La solicitud de prestamo esta fuera de rango')
+                    else:
+                        date_pivot = date_payment
+                        date_payment = date_payment.replace(day=1)
+                        date_payment = date_payment.replace(
+                            month=date_payment.month + 1 if date_pivot.month < 12 else 1)
+                        date_payment = date_payment.replace(year=date_payment.year + 1 if date_pivot.month == 12 else date_payment.year)
+                else:
+                    capital_init = rec.loan_payment_ids[i - 2].balance_capital
+                    date_payment = rec.loan_payment_ids[i - 2].date
+                    date_payment = date_payment + relativedelta(months=+1)
+                    date_payment = date_payment.replace(day=1)
+
+                self.env['loan.payment.calculator'].create({
+                    'name': 'Cuota ' + str(i),
+                    'date': date_payment,
+                    'capital_initial': capital_init,
+                    'mount': rec.fixed_fee,
+                    'loan_calculator_ids': rec.id,
+                    'percentage_amount_min_def': percentage_amount_min_def,
+                    'interest_month_surpluy': rec.interest_month_surpluy,
+                    # 'commission_min_def': amount_commission,
+                    'coa_commission': coa_commission,
+                    'state': 'draft',
+                })
+
+
 

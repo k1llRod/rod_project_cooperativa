@@ -31,6 +31,8 @@
         # 'views/account_payment.xml',
         'wizard/wizard_payroll.xml',
         # 'views/templates.xml',
+        'report/account_move_pdf.xml',
+        'report/report.xml',
     ],
     # only loaded in demonstration mode
 }

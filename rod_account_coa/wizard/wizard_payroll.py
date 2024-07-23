@@ -13,6 +13,12 @@ class WizardPayroll(models.TransientModel):
     name = fields.Char(string='ID aporte')
     date = fields.Date(string='Fecha', default=fields.Datetime.now())
     period = fields.Char(string='Periodo', compute="compute_period_register")
+    state = fields.Selection(
+        [('draft', 'Borrador'), ('transfer', 'Transferencia bancaria'), ('ministry_defense', 'Ministerio de defensa'),
+         ('contribution_interest', 'Aporte y rendimiento COAA'),
+         ('no_contribution', 'Sin aporte'),
+         ('capital_initial', 'Capital inicial')],
+        default='ministry_defense', string='Estado')
     account_journal_id = fields.Many2one('account.journal', string='Diario')
     amount_total = fields.Float(string='Monto total')
     amount_total_contributions = fields.Float(string='Monto total de aportes')
@@ -33,12 +39,12 @@ class WizardPayroll(models.TransientModel):
         for record in self:
             record.period = record.date.strftime('%m') + '/' + record.date.strftime('%Y')
             if record.period:
-                payroll_payment = self.env['payroll.payments'].search([('period_register', '=', record.period)])
-                record.total_income = round(sum(self.env['payroll.payments'].search([('period_register', '=', record.period)]).mapped('income')),2)
-                record.total_miscellaneous_income = round(sum(self.env['payroll.payments'].search([('period_register', '=', record.period),('partner_status_especific','=','active_service')]).mapped('miscellaneous_income')),2)
-                record.total_regulation_cup = round(sum(self.env['payroll.payments'].search([('period_register', '=', record.period),('partner_status_especific','=','active_service')]).mapped('regulation_cup')),2)
-                record.total_mandatory_contribution = round(sum(self.env['payroll.payments'].search([('period_register', '=', record.period),('partner_status_especific','=','active_service')]).mapped('mandatory_contribution_certificate')),2)
-                record.total_voluntary_contribution = round(sum(self.env['payroll.payments'].search([('period_register', '=', record.period),('partner_status_especific','=','active_service')]).mapped('voluntary_contribution_certificate')),2)
+                payroll_payment = self.env['payroll.payments'].search([('period_register', '=', record.period),('state','=',record.state)])
+                record.total_income = round(sum(self.env['payroll.payments'].search([('period_register', '=', record.period),('state','=',record.state)]).mapped('income')),2)
+                record.total_miscellaneous_income = round(sum(self.env['payroll.payments'].search([('period_register', '=', record.period),('partner_status_especific','=','active_service'),('state','=',record.state)]).mapped('miscellaneous_income')),2)
+                record.total_regulation_cup = round(sum(self.env['payroll.payments'].search([('period_register', '=', record.period),('partner_status_especific','=','active_service'),('state','=',record.state)]).mapped('regulation_cup')),2)
+                record.total_mandatory_contribution = round(sum(self.env['payroll.payments'].search([('period_register', '=', record.period),('partner_status_especific','=','active_service'),('state','=',record.state)]).mapped('mandatory_contribution_certificate')),2)
+                record.total_voluntary_contribution = round(sum(self.env['payroll.payments'].search([('period_register', '=', record.period),('partner_status_especific','=','active_service'),('state','=',record.state)]).mapped('voluntary_contribution_certificate')),2)
                 record.amount_total = record.total_miscellaneous_income + record.total_regulation_cup + record.total_mandatory_contribution + record.total_voluntary_contribution
 
     def action_confirm(self):

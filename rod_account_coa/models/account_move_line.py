@@ -8,4 +8,5 @@ class AccountMoveLine(models.Model):
     @api.depends('debit', 'credit')
     def _compute_parcial(self):
         for record in self:
-            record.parcial = record.debit - record.credit
+            dollar = round(record.env['res.currency'].search([('name', '=', 'USD')], limit=1).inverse_rate,2)
+            record.parcial = round(record.debit / dollar,2) if record.debit > 0 else round(record.credit / dollar,2)

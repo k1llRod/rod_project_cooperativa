@@ -2,153 +2,31 @@
 <odoo>
     <data>
         <template id="report_pdf_account_move">
-            <t t-call="web.html_container">
-                <div class="header">
-                    <div>
-                        <div style="float:left;">
-                            <img t-att-src="'/rod_account_coa/static/src/img/coaa.png'"
-                                 style="width:150px;border:1px solid black;"/>
-                        </div>
-                        <div>
-                            <center>
-                                <ul style="list-style:none;border:1px solid black;">
-                                    <li>
-                                        <strong style="font-size:18px;">COOPERATIVA DE AHORRO Y CREDITO DE VINCULO
-                                            LABORAL
-                                        </strong>
-                                    </li>
-                                    <li>
-                                        <strong style="font-size:18px;">"COA-4 DE DICIEMBRE" R.L.</strong>
-                                    </li>
-                                    <li>
-                                        Av. Ecuador N 738
-                                    </li>
-                                    <li>
-                                        Mezzanine Of. 09 - Telf./Fax: 2420530
-                                    </li>
-                                    <li>
-                                        La Paz - Bolivia
-                                    </li>
-                                    <li>
-                                        <strong style="font-size:24px;">COMPROBANTE DE INGRESO</strong>
-                                    </li>
-                                </ul>
-                            </center>
+            <div class="page">
+                <t t-call="web.html_container">
+                    <div class="header">
+                        <h1>Cabecera</h1>
+                    </div>
+                    <div class="body">
+                        <h2>Cuerpo</h2>
+                    </div>
+                    <div t-attf-class="footer o_standard_footer">
+                        <div class="text-center" style="border-top: 1px solid black;">
+                            <ul class="list-inline mb4">
+                                <h3>test</h3>
+                            </ul>
+
+                            <div t-if="report_type == 'pdf'" class="text-muted">
+                                Page:
+                                <span class="page"/>
+                                /
+                                <span class="topage"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="page body"
-                     t-att-style="'background-image: url(/rod_cooperativa_aportes/static/src/img/background_cooperativa.png);background-repeat:repeat-y; height:850px; background-position-x:center;'">
-                    <t t-call="web.external_layout">
-                        <t t-foreach="docs" t-as="o">
-                            <div>
-                                <br/>
-                                <ul>
-                                    <li>
-                                        LUGAR Y FECHA:
-                                        <strong>La Paz, <span t-field="o.date"/></strong>
-                                    </li>
-                                    <li>
-                                        CONCEPTO: <span t-field="o.ref"/>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div>
-                                <table class="table table-bordered" style="width:100%;border:1px solid black;">
-                                    <tr style="text-align:center;">
-                                        <td>
-                                            <strong>CODIGO</strong>
-                                        </td>
-                                        <td>
-                                            <strong>DETALLE</strong>
-                                        </td>
-                                        <td>
-                                            <strong>PARCIAL</strong>
-                                        </td>
-                                        <td>
-                                            <strong>DEBE</strong>
-                                        </td>
-                                        <td>
-                                            <strong>HABER</strong>
-                                        </td>
-                                    </tr>
-                                    <t t-foreach="o.line_ids" t-as="p">
-                                        <tr>
-                                            <td>
-                                                <span t-field="p.account_id.code"/>
-                                            </td>
-                                            <td>
-                                                <span t-field="p.account_id.name"/>
-                                            </td>
-                                            <td>
-                                                <span t-field="p.debit"/>
-                                            </td>
-                                            <td>
-                                                <span t-field="p.debit"/>
-                                            </td>
-                                            <td>
-                                                <span t-field="p.credit"/>
-                                            </td>
-                                        </tr>
-                                    </t>
-                                    <tr>
-                                        <td>
 
-                                        </td>
-                                        <td>
-                                            TOTALES
-                                        </td>
-                                        <td>
-
-                                        </td>
-                                        <td>
-
-                                        </td>
-                                        <td>
-
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div>
-                                <table style="width:100%;border:1px solid black;">
-                                    <tr>
-                                        <td>LA SUMA DE:</td>
-                                        <td><span t-esc="o.literal_number"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td>NUMERO DE CHEQUE:</td>
-                                        <td></td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div>
-                                <table style="width:100%;border:1px solid black;">
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <ul>
-                                                <li>Firma:</li>
-                                                <li>Nombre y Apellido:</li>
-                                                <li>C.I.:</li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>OPERADOR</td>
-                                        <td>GERENTE GENERAL</td>
-                                        <td>PRESIDENTE</td>
-                                        <td>INTERESADO</td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div class="oe_structure"/>
-                        </t>
-                    </t>
-                </div>
-            </t>
+                </t>
+            </div>
         </template>
     </data>
 </odoo>

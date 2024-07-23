@@ -90,3 +90,7 @@ class AccountMove(models.Model):
             decimal = str(round(record.amount_total % 1 * 100))
             record.literal_number= record.literal_number + ', CON ' + decimal + '/100 BOLIVIANOS'
             # record.literal_number = decimal_text
+
+    def update_lines(self):
+        for line in self:
+            line.line_ids._compute_parcial()

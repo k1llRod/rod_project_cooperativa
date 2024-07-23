@@ -10,6 +10,7 @@
                         <group>
                             <field name="account_move_id" readonly="1"/>
                             <field name="date" />
+                            <field name="state"/>
                             <field name="period" readonly="1"/>
                             <field name="account_journal_id"/>
                         </group>

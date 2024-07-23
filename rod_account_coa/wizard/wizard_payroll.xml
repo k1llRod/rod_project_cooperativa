@@ -13,6 +13,7 @@
                             <field name="state"/>
                             <field name="period" readonly="1"/>
                             <field name="account_journal_id"/>
+                            <field name="payment_date"/>
                         </group>
                     </group>
                     <group>

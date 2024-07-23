@@ -20,6 +20,7 @@ class WizardPayroll(models.TransientModel):
          ('capital_initial', 'Capital inicial')],
         default='ministry_defense', string='Estado')
     account_journal_id = fields.Many2one('account.journal', string='Diario')
+    payment_date = fields.Date(string='Fecha de pago')
     amount_total = fields.Float(string='Monto total')
     amount_total_contributions = fields.Float(string='Monto total de aportes')
     account_income_id = fields.Many2one('account.account', string='Cuenta de ingreso')
@@ -48,50 +49,64 @@ class WizardPayroll(models.TransientModel):
                 record.amount_total = record.total_miscellaneous_income + record.total_regulation_cup + record.total_mandatory_contribution + record.total_voluntary_contribution
 
     def action_confirm(self):
+        move_line = []
+        reference = 'TRASPASO DE APORTES ' + self.period
         for record in self:
-            rec = record.account_move_id.create({
-                'journal_id': record.account_journal_id.id,
-                'line_ids': [(0, 0, {
+            journal_id = record.account_journal_id
+            data = (0, 0,{
                     'account_id': record.account_income_id.id,
                     'name': record.name,
                     'debit': record.total_income if record.total_income > 0 else 0,
-                    'credit': 0,
-                }),
-                (0, 0, {
+                    'credit': 0
+            })
+            if not (record.total_income == 0): move_line.append(data)
+            data = (0, 0, {
                     'account_id': record.account_inscription_id.id,
                     'name': record.name,
                     'debit': 0,
                     'credit': record.total_miscellaneous_income,
-                }),
-                (0, 0, {
+            })
+            if not (record.total_miscellaneous_income == 0): move_line.append(data)
+            data = (0, 0, {
                     'account_id': record.account_regulation_cup_id.id,
                     'name': record.name,
                     'debit': 0,
                     'credit': record.total_regulation_cup,
-                }),
-                (0, 0, {
+            })
+            if not (record.total_regulation_cup == 0): move_line.append(data)
+            data = (0, 0, {
                     'account_id': record.account_mandatory_contribution_id.id,
                     'name': record.name,
                     'debit': 0,
                     'credit': record.total_mandatory_contribution,
-                }),
-                (0, 0, {
+            })
+            if not (record.total_mandatory_contribution == 0): move_line.append(data)
+            data = (0, 0, {
                     'account_id': record.account_voluntary_contribution_id.id,
                     'name': record.name,
                     'debit': 0,
                     'credit': record.total_voluntary_contribution,
-                }),
-                ]
             })
+            if not (record.total_voluntary_contribution == 0): move_line.append(data)
+        move_vals = {
+            "date": record.payment_date,
+            "journal_id": journal_id.id,
+            "ref": reference,
+            # "company_id": payment.company_id.id,
+            # "name": "name test",
+            "state": "draft",
+            "line_ids": move_line,
+        }
+        account_move_id = record.env['account.move'].create(move_vals)
         self.account_move_id.unlink()
         search_payments = self.env['payroll.payments'].search([('period_register', '=', record.period),('partner_status_especific','=','active_service'),('state','=','ministry_defense')])
         for payment in search_payments:
-            payment.write({'account_move_id': rec.id})
+            payment.write({'account_move_id': account_move_id.id})
         return {
             'type': 'ir.actions.act_window',
             'res_model': 'account.move',
             'view_mode': 'form',
-            'res_id': rec.id,
+            'res_id': account_move_id.id,
             'views': [(False, 'form')],
         }
 

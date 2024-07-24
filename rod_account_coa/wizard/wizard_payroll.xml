@@ -15,6 +15,9 @@
                             <field name="account_journal_id"/>
                             <field name="payment_date"/>
                         </group>
+                        <group>
+                            <field name="drawback"/>
+                        </group>
                     </group>
                     <group>
                         <group>

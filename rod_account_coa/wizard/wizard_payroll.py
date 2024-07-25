@@ -46,7 +46,11 @@ class WizardPayroll(models.TransientModel):
                     payroll_payment = payroll_payment.filtered(lambda x: x.drawback == True)
                 else:
                     payroll_payment = payroll_payment.filtered(lambda x: x.drawback == False)
-                record.total_income = round(sum(payroll_payment.mapped('income')),2)
+                if record.state == 'contribution_interest':
+                    payroll_payment = payroll_payment.filtered(lambda x: x.payment_date == record.date)
+                    record.total_income = round(sum(payroll_payment.mapped('historical_contribution_coaa')) + sum(payroll_payment.mapped('historical_interest_coaa')),2)
+                else:
+                    record.total_income = round(sum(payroll_payment.mapped('income')),2)
                 record.total_miscellaneous_income = round(sum(payroll_payment.mapped('miscellaneous_income')),2)
                 record.total_regulation_cup = round(sum(payroll_payment.mapped('regulation_cup')),2)
                 record.total_mandatory_contribution = round(sum(payroll_payment.mapped('mandatory_contribution_certificate')),2)

@@ -36,13 +36,15 @@
                       <notebook>
                           <page string="Condecoraciones">
                               <field name="decoration_ids">
-                                  <tree>
+                                  <tree >
                                       <field name="name"/>
                                       <field name="description"/>
                                       <field name="date"/>
                                       <field name="gestion"/>
                                       <field name="type_decoration"/>
                                       <field name="resolution_ids"/>
+                                      <field name="file_name" invisible="1"/>
+                                      <field name="archive_decoration" filename="file_name" widget="binay" options='{"widget": "binary"}'/>
                                   </tree>
                               </field>
                           </page>

@@ -13,6 +13,8 @@
                   <field name="gestion"/>
                   <field name="partner_id" invisible="1"/>
                   <field name="type_decoration"/>
+                  <field name="file_name" invisible="1"/>
+                  <field name="archive_decoration" filename="file_name"/>
                   <field name="resolution_ids"/>
               </tree>
           </field>
@@ -34,7 +36,8 @@
                           <field name="date"/>
                           <field name="gestion"/>
                           <field name="type_decoration"/>
-<!--                          <field name="archive_decoration" filename="file_name"/>-->
+                          <field name="file_name" invisible="1"/>
+                          <field name="archive_decoration" filename="file_name" widget="binary"/>
                           <field name="resolution_ids"/>
                       </group>
                   </sheet>

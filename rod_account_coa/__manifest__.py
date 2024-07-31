@@ -30,6 +30,7 @@
         'views/account_move.xml',
         # 'views/account_payment.xml',
         'wizard/wizard_payroll.xml',
+        'wizard/wizard_loan.xml',
         # 'views/templates.xml',
         'report/account_move_pdf.xml',
         'report/report.xml',

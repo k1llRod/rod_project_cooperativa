@@ -34,6 +34,7 @@ class WizardPayroll(models.TransientModel):
     total_regulation_cup = fields.Float(string='Total de regulación de taza')
     total_mandatory_contribution = fields.Float(string='Total de aporte obligatorio')
     total_voluntary_contribution = fields.Float(string='Total de aporte voluntario')
+    # wizard_type = fields.Selection([('payroll', 'Aporte'), ('loan', 'Prestamo')], string='Tipo de wizard')
 
 
     @api.depends('date','drawback','state')

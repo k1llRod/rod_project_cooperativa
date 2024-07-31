@@ -9,7 +9,7 @@ class AccountMove(models.Model):
     payroll_payment_id = fields.Many2one('payroll.payments', string='Pago de planilla')
     glosa = fields.Text(string='Glosa')
     literal_number = fields.Char(string='Amount literal', compute='_compute_literal_number')
-
+    loan_application_id = fields.Many2one('loan.application', string='Solicitud de préstamo')
     @api.model
     def _get_default_journal(self):
         ''' Get the default journal.
@@ -55,6 +55,20 @@ class AccountMove(models.Model):
             'target': 'new',
             'context': context,
         }
+    def wizard_loan_all(self):
+        context = {
+            'default_account_move_id': self.id,
+            'default_account_journal_id': self.journal_id.id,
+        }
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Egresos',
+            'res_model': 'wizard.loan',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': context,
+        }
+
     def open_payroll_payment_view(self):
         return {
             'type': 'ir.actions.act_window',

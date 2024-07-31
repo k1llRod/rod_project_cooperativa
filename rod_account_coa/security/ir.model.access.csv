@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_wizard_payroll,wizard.payroll,model_wizard_payroll,rod_cooperativa_aportes.group_rod_cooperativa_aportes_administrator,1,1,1,1
+access_wizard_loan,wizard.loan,model_wizard_loan,rod_cooperativa_aportes.group_rod_cooperativa_aportes_administrator,1,1,1,1

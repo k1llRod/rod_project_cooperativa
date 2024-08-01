@@ -1,32 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <template id="report_pdf_account_move">
-            <div class="page">
-                <t t-call="web.html_container">
-                    <div class="header">
-                        <h1>Cabecera</h1>
+        <template id="rod_layout">
+            <div class="header">
+                <div class="row">
+                    <div>
+                        <img t-att-src="'/rod_account_coa/static/src/img/coaa.png'"
+                             style="width:150px;"/>
                     </div>
-                    <div class="body">
-                        <h2>Cuerpo</h2>
-                    </div>
-                    <div t-attf-class="footer o_standard_footer">
-                        <div class="text-center" style="border-top: 1px solid black;">
-                            <ul class="list-inline mb4">
-                                <h3>test</h3>
+                    <div>
+                        <center>
+                            <ul style="list-style:none;">
+                                <li>
+                                    <strong style="font-size:18px;">COOPERATIVA DE AHORRO Y CREDITO DE VINCULO
+                                        LABORAL
+                                    </strong>
+                                </li>
+                                <li>
+                                    <strong style="font-size:18px;">"COA-4 DE DICIEMBRE" R.L.</strong>
+                                </li>
+                                <li>
+                                    Av. Ecuador N 738
+                                </li>
+                                <li>
+                                    Mezzanine Of. 09 - Telf./Fax: 2420530
+                                </li>
+                                <li>
+                                    La Paz - Bolivia
+                                </li>
+                                <li>
+                                    <strong style="font-size:24px;">COMPROBANTE DE INGRESO</strong>
+                                </li>
                             </ul>
-
-                            <div t-if="report_type == 'pdf'" class="text-muted">
-                                Page:
-                                <span class="page"/>
-                                /
-                                <span class="topage"/>
-                            </div>
-                        </div>
+                        </center>
                     </div>
-
-                </t>
+                </div>
             </div>
+            <div class="article o_report_layout_standard">
+                <t t-out="0"/>
+            </div>
+            <div class="footer o_standard_footer">
+                <div class="row">
+                    <table class="table table-bordered" style="width:100%;">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <ul style="list-style:none;">
+                                    <li>Firma:</li>
+                                    <li>Nombre y Apellido:</li>
+                                    <li>C.I.:</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <center>OPERADOR</center>
+                            </th>
+                            <th>
+                                <center>GERENTE GENERAL</center>
+                            </th>
+                            <th>
+                                <center>PRESIDENTE</center>
+                            </th>
+                            <th>
+                                <center>INTERESADO</center>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </template>
+        <template id="report_pdf_account_move">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page body">
+                        <t t-call="rod_account_coa.rod_layout">
+                            <div>
+                                <br/>
+                                <ul>
+                                    <li>
+                                        LUGAR Y FECHA:
+                                        <strong>La Paz,
+                                            <span t-field="o.date"/>
+                                        </strong>
+                                    </li>
+                                    <li>
+                                        CONCEPTO:
+                                        <span t-field="o.ref"/>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <table class="table table-striped" style="width:100%;">
+                                    <thead>
+                                        <tr style="text-align:center;">
+                                            <th>
+                                                <strong>CODIGO</strong>
+                                            </th>
+                                            <th>
+                                                <strong>DETALLE</strong>
+                                            </th>
+                                            <th>
+                                                <strong>PARCIAL</strong>
+                                            </th>
+                                            <th>
+                                                <strong>DEBE</strong>
+                                            </th>
+                                            <th>
+                                                <strong>HABER</strong>
+                                            </th>
+                                        </tr>
+                                    </thead>
+
+                                    <t t-foreach="o.line_ids" t-as="p">
+                                        <tr>
+                                            <td>
+                                                <span t-field="p.account_id.code"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="p.account_id.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="p.parcial"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="p.debit"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="p.credit"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <tr>
+                                        <td>
+
+                                        </td>
+                                        <td>
+                                            TOTALES
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div>
+                                <table class="table" style="width:100%;" >
+                                    <tr>
+                                        <th>LA SUMA DE:</th>
+                                        <th>
+                                            <span t-esc="o.literal_number"/>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>NUMERO DE CHEQUE:</th>
+                                        <th></th>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div>
+
+                            </div>
+                            <div class="oe_structure"/>
+                        </t>
+                    </div>
+                </t>
+            </t>
         </template>
     </data>
 </odoo>

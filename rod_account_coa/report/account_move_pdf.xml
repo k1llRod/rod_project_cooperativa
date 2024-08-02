@@ -4,36 +4,40 @@
         <template id="rod_layout">
             <div class="header">
                 <div class="row">
-                    <div>
-                        <img t-att-src="'/rod_account_coa/static/src/img/coaa.png'"
-                             style="width:150px;"/>
-                    </div>
-                    <div>
-                        <center>
-                            <ul style="list-style:none;">
-                                <li>
-                                    <strong style="font-size:18px;">COOPERATIVA DE AHORRO Y CREDITO DE VINCULO
-                                        LABORAL
-                                    </strong>
-                                </li>
-                                <li>
-                                    <strong style="font-size:18px;">"COA-4 DE DICIEMBRE" R.L.</strong>
-                                </li>
-                                <li>
-                                    Av. Ecuador N 738
-                                </li>
-                                <li>
-                                    Mezzanine Of. 09 - Telf./Fax: 2420530
-                                </li>
-                                <li>
-                                    La Paz - Bolivia
-                                </li>
-                                <li>
-                                    <strong style="font-size:24px;">COMPROBANTE DE INGRESO</strong>
-                                </li>
-                            </ul>
-                        </center>
-                    </div>
+                    <table class="table table-bordered" style="width:100%;">
+                        <tr>
+                            <td style="width:20%" rowspan="7">
+                                <center><img t-att-src="'/rod_account_coa/static/src/img/coaa.png'" style="width:150px;"/></center>
+                            </td>
+                            <td style="width:60%"><center>COOPERATIVA DE AHORRO Y CREDITO DE VINCULO LABORAL</center></td>
+                            <td style="width:20%" rowspan="7"><center><span t-field="o.name" style="color:red;font-weight:bold;"/></center></td>
+                        </tr>
+                        <tr>
+
+                            <td><center>"COA-4 DE DICIEMBRE" R.L.</center></td>
+
+                        </tr>
+                        <tr>
+
+                            <td><center>Mezzanine Of. 09 - Telf./Fax: 2420530</center></td>
+
+                        </tr>
+                        <tr>
+
+                            <td><center>Av. Ecuador N 738</center></td>
+
+                        </tr>
+                        <tr>
+
+                            <td><center>La Paz - Bolivia</center></td>
+
+                        </tr>
+                        <tr>
+                            <td style="font-size:25px;font-weight:bold;"><center>COMPROBANTE DE <span t-field="o.journal_id.name"/></center></td>
+                        </tr>
+
+                    </table>
+
                 </div>
             </div>
             <div class="article o_report_layout_standard">
@@ -43,16 +47,21 @@
                 <div class="row">
                     <table class="table table-bordered" style="width:100%;">
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <ul style="list-style:none;">
-                                    <li>Firma:</li>
-                                    <li>Nombre y Apellido:</li>
-                                    <li>C.I.:</li>
-                                </ul>
+                            <td rowspan="4" style="width:20%;"></td>
+                            <td rowspan="4" style="width:20%;"></td>
+                            <td rowspan="4" style="width:20%;"></td>
+                            <td style="width:20%;">
+                                Firma:
                             </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" style="height:60px;">Nombre y Apellido:</td>
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+                            <td>C.I.:</td>
                         </tr>
                         <tr>
                             <th>
@@ -115,42 +124,61 @@
                                     </thead>
 
                                     <t t-foreach="o.line_ids" t-as="p">
-                                        <tr>
-                                            <td>
+                                        <t t-set="total_parcial" t-value="0"/>
+                                        <tr style="font-size:12px;">
+                                            <td style="text-align:center;">
                                                 <span t-field="p.account_id.code"/>
                                             </td>
                                             <td>
-                                                <span t-field="p.account_id.name"/>
+                                                <ul style="list-style:none;">
+                                                    <li>
+                                                        <span t-field="p.account_id.name"/>
+                                                    </li>
+                                                    <li>
+                                                        <span t-field="p.partner_id.name"/>
+                                                    </li>
+                                                </ul>
+
                                             </td>
-                                            <td>
+                                            <td style="text-align:center;">
                                                 <span t-field="p.parcial"/>
                                             </td>
-                                            <td>
+                                            <td style="text-align:center;">
                                                 <span t-field="p.debit"/>
                                             </td>
-                                            <td>
+                                            <td style="text-align:center;">
                                                 <span t-field="p.credit"/>
                                             </td>
                                         </tr>
+
                                     </t>
-                                    <tr>
+                                    <tr style="font-size:12px;">
                                         <td>
 
                                         </td>
-                                        <td>
+                                        <td style="text-align:right;font-weight:bold;">
                                             TOTALES
                                         </td>
-                                        <td>
-
+                                        <td style="text-align:center;">
+                                            <t t-set="total_parcial" t-value="total_parcial + p.parcial"/>
+                                            <t t-esc="total_parcial"/>
                                         </td>
-                                        <td>
-
+                                        <td style="text-align:center;">
+                                            <span t-field="o.amount_total"/>
                                         </td>
-                                        <td>
-
+                                        <td style="text-align:center;">
+                                            <span t-field="o.amount_total"/>
                                         </td>
                                     </tr>
                                 </table>
+                            </div>
+                            <div>
+                                <p>
+                                    <strong>GLOSA:</strong>
+                                </p>
+                                <p>
+                                    <span t-field="o.glosa"/>
+                                </p>
                             </div>
                             <div>
                                 <table class="table" style="width:100%;" >
@@ -166,9 +194,8 @@
                                     </tr>
                                 </table>
                             </div>
-                            <div>
 
-                            </div>
+
                             <div class="oe_structure"/>
                         </t>
                     </div>

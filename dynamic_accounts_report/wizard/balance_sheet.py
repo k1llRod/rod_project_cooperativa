@@ -171,6 +171,12 @@ class BalanceSheetView(models.TransientModel):
         for rec in report_lines_move:
             if rec['report_type'] != 'accounts':
                 if rec['r_id'] in parent_list:
+                    if rec['name'] == 'Liability':
+                        rec['name'] = 'Pasivo'
+                    if rec['name'] == 'Balance Sheet':
+                        rec['name'] = 'Balance General'
+                    if rec['name'] == 'Assets':
+                        rec['name'] = 'Activo'
                     final_report_lines.append(rec)
             else:
                 final_report_lines.append(rec)
@@ -227,6 +233,7 @@ class BalanceSheetView(models.TransientModel):
                     rec['credit']) + " " + symbol
                 rec['m_balance'] = "{:,.2f}".format(
                     rec['balance']) + " " + symbol
+        a = 1
         return {
             'name': tag,
             'type': 'ir.actions.client',
@@ -615,20 +622,26 @@ class BalanceSheetView(models.TransientModel):
 
         row += 2
         sheet.write(row, col, '', sub_heading)
-        sheet.write(row, col + 1, 'Debit', sub_heading)
-        sheet.write(row, col + 2, 'Credit', sub_heading)
+        sheet.write(row, col + 1, 'Debe', sub_heading)
+        sheet.write(row, col + 2, 'Haber', sub_heading)
         sheet.write(row, col + 3, 'Balance', sub_heading)
+        # sheet.write(row, col + 1, 'Debit', sub_heading)
+        # sheet.write(row, col + 2, 'Credit', sub_heading)
+        # sheet.write(row, col + 3, 'Balance', sub_heading)
 
         if rl_data:
             for fr in rl_data:
 
                 row += 1
                 if fr['level'] == 1:
-                    sheet.write(row, col, fr['name'], side_heading_main)
+                    # sheet.write(row, col, fr['name'], side_heading_main)
+                    sheet.write(row, col, 'Balance general', side_heading_main)
                 elif fr['level'] == 2:
-                    sheet.write(row, col, fr['name'], side_heading_sub)
+                    # sheet.write(row, col, fr['name'], side_heading_sub)
+                    sheet.write(row, col, 'Balance general', side_heading_sub)
                 else:
-                    sheet.write(row, col, fr['name'], txt_name)
+                    sheet.write(row, col, 'Balance general', txt_name)
+                    # sheet.write(row, col, fr['name'], txt_name)
                 sheet.write(row, col + 1, fr['debit'], txt)
                 sheet.write(row, col + 2, fr['credit'], txt)
                 sheet.write(row, col + 3, fr['balance'], txt)
@@ -637,3 +650,9 @@ class BalanceSheetView(models.TransientModel):
         output.seek(0)
         response.stream.write(output.read())
         output.close()
+
+    @api.model
+    def view_report_coa(self, option, tag, lang):
+        a = 1
+        r = self.env['dynamic.balance.sheet.report'].search(
+            [('id', '=', option[0])])

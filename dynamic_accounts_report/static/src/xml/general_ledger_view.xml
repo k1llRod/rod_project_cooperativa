@@ -17,8 +17,10 @@
                     <thead>
                         <tr>
                             <th colspan="6">Account</th>
-                            <th class="mon_fld">Debit</th>
-                            <th class="mon_fld">Credit</th>
+                            <th class="mon_fld">Debe</th>
+                            <th class="mon_fld">Haber</th>
+<!--                            <th class="mon_fld">Debit</th>-->
+<!--                            <th class="mon_fld">Credit</th>-->
                             <th class="mon_fld">Balance</th>
                         </tr>
                     </thead>

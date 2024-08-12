@@ -44,7 +44,7 @@
 
         <!--    Action for balance sheet    -->
         <record id="action_balance_sheet_report" model="ir.actions.act_window">
-            <field name="name">Balance Sheet</field>
+            <field name="name">Balance General</field>
             <field name="res_model">financial.report</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_mode">form</field>

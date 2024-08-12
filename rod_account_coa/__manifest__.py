@@ -25,12 +25,13 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/rod_account_coa_menuitem.xml',
         'views/account_payment_coa.xml',
         'views/account_move.xml',
         # 'views/account_payment.xml',
         'wizard/wizard_payroll.xml',
         'wizard/wizard_loan.xml',
+        'wizard/wizard_account_report.xml',
+        'views/rod_account_coa_menuitem.xml',
         # 'views/templates.xml',
         'report/account_move_pdf.xml',
         'report/report.xml',

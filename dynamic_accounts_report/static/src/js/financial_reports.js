@@ -22,6 +22,7 @@ odoo.define('dynamic_accounts_report.financial_reports', function (require) {
             'click #pdf': 'print_pdf',
             'click #xlsx': 'print_xlsx',
             'click .show-gl': 'show_gl',
+            'click #xlsxCoa': 'print_xlsxCoa',
             'mousedown div.input-group.date[data-target-input="nearest"]': '_onCalendarIconClick',
         },
 
@@ -75,6 +76,7 @@ odoo.define('dynamic_accounts_report.financial_reports', function (require) {
     },
 
     load_data: function (initial_render = true) {
+            console.log("CONTENIDO PRINCIPAL 1")
             var self = this;
             var action_title = self._title;
                 self.$(".categ").empty();
@@ -139,6 +141,7 @@ odoo.define('dynamic_accounts_report.financial_reports', function (require) {
             },
 
     show_gl: function(e) {
+            console.log("CONTENIDO PRINCIPAL")
             var self = this;
             var account_id = $(e.target).attr('data-account-id');
             var options = {
@@ -187,6 +190,7 @@ odoo.define('dynamic_accounts_report.financial_reports', function (require) {
         },
 
     print_xlsx: function() {
+            console.log("print_xlsx")
             var self = this;
             var action_title = self._title;
             self._rpc({
@@ -196,6 +200,7 @@ odoo.define('dynamic_accounts_report.financial_reports', function (require) {
                     [self.wizard_id],  action_title,  self.searchModel.config.context.lang
                 ],
             }).then(function(data) {
+                console.log("DATA: ",data)
                 var action = {
 //                    'type': 'ir_actions_dynamic_xlsx_download',
                     'data': {
@@ -207,10 +212,47 @@ odoo.define('dynamic_accounts_report.financial_reports', function (require) {
                          'dfr_data': JSON.stringify(data['bs_lines']),
                     },
                 };
+                console.log("action", action)
+                console.log("core", core)
+                console.log("action_title", action_title)
 //                return self.do_action(action);
                     core.action_registry.map.t_b.prototype.downloadXlsx(action)
             });
         },
+
+    print_xlsxCoa: function() {
+            console.log("print_xlsxCoa")
+            var self = this;
+            var action_title = self._title;
+            console.log("action_title", action_title)
+            var coa = 'coa'
+            self._rpc({
+                model: 'dynamic.balance.sheet.report',
+                method: 'view_report',
+                args: [
+                    [self.wizard_id],  action_title,  self.searchModel.config.context.lang
+                ],
+            }).then(function(data) {
+                console.log("DATA: ",data)
+                var action = {
+//                    'type': 'ir_actions_dynamic_xlsx_download',
+                    'data': {
+                         'model': 'dynamic.balance.sheet.report',
+                         'options': JSON.stringify(data['filters']),
+                         'output_format': 'xlsx',
+                         'report_data': action_title,
+                         'report_name': action_title,
+                         'dfr_data': JSON.stringify(data['bs_lines']),
+                    },
+                };
+                console.log("action", action)
+                console.log("core", core)
+                console.log("action_title", action_title)
+//                return self.do_action(action);
+                    core.action_registry.map.t_b.prototype.downloadXlsx(action)
+            });
+        },
+
 
     journal_line_click: function (el){
             click_num++;

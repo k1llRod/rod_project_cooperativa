@@ -3,7 +3,7 @@
         <div class="">
             <div class="">
                 <h1 style="padding:10px">
-                    Trial Balance
+                    Balance
                 </h1>
 
             </div>
@@ -23,14 +23,16 @@
                 <table cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th colspan="6">Account</th>
+                            <th colspan="6">Cuenta</th>
                             <t t-if="filter['date_from']">
                                 <th class="mon_fld">Initial Debit</th>
                                 <th class="mon_fld">Initial Credit</th>
 
                             </t>
-                            <th class="mon_fld">Debit</th>
-                            <th class="mon_fld">Credit</th>
+                            <th class="mon_fld">Debe</th>
+                            <th class="mon_fld">Haber</th>
+<!--                            <th class="mon_fld">Debit</th>-->
+<!--                            <th class="mon_fld">Credit</th>-->
                         </tr>
                     </thead>
 

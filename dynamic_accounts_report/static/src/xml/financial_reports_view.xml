@@ -19,8 +19,10 @@
                     <thead>
                         <tr>
                             <th colspan="6"></th>
-                            <th style="text-align: right; padding-right: 50px;">Debit</th>
-                            <th style="text-align: right; padding-right: 50px;">Credit</th>
+                            <th style="text-align: right; padding-right: 50px;">Debe</th>
+                            <th style="text-align: right; padding-right: 50px;">Haber</th>
+<!--                            <th style="text-align: right; padding-right: 50px;">Debit</th>-->
+<!--                            <th style="text-align: right; padding-right: 50px;">Credit</th>-->
                             <th style="text-align: right; padding-right: 50px;">Balance</th>
                         </tr>
                     </thead>
@@ -122,11 +124,15 @@
                 <div class="report_print">
                     <button type="button" class="btn btn-primary" id="pdf"
                             style="position: relative;height:30px;color:white;background-color: #00A0AD;border-color: #00A0AD; padding:3px;">
-                        Print (PDF)
+                        Impresion (PDF)
                     </button>
                     <button type="button" class="btn btn-primary" id="xlsx"
                             style="position: relative;height:30px;color:white;background-color: #00A0AD;border-color: #00A0AD; padding:3px;">
-                        Export (XLSX)
+                        Exportar (XLSX)
+                    </button>
+                    <button type="button" class="btn btn-primary" id="xlsxCoa"
+                            style="position: relative;height:30px;color:white;background-color: #00A0AD;border-color: #00A0AD; padding:3px;">
+                        Exportar COA (XLSX)
                     </button>
                 </div>
             </div>
@@ -136,7 +142,7 @@
                         <div class="time_range" style="">
                             <a type="button" class="dropdown-toggle" data-toggle="dropdown" >
                                 <span class="fa fa-calendar" title="Dates" role="img" aria-label="Dates"></span>
-                                Date Range
+                                Fecha Rango
                             </a>
                             <div class="dropdown-menu" role="menu">
                                 <div class="form-group">
@@ -167,7 +173,7 @@
 					<div class="journals_filter" style="">
 						<a type="button" class="dropdown-toggle" data-toggle="dropdown">
 							<span class="fa fa-book"></span>
-Journals:
+                            Diarios:
 						</a>
 						<select class="dropdown-menu  journals" name="states[]" multiple="multiple">
 							<div role="separator" class="dropdown-divider"></div>
@@ -195,7 +201,7 @@ Journals:
                         <div class="accounts_filter">
                             <a type="button" class="dropdown-toggle" data-toggle="dropdown">
                                 <span class="fa fa-book"></span>
-                                Accounts:
+                                Cuentas:
                             </a>
                             <select class="dropdown-menu account" name="states[]" multiple="multiple">
                                 <t t-foreach="filter_data.accounts_list" t-as="account">

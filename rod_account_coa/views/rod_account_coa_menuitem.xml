@@ -67,6 +67,16 @@
           </menuitem>
 
       </menuitem>
+      <menuitem id="rod_account_coa.rod_account_report"
+                name="Reporte"
+                parent="rod_account_coa.menu_root"
+                sequence="6">
+          <menuitem id="rod_account_coa.balance_sheet"
+                    name="Balance general"
+                    sequence="1"
+                    action="rod_account_coa.action_wizard_account_report_id"/>
+      </menuitem>
+
       <menuitem id="rod_account_coa.rod_account_configuration_account"
                 name="Configuracion"
                 parent="rod_account_coa.menu_root"

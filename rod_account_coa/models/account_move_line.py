@@ -4,6 +4,7 @@ class AccountMoveLine(models.Model):
     _inherit = 'account.move.line'
 
     parcial = fields.Float(string='Parcial', compute='_compute_parcial', store=True)
+    # nro_account = fields.Float(string='Nro. de cuenta', related='account_id.code', store=True)
 
     @api.depends('debit', 'credit')
     def _compute_parcial(self):

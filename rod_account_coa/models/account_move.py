@@ -10,6 +10,7 @@ class AccountMove(models.Model):
     glosa = fields.Text(string='Glosa')
     literal_number = fields.Char(string='Amount literal', compute='_compute_literal_number')
     loan_application_id = fields.Many2one('loan.application', string='Solicitud de préstamo')
+    nro_cheque = fields.Char(string='Nro. de cheque')
     @api.model
     def _get_default_journal(self):
         ''' Get the default journal.

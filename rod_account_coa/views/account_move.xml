@@ -32,6 +32,7 @@
                 </xpath>
                 <xpath expr="//button[@name='button_draft']" position="after">
                     <button name="print_account_move" string="Comprobante de pago" type="object" groups="account.group_account_invoice" attrs="{'invisible' : [('show_reset_to_draft_button', '=', False)]}" data-hotkey="q" class="oe_highlight"/>
+<!--                    <button name="query_test" string="Test" type="object"/>-->
                 </xpath>
 
             </field>

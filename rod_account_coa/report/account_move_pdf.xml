@@ -4,36 +4,36 @@
         <template id="rod_layout">
             <div class="header">
                 <div class="row">
-                    <table class="table table-bordered" style="width:100%;">
+                    <table style="width:100%;">
                         <tr>
-                            <td style="width:20%" rowspan="7">
+                            <td style="width:20%;padding:0;" rowspan="7">
                                 <center><img t-att-src="'/rod_account_coa/static/src/img/coaa.png'" style="width:150px;"/></center>
                             </td>
-                            <td style="width:60%"><center>COOPERATIVA DE AHORRO Y CREDITO DE VINCULO LABORAL</center></td>
-                            <td style="width:20%" rowspan="7"><center><span t-field="o.name" style="color:red;font-weight:bold;"/></center></td>
+                            <td style="width:60%;padding:0;"><center>COOPERATIVA DE AHORRO Y CREDITO DE VINCULO LABORAL</center></td>
+                            <td style="width:20%;padding:0;" rowspan="7"><center><span t-field="o.name" style="color:red;font-weight:bold;"/></center></td>
                         </tr>
                         <tr>
 
-                            <td><center>"COA-4 DE DICIEMBRE" R.L.</center></td>
-
-                        </tr>
-                        <tr>
-
-                            <td><center>Mezzanine Of. 09 - Telf./Fax: 2420530</center></td>
+                            <td style="width:20%;padding:0;"><center>"COA-4 DE DICIEMBRE" R.L.</center></td>
 
                         </tr>
                         <tr>
 
-                            <td><center>Av. Ecuador N 738</center></td>
+                            <td style="width:20%;padding:0;"><center>Mezzanine Of. 09 - Telf./Fax: 2420530</center></td>
 
                         </tr>
                         <tr>
 
-                            <td><center>La Paz - Bolivia</center></td>
+                            <td style="width:20%;padding:0;"><center>Av. Ecuador N 738</center></td>
 
                         </tr>
                         <tr>
-                            <td style="font-size:25px;font-weight:bold;"><center>COMPROBANTE DE <span t-field="o.journal_id.name"/></center></td>
+
+                            <td style="width:20%;padding:0;"><center>La Paz - Bolivia</center></td>
+
+                        </tr>
+                        <tr>
+                            <td style="font-size:25px;font-weight:bold;padding:0;"><center>COMPROBANTE DE <span t-field="o.journal_id.name"/></center></td>
                         </tr>
 
                     </table>
@@ -184,13 +184,13 @@
                                 <table class="table" style="width:100%;" >
                                     <tr>
                                         <th>LA SUMA DE:</th>
-                                        <th>
+                                        <td>
                                             <span t-esc="o.literal_number"/>
-                                        </th>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>NUMERO DE CHEQUE:</th>
-                                        <th></th>
+                                        <td><span t-esc="o.nro_cheque"/></td>
                                     </tr>
                                 </table>
                             </div>

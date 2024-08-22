@@ -1,30 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="paperformat_account_move_pdf" model="report.paperformat">
-        <field name="name">Account move Paperformat</field>
-        <field name="default" eval="True" />
-        <field name="format">custom</field>
-<!--        <field name="page_height">279</field> &lt;!&ndash; Tamaño carta en puntos &ndash;&gt;-->
-<!--        <field name="page_width">216</field>-->
-        <field name="orientation">Portrait</field>
-        <field name="margin_top">45</field> <!-- Margen superior en puntos -->
-        <field name="margin_bottom">55</field>
-        <field name="margin_left">10</field>
-        <field name="margin_right">10</field>
-        <field name="header_line" eval="False"/>
-        <field name="header_spacing">35</field>
-        <!-- Otros campos del formato de papel según tus necesidades -->
-    </record>
-    <record id="action_report_pdf_account_move" model="ir.actions.report">
-        <field name="name">Comprobante de pago</field>
-        <field name="model">account.move</field>
-        <field name="report_type">qweb-html</field>
-        <field name="report_name">rod_account_coa.report_pdf_account_move</field>
-        <field name="report_file">rod_account_coa.report.report_pdf_account_move</field>
-        <field name="binding_model_id" ref="model_account_move"/>
-        <field name="paperformat_id" ref="rod_account_coa.paperformat_account_move_pdf" />
-<!--        <field name="paperformat_id" ref="rod_cooperativa_aportes.paperformat_certificate" />-->
-        <field name="binding_type">report</field>
-    </record>
+    <data>
+        <record id="paperformat_account_move_pdf" model="report.paperformat">
+            <field name="name">Account move Paperformat</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <!--        <field name="page_height">279</field> &lt;!&ndash; Tamaño carta en puntos &ndash;&gt;-->
+            <!--        <field name="page_width">216</field>-->
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">45</field> <!-- Margen superior en puntos -->
+            <field name="margin_bottom">55</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">35</field>
+            <!-- Otros campos del formato de papel según tus necesidades -->
+        </record>
+        <record id="action_report_pdf_account_move" model="ir.actions.report">
+            <field name="name">Comprobante de pago</field>
+            <field name="model">account.move</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">rod_account_coa.report_pdf_account_move</field>
+            <field name="report_file">rod_account_coa.report.report_pdf_account_move</field>
+            <field name="binding_model_id" ref="model_account_move"/>
+            <field name="paperformat_id" ref="rod_account_coa.paperformat_account_move_pdf"/>
+            <!--        <field name="paperformat_id" ref="rod_cooperativa_aportes.paperformat_certificate" />-->
+            <field name="binding_type">report</field>
+        </record>
 
+        <!--    <record id="action_report_pdf_balance_sheet" model="ir.actions.report">-->
+        <!--        <field name="name">Balance general</field>-->
+        <!--        <field name="model">account.move.line</field>-->
+        <!--        <field name="report_type">qweb-html</field>-->
+        <!--        <field name="report_name">rod_account_coa.report_pdf_balance_sheet</field>-->
+        <!--        <field name="report_file">rod_account_coa.report.report_pdf_balance_sheet</field>-->
+        <!--        <field name="binding_model_id" ref="model_account_move_line"/>-->
+        <!--        <field name="paperformat_id" ref="rod_account_coa.paperformat_account_move_pdf" />-->
+        <!--        <field name="paperformat_id" ref="rod_cooperativa_aportes.paperformat_certificate" />-->
+        <!--        <field name="binding_type">report</field>-->
+        <!--    </record>-->
+        <report
+                id="custom_pdf_report"
+                model="wizard.account.report"
+                string="Reporte Personalizado"
+                report_type="qweb-html"
+                name="rod_account_coa.report_pdf_balance_sheet"
+                file="rod_account_coa.report_pdf_balance_sheet"
+        />
+    </data>
 </odoo>

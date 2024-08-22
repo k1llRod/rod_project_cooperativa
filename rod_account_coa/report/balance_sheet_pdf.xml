@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="rod_layout_balance_sheet">
+            <div class="header">
+                <div class="row">
+                    <table style="width:100%;font-size:13px;" >
+                        <tr>
+                            <td style="width:60%;padding:0;">COOPERATIVA DE AHORRO Y CREDITO DE VINCULO LABORAL</td>
+                            <td style="width:20%;padding:0;" rowspan="7"><center><span t-field="o.name" style="color:red;font-weight:bold;"/></center></td>
+                        </tr>
+                        <tr>
+
+                            <td style="width:20%;padding:0;">"COA-4 DE DICIEMBRE" R.L.</td>
+
+                        </tr>
+                        <tr>
+                            <td style="width:20%;padding:0;">NIT 473164027</td>
+                        </tr>
+                        <tr>
+
+                            <td style="width:20%;padding:0;">La Paz - Bolivia</td>
+
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+            <div class="article o_report_layout_standard">
+                <t t-out="0"/>
+            </div>
+            <div class="footer o_standard_footer">
+                <div class="row">
+
+                </div>
+            </div>
+        </template>
+        <template id="report_pdf_balance_sheet">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page body">
+                        <t t-call="rod_account_coa.rod_layout_balance_sheet">
+                            <center>BALANCE GENERAL</center>
+                            <center><t t-esc="o.date_end.strftime('%d DE %B DE %Y').upper()"/></center>
+<!--                            <center>AL <span t-field="o.date_end"/></center>-->
+                            <center>EXPRESADO EN BOLIVIANOS</center>
+                            <br/>
+                            <table class="table table-sm" style="font-size:12px;">
+                                <tbody>
+                                    <tr style="font-weight:bold;text-decoration:underline;">
+                                        <td colspan="3">ACTIVO</td>
+                                        <td colspan="3">PASIVO</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-decoration:underline;">ACTIVO CORRIENTE</td>
+                                        <td></td>
+                                        <td style="text-decoration:underline;">20,616,622.23</td>
+                                        <td style="text-decoration:underline;">PASIVO CORRIENTE</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-decoration:underline;">DISPONIBLE</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td style="text-decoration:underline;">OBLIGACIONES</td>
+                                        <td></td>
+                                        <td>84,027.56</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Caja M/N</td>
+                                        <td>1000</td>
+                                        <td></td>
+                                        <td>Cuentas por pagar</td>
+                                        <td>73421.14</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Banco MN</td>
+                                        <td>2,2286,657.74</td>
+                                        <td></td>
+                                        <td>Otros por pagar</td>
+                                        <td>675.42</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-decoration:underline;">EXIGIBLE</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td style="text-decoration:underline;">OBLIGACIONES TRIBUTARIAS</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Prestamo regular</td>
+                                        <td>18,284,907.57</td>
+                                        <td></td>
+                                        <td>Impuesto por pagar</td>
+                                        <td>9,931.00</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-decoration:underline;">DIFERIDO</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td style="text-decoration:underline;">PASIVO NO CORRIENTE</td>
+                                        <td></td>
+                                        <td>21,099,680.79</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Servicios pagados por anticipado</td>
+                                        <td>43,956.92</td>
+                                        <td></td>
+                                        <td>Aportes activos tipo A</td>
+                                        <td>21,026,999.02</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Aportes pasivos tipo B</td>
+                                        <td>16,829.02</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-decoration:underline;">ACTIVO NO CORRIENTE</td>
+                                        <td></td>
+                                        <td>598,934.53</td>
+                                        <td>Reservas y previsiones</td>
+                                        <td>55,852.75</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-decoration:underline;">OTROS ACTIVOS</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>TOTAL PASIVO:</td>
+                                        <td></td>
+                                        <td>21,183,708.35</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Prestamos devengados</td>
+                                        <td>256,934.53</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Aportes devengados</td>
+                                        <td>341,041.91</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td style="text-decoration:underline;font-weight:bold;">CAPITAL Y PATRIMONIO</td>
+                                        <td></td>
+                                        <td style="text-decoration:underline;font-weight:bold;">30,820.32</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td style="text-decoration:underline;">FONDO SOCIAL</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Fondo social</td>
+                                        <td>1000.00</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Ajuste de fondo social</td>
+                                        <td>31.42</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td style="text-decoration:underline;">RESERVAS</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Fondo de reserva legal</td>
+                                        <td>2,979.30</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Fondo de eduacion</td>
+                                        <td>1,489.65</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Fondo de prevision social</td>
+                                        <td>1,489.65</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td style="text-decoration:underline;">RESULTADOS</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Resultados acumulados</td>
+                                        <td>-4.13</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Resultado del ejercicio</td>
+                                        <td>23,834.43</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TOTAL ACTIVO:</td>
+                                        <td></td>
+                                        <td>21,214,528.67</td>
+                                        <td>TOTAL PASIVO Y PATRIMONIO</td>
+                                        <td></td>
+                                        <td>21,214,528.67</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="oe_structure"/>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

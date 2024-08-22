@@ -145,7 +145,7 @@
         <record id="action_loan_payment_emergency" model="ir.actions.act_window">
             <field name="name">Pagos</field>
             <field name="res_model">loan.payment.emergency</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,pivot</field>
         </record>
 
     </data>

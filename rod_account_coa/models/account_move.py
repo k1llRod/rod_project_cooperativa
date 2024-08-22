@@ -109,3 +109,11 @@ class AccountMove(models.Model):
     def update_lines(self):
         for line in self:
             line.line_ids._compute_parcial()
+
+
+    def query_test(self):
+        self.env.cr.execute('''
+            SELECT * FROM account_move
+        ''')
+        res = self.env.cr.fetchall()
+        return res

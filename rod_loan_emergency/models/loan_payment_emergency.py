@@ -19,7 +19,7 @@ class LoanPaymentEmergency(models.Model):
     capital_init = fields.Float(string='Monto prestado')
     capital_index_initial = fields.Float(string='Capital index')
     capital_balance = fields.Float(string='SALDO CAPITAL', digits=(16, 2), store=True)
-    fixed_fee = fields.Float(string='CUATO FIJA')
+    fixed_fee = fields.Float(string='CUOTO FIJA')
     monthly_interest = fields.Float(string='INTERES MENSUAL', store=True)
     interest = fields.Float(string="Interes")
     interest_month_surpluy = fields.Float(string='DIAS INTERES')

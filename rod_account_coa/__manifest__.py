@@ -30,11 +30,12 @@
         # 'views/account_payment.xml',
         'wizard/wizard_payroll.xml',
         'wizard/wizard_loan.xml',
-        'wizard/wizard_account_report.xml',
         'views/rod_account_coa_menuitem.xml',
         # 'views/templates.xml',
         'report/account_move_pdf.xml',
+        'report/balance_sheet_pdf.xml',
         'report/report.xml',
+        'wizard/wizard_account_report.xml',
     ],
     # only loaded in demonstration mode
 }

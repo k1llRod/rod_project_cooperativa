@@ -8,17 +8,14 @@
                 <form string="Your Wizard">
                     <group>
                         <group>
-                            <field name="name" readonly="1"/>
-<!--                            <field name="wizard_type" />-->
-                            <field name="date" />
-                            <field name="state"/>
-                            <field name="period" readonly="1"/>
-                            <field name="account_journal_id"/>
-                            <field name="state"/>
+                            <field name="date_start" />
+                            <field name="date_end"/>
+<!--                            <field name="account_journal_id"/>-->
+<!--                            <field name="state"/>-->
                         </group>
                     </group>
                     <footer>
-                        <button name="action_confirm" string="Confirmar" type="object" class="oe_highlight"/>
+                        <button name="generate_pdf_report" string="Confirmar" type="object" class="oe_highlight"/>
                         <button string="Cancel" class="oe_link" special="cancel"/>
                     </footer>
                 </form>

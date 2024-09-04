@@ -32,8 +32,8 @@ class WizardLoan(models.TransientModel):
     total_interest_base_bolivianos = fields.Float(string='Total interes 0.7% en bolivianos', digits=(12, 2))
     total_res_social = fields.Float(string='Total fondo contingencia', digits=(12, 2))
     total_res_social_bolivianos = fields.Float(string='Total fondo contingencia en bolivianos', digits=(12, 2))
-    total_percentage_mindef = fields.Float(string='Total de aporte voluntario', digits=(12, 2))
-    total_percentage_mindef_bolivianos = fields.Float(string='Total de aporte voluntario en bolivianos', digits=(12, 2))
+    total_percentage_mindef = fields.Float(string='Total porcentaje MINDEF', digits=(12, 2))
+    total_percentage_mindef_bolivianos = fields.Float(string='Total porcentaje MINDEF en bolivianos', digits=(12, 2))
     total_surpluy_days = fields.Float(string='Total de dias excedentes', digits=(12, 2))
     total_surpluy_days_bolivianos = fields.Float(string='Total de dias excedentes en bolivianos', digits=(12, 2))
 
@@ -57,20 +57,27 @@ class WizardLoan(models.TransientModel):
             record.period = record.date.strftime('%m') + '/' + record.date.strftime('%Y')
             if record.period:
                 loan_payment = self.env['loan.payment'].search([('period', '=', record.period), ('state', '=', record.state)])
-                record.total_income = round(sum(loan_payment.mapped('amount_total_bs')), 2)
+                record.total_income = round(sum(loan_payment.mapped('amount_returned_coa')), 2)
                 record.total_capital_index = round(sum(loan_payment.mapped('capital_index_initial')), 2)
                 record.total_interest_base = round(sum(loan_payment.mapped('interest_base')), 2)
                 record.total_res_social = round(
                     sum(loan_payment.mapped('res_social')), 2)
-                record.total_percentage_mindef = round(
+
+                percentage = round(
                     sum(loan_payment.mapped('percentage_amount_min_def')), 2)
+                percentage_mindef = round(
+                    sum(loan_payment.mapped('commission_min_def')), 2)
+
+                record.total_percentage_mindef = round(
+                    sum(loan_payment.mapped('coa_commission')), 2)
+
                 record.total_surpluy_days = round(
                     sum(loan_payment.mapped('interest_month_surpluy')), 2)
                 record.amount_total = record.total_capital_index + record.total_interest_base + record.total_res_social + record.total_percentage_mindef + record.total_surpluy_days
                 record.total_capital_index_bolivianos = record.total_capital_index * dollar
                 record.total_interest_base_bolivianos = record.total_interest_base * dollar
                 record.total_res_social_bolivianos = record.total_res_social * dollar
-                record.total_percentage_mindef_bolivianos = record.total_percentage_mindef * dollar
+                record.total_percentage_mindef_bolivianos = round(sum(loan_payment.mapped('coa_commission_bs')), 2)
                 record.total_surpluy_days_bolivianos = record.total_surpluy_days * dollar
                 record.amount_total_bolivianos = record.total_capital_index_bolivianos + record.total_interest_base_bolivianos + record.total_res_social_bolivianos + record.total_percentage_mindef_bolivianos + record.total_surpluy_days_bolivianos
 
@@ -78,3 +85,4 @@ class WizardLoan(models.TransientModel):
     def _onchange_mounts(self):
         for record in self:
             record.amount_total_bolivianos = record.total_capital_index_bolivianos + record.total_interest_base_bolivianos + record.total_res_social_bolivianos + record.total_percentage_mindef_bolivianos + record.total_surpluy_days_bolivianos
+

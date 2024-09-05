@@ -12,7 +12,7 @@
 <!--                            <field name="wizard_type" />-->
                             <field name="date" />
                             <field name="state"/>
-                            <field name="period" readonly="1"/>
+                            <field name="period" />
                             <field name="account_journal_id"/>
                             <field name="payment_date"/>
                         </group>
@@ -23,32 +23,32 @@
                     <group>
                         <group>
                             <field name="account_income_id"/>
-                            <field name="total_income" readonly="1"/>
+                            <field name="total_income" />
                         </group>
                         <group>
                             <field name="account_capital_index_id"/>
-                            <field name="total_capital_index" readonly="1"/>
+                            <field name="total_capital_index"/>
                             <field name="total_capital_index_bolivianos"/>
                             <field name="account_interest_base"/>
-                            <field name="total_interest_base" readonly="1"/>
+                            <field name="total_interest_base" />
                             <field name="total_interest_base_bolivianos"/>
                             <field name="account_res_social"/>
-                            <field name="total_res_social" readonly="1"/>
+                            <field name="total_res_social"/>
                             <field name="total_res_social_bolivianos"/>
                             <field name="account_percentage_mindef"/>
-                            <field name="total_percentage_mindef" readonly="1"/>
+                            <field name="total_percentage_mindef"/>
                             <field name="total_percentage_mindef_bolivianos"/>
                             <field name="account_surpluy_days" />
-                            <field name="total_surpluy_days" readonly="1"/>
+                            <field name="total_surpluy_days"/>
                             <field name="total_surpluy_days_bolivianos"/>
-                            <field name="amount_total" readonly="1"/>
+                            <field name="amount_total"/>
                             <field name="amount_total_bolivianos" />
                         </group>
                     </group>
-<!--                    <footer>-->
-<!--                        <button name="action_confirm" string="Confirmar" type="object" class="oe_highlight"/>-->
-<!--                        <button string="Cancel" class="oe_link" special="cancel"/>-->
-<!--                    </footer>-->
+                    <footer>
+                        <button name="action_confirm" string="Confirmar" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
                 </form>
             </field>
         </record>

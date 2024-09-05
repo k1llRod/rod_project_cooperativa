@@ -8,7 +8,7 @@ class WizardLoan(models.TransientModel):
     account_move_id = fields.Many2one('account.move', string='Asiento contable')
     name = fields.Char(string='ID aporte')
     date = fields.Date(string='Fecha', default=fields.Datetime.now())
-    period = fields.Char(string='Periodo', compute="compute_period_register")
+    period = fields.Char(string='Periodo')
     state = fields.Selection(
         [('draft', 'Borrador'), ('transfer', 'Transferencia bancaria'), ('ministry_defense', 'Ministerio de defensa'),
          ],
@@ -24,7 +24,7 @@ class WizardLoan(models.TransientModel):
     account_res_social = fields.Many2one('account.account', string='Fondo por Contingencia 0.04%')
     account_percentage_mindef = fields.Many2one('account.account', string='Porcentaje Min. Defensa')
     account_surpluy_days = fields.Many2one('account.account', string='Interes dias excedentes')
-    total_income = fields.Float(string='Total de ingresos', digits=(12, 2))
+    total_income = fields.Float(string='Total de ingresos', digits=(12, 2), store=True)
     # total_income_bolivianos = fields.Float(string='Total de ingresos en bolivianos')
     total_capital_index = fields.Float(string='Total cuenta de capital', digits=(12, 2))
     total_capital_index_bolivianos = fields.Float(string='Total cuenta de capital en bolivianos', digits=(12, 2))
@@ -50,7 +50,8 @@ class WizardLoan(models.TransientModel):
             record.amount_total_bolivianos = record.total_capital_index_bolivianos + record.total_interest_base_bolivianos + record.total_res_social_bolivianos + record.total_percentage_mindef_bolivianos + record.total_surpluy_days_bolivianos
 
 
-    @api.depends('date', 'state')
+
+    @api.onchange('date', 'state')
     def compute_period_register(self):
         for record in self:
             dollar = 6.96
@@ -86,3 +87,76 @@ class WizardLoan(models.TransientModel):
         for record in self:
             record.amount_total_bolivianos = record.total_capital_index_bolivianos + record.total_interest_base_bolivianos + record.total_res_social_bolivianos + record.total_percentage_mindef_bolivianos + record.total_surpluy_days_bolivianos
 
+
+    def action_confirm(self):
+        a = 1
+        move_line = []
+        reference = 'PREST. AMORTIZABLE CORRESP. ' + self.period
+        for record in self:
+            # reference = record.period
+            journal_id = record.account_journal_id
+            data = (0, 0, {
+                'account_id': record.account_income_id.id,
+                # 'name': record.name,
+                'debit': record.total_income if record.total_income > 0 else 0,
+                'credit': 0
+            })
+            if not (record.total_income == 0): move_line.append(data)
+            data = (0, 0, {
+                'account_id': record.account_capital_index_id.id,
+                'name': record.name,
+                'debit': 0,
+                'credit': record.total_capital_index_bolivianos,
+            })
+            if not (record.total_capital_index_bolivianos == 0): move_line.append(data)
+            data = (0, 0, {
+                'account_id': record.account_interest_base.id,
+                'name': record.name,
+                'debit': 0,
+                'credit': record.total_interest_base_bolivianos,
+            })
+            if not (record.total_interest_base_bolivianos == 0): move_line.append(data)
+            data = (0, 0, {
+                'account_id': record.account_res_social.id,
+                'name': record.name,
+                'debit': 0,
+                'credit': record.total_res_social_bolivianos,
+            })
+            if not (record.total_res_social_bolivianos == 0): move_line.append(data)
+            data = (0, 0, {
+                'account_id': record.account_percentage_mindef.id,
+                'name': record.name,
+                'debit': 0,
+                'credit': record.total_percentage_mindef_bolivianos,
+            })
+            if not (record.total_percentage_mindef_bolivianos == 0): move_line.append(data)
+            data = (0, 0, {
+                'account_id': record.account_surpluy_days.id,
+                'name': record.name,
+                'debit': 0,
+                'credit': record.total_surpluy_days_bolivianos,
+            })
+            if not (record.total_surpluy_days_bolivianos == 0): move_line.append(data)
+        move_vals = {
+            "date": record.payment_date,
+            "journal_id": journal_id.id,
+            "ref": reference,
+            # "company_id": payment.company_id.id,
+            # "name": "name test",
+            "state": "draft",
+            "line_ids": move_line,
+        }
+        account_move_id = record.env['account.move'].create(move_vals)
+        self.account_move_id.unlink()
+        search_payments = self.env['loan.payment'].search(
+            [('period', '=', record.period),
+             ('state', '=', 'ministry_defense')])
+        for payment in search_payments:
+            payment.write({'account_move_id': account_move_id.id})
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'account.move',
+            'view_mode': 'form',
+            'res_id': account_move_id.id,
+            'views': [(False, 'form')],
+        }

@@ -6,10 +6,11 @@ class AccountMove(models.Model):
     _inherit = 'account.move'
 
     # journal_id = fields.Many2one('account.journal', string='Diario', default=_get_default_journal)
-    payroll_payment_id = fields.Many2one('payroll.payments', string='Pago de planilla')
+    payroll_payment_id = fields.Many2one('payroll.payments', string='Pago de aporte')
     glosa = fields.Text(string='Glosa')
     literal_number = fields.Char(string='Amount literal', compute='_compute_literal_number')
     loan_application_id = fields.Many2one('loan.application', string='Solicitud de préstamo')
+    loan_payment_id = fields.Many2one('loan.payment', string='Cuota de prestamo')
     nro_cheque = fields.Char(string='Nro. de cheque')
     @api.model
     def _get_default_journal(self):
@@ -83,11 +84,11 @@ class AccountMove(models.Model):
         if self.journals_ids:
             self.journal_id = self.journals_ids
 
-    @api.model
-    def create(self, vals):
-        if 'journals_ids' in vals:
-            vals['journal_id'] = vals['journals_ids']
-        return super(AccountMove, self).create(vals)
+    # @api.model
+    # def create(self, vals):
+    #     if 'journals_ids' in vals:
+    #         vals['journal_id'] = vals['journals_ids']
+    #     return super(AccountMove, self).create(vals)
 
     # def action_post(self):
     #     res = super(AccountMove, self).action_post()

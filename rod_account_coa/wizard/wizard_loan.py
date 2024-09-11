@@ -58,7 +58,10 @@ class WizardLoan(models.TransientModel):
             record.period = record.date.strftime('%m') + '/' + record.date.strftime('%Y')
             if record.period:
                 loan_payment = self.env['loan.payment'].search([('period', '=', record.period), ('state', '=', record.state)])
-                record.total_income = round(sum(loan_payment.mapped('amount_returned_coa')), 2)
+                if record.state == 'ministry_defense':
+                    record.total_income = round(sum(loan_payment.mapped('amount_returned_coa')), 2)
+                if record.state == 'transfer':
+                    record.total_income = round(sum(loan_payment.mapped('amount_total_bs')), 2)
                 record.total_capital_index = round(sum(loan_payment.mapped('capital_index_initial')), 2)
                 record.total_interest_base = round(sum(loan_payment.mapped('interest_base')), 2)
                 record.total_res_social = round(

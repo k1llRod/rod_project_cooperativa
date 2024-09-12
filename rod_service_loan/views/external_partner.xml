@@ -1,0 +1,90 @@
+<odoo>
+    <data>
+        <!-- Vista Árbol de Modelo loan application -->
+        <record model="ir.ui.view" id="external_partner_tree_id">
+            <field name="name">external.partner.tree</field>
+            <field name="model">external.partner</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <header>
+<!--                        <button name="import_loan" string="Conciliar" class="oe_highlight" type="object" groups="rod_cooperativa.group_rod_cooperativa_administrator"/>-->
+<!--                        <button name="massive_approve_loan" string="Aprobacion masiva" type="object" groups="rod_cooperativa.group_rod_cooperativa_administrator"/>-->
+                    </header>
+                    <field name="name"/>
+                    <field name="paternal_surname" readonly="1"/>
+                    <field name="maternal_surname"/>
+                    <field name="name_contact"/>
+                    <field name="code_external_contact"/>
+                    <field name="ci"/>
+                    <field name="mobile"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista Formulario loan.application  -->
+
+        <record model="ir.ui.view" id="service_loan_form_id">
+            <field name="name">external.partner.form</field>
+            <field name="model">external.partner</field>
+            <field name="arch" type="xml">
+                <form string="Solicitud de prestamo de servicio" class="oe_left oe_edit_only oe_form_required" create="0">
+                    <header>
+<!--                        <button name="verification_pass" string="Aprobar" class="oe_highlight" type="object" attrs="{'invisible':[('state','!=','init')]}" groups="rod_cooperativa.group_rod_cooperativa_operator"/>-->
+<!--                        <button name="approval_state" string="Aprobar prestamo" class="oe_highlight" type="object" attrs="{'invisible': [('state','!=','verificate')]}" groups="rod_cooperativa.group_rod_cooperativa_administrator"/>-->
+<!--                        <button name="refinance" string="Refinanciar" type="object" attrs="{'invisible': [('state','!=','progress')]}" groups="rod_cooperativa.group_rod_cooperativa_administrator,rod_cooperativa.group_rod_cooperativa_operator"/>-->
+<!--                        <field name="state" widget="statusbar"/>-->
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" string="Nombre" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group string="Solicitante">
+                                <field name="name_contact" default_focus="1"/>
+                                <field name="paternal_surname" />
+                                <field name="maternal_surname" />
+                                <field name="code_external_contact"/>
+                                <field name="ci"/>
+                                <field name="mobile"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="external_partner_view_search" model="ir.ui.view">
+            <field name="name">external.partner.view.search</field>
+            <field name="model">external.partner</field>
+            <!--            <field name="inherit_id" ref="base.view_res_partner_filter"/>-->
+            <field name="arch" type="xml">
+                <search string="Buscar asociados">
+                    <field name="code_external_contact"/>
+                    <!--                    <field name="vat" string="C.I."/>-->
+<!--                    <field name="partner_id"/>-->
+                    <!--                    <filter name="quantity_capital_initial"-->
+                    <!--                            string="Capital inicial"-->
+                    <!--                            domain="[('capital_initial', '!=', 0)]"/>-->
+                    <separator />
+
+                </search>
+            </field>
+        </record>
+
+        <!-- Accion para visualizar loan.application -->
+
+        <record id="action_external_partner" model="ir.actions.act_window">
+            <field name="name">Solicitantes prestamo de servicio</field>
+            <field name="res_model">external.partner</field>
+            <field name="view_mode">tree,form,pivot</field>
+        </record>
+
+    </data>
+</odoo>

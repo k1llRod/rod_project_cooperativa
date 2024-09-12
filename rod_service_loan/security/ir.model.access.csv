@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_external_partner,external.partner,model_external_partner,base.group_user,1,1,1,1
+access_service_loan,service.loan,model_service_loan,base.group_user,1,1,1,1
+access_service_loan_payment,service.loan.payment,model_service_loan_payment,base.group_user,1,1,1,1

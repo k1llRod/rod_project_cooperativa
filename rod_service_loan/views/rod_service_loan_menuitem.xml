@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+      <!-- Top menu item -->
+      <menuitem name="Prestamos de servicio"
+                id="rod_service_loan.menu_root"
+                sequence="7"
+                web_icon="rod_service_loan,static/description/coaa.png" />
+
+      <menuitem id="rod_service_loan.rod_service_loan"
+                name="Prestamos de servicio"
+                parent="rod_service_loan.menu_root"
+                sequence="1"
+                action="action_service_loan"/>
+
+      <menuitem id="rod_service_loan.rod_loan_external_partner"
+                name="Solicitantes"
+                parent="rod_service_loan.menu_root"
+                sequence="2"
+                action="action_external_partner"/>
+  </data>
+</odoo>

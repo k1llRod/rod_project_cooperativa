@@ -5,11 +5,12 @@ from odoo.exceptions import ValidationError
 class ServiceLoan(models.Model):
     _name = 'service.loan'
     _description = 'Service Loan'
-    # _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Codigo prestamo de servicio')
     partner_id = fields.Many2one('res.partner', string='Socio', required=True)
-    external_partner_id = fields.Char(string='ID de socio externo')
+    external_partner_id = fields.Many2one('external.partner', string='Solicitante externo')
+    # external_partner_id = fields.Char(string='ID de socio externo')
     code_contact = fields.Char(string='Código de contacto')
     loan_date = fields.Date(string='Fecha de préstamo', required=True)
     loan_max_amount = fields.Float(string='Monto máximo de préstamo', required=True)
@@ -30,6 +31,10 @@ class ServiceLoan(models.Model):
         for record in self:
             record.total_paid = sum(record.payment_ids.mapped('amount'))
 
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].next_by_code('service.loan')
+        return super(ServiceLoan, self).create(vals)
     # @api.depends('payment_ids.interest')
     # def _compute_total_interest(self):
     #     for record in self:

@@ -23,16 +23,16 @@
 
         <!-- Vista Formulario loan.application  -->
 
-        <record model="ir.ui.view" id="service_loan_form_id">
+        <record model="ir.ui.view" id="external_partner_form_id">
             <field name="name">external.partner.form</field>
             <field name="model">external.partner</field>
             <field name="arch" type="xml">
                 <form string="Solicitud de prestamo de servicio" class="oe_left oe_edit_only oe_form_required" create="0">
                     <header>
-<!--                        <button name="verification_pass" string="Aprobar" class="oe_highlight" type="object" attrs="{'invisible':[('state','!=','init')]}" groups="rod_cooperativa.group_rod_cooperativa_operator"/>-->
+                        <button name="enable_loan" string="Habilitar prestamo" class="oe_highlight" type="object" />
 <!--                        <button name="approval_state" string="Aprobar prestamo" class="oe_highlight" type="object" attrs="{'invisible': [('state','!=','verificate')]}" groups="rod_cooperativa.group_rod_cooperativa_administrator"/>-->
 <!--                        <button name="refinance" string="Refinanciar" type="object" attrs="{'invisible': [('state','!=','progress')]}" groups="rod_cooperativa.group_rod_cooperativa_administrator,rod_cooperativa.group_rod_cooperativa_operator"/>-->
-<!--                        <field name="state" widget="statusbar"/>-->
+                        <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>
                         <div class="oe_title">

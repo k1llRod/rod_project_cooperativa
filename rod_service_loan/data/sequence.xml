@@ -1,0 +1,23 @@
+<odoo>
+    <data noupdate="1">
+
+        <record id="seq_external_partner" model="ir.sequence">
+            <field name="name">Secuencia socio externo</field>
+            <field name="code">external.partner</field>
+            <field name="prefix">EXT</field>
+            <field name="padding">3</field>
+        </record>
+        <record id="seq_service_loan" model="ir.sequence">
+            <field name="name">Secuencia de planilla prestamo servicio</field>
+            <field name="code">service.loan</field>
+            <field name="prefix">PSERV</field>
+            <field name="padding">4</field>
+        </record>
+        <record id="seq_" model="ir.sequence">
+            <field name="name">Secuencia de pagos prestamos de servicio</field>
+            <field name="code">service.loan.payment</field>
+            <field name="prefix">PAGSER</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>

@@ -30,6 +30,29 @@ class ExternalPartner(models.Model):
             if not partner.name_contact and not partner.paternal_surname and not partner.maternal_surname:
                 partner.name = ''
 
+    def enable_loan(self):
+        service_loan = self.env['service.loan'].create({
+            # 'partner_id': self.id,
+            'external_partner_id': self.id,
+            'code_contact': self.code_external_contact,
+            'loan_date': datetime.now(),
+            'loan_max_amount': 0,
+            'interest_rate': 0,
+            'state': 'draft',
+        })
+        return {
+            'name': _('Préstamo de servicio'),
+            'view_mode': 'form',
+            'res_id': service_loan.id,
+            'res_model': 'service.loan',
+            'type': 'ir.actions.act_window',
+            'target': 'current',
+        }
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].next_by_code('external.partner')
+        return super(ExternalPartner, self).create(vals)
+
 
     # @api.depends('loan_ids')
     # def _compute_total_loans(self):

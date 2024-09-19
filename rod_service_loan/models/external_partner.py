@@ -15,6 +15,10 @@ class ExternalPartner(models.Model):
     code_external_contact = fields.Char(string='Código', required=True)
     ci = fields.Char(string='C.I.', required=True)
     mobile = fields.Char(string='Movil')
+    state = fields.Selection([
+        ('Activo', 'Activo'),
+        ('Rechazado', 'Rechazado'),
+    ], string='Estado', default='active', required=True)
     # loan_ids = fields.One2many('service.loan', 'external_partner_id', string='Préstamos')
     # total_loans = fields.Integer(string='Total de préstamos', compute='_compute_total_loans', store=True)
 

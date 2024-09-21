@@ -11,6 +11,7 @@
                     <field name="payroll_payment_id" readonly="1"/>
                     <field name="loan_application_id" readonly="1"/>
                     <field name="loan_payment_id" readonly="1"/>
+                    <field name="finalized_loan_id" readonly="1"/>
                     <field name="nro_cheque"/>
                     <field name="literal_number"/>
                 </xpath>

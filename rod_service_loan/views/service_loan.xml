@@ -11,13 +11,18 @@
 <!--                        <button name="massive_approve_loan" string="Aprobacion masiva" type="object" groups="rod_cooperativa.group_rod_cooperativa_administrator"/>-->
                     </header>
                     <field name="name"/>
-                    <field name="partner_id" readonly="1"/>
-                    <field name="external_partner_id"/>
+                    <field name="partner_id" readonly="1" invisible="1"/>
+                    <field name="external_partner_id" readonly="1" invisible="1"/>
+                    <field name="name_partner"/>
+                    <field name="ci_partner"/>
+                    <field name="mobile_partner"/>
                     <field name="loan_date"/>
                     <field name="loan_max_amount"/>
-                    <field name="interest_rate"/>
+                    <field name="amount_consumed"/>
+                    <field name="state" decoration-warning="state == 'draft'" decoration-success="state == 'approved'" decoration-danger="state == 'paid'" widget="badge"/>
+<!--                    <field name="interest_rate"/>-->
 <!--                    <field name="payment_ids"/>-->
-                    <field name="total_paid" optional="hidden"/>
+<!--                    <field name="total_paid" optional="hidden"/>-->
 <!--                    <field name="total_interest" optional="hidden"/>-->
 <!--                    <field name="total_amount" decoration-info="state == 'draft'" decoration-success="state == 'progress'" widget="badge"/>-->
                 </tree>
@@ -32,7 +37,7 @@
             <field name="arch" type="xml">
                 <form string="Solicitud de prestamo de servicio" class="oe_left oe_edit_only oe_form_required" create="0">
                     <header>
-<!--                        <button name="verification_pass" string="Aprobar" class="oe_highlight" type="object" attrs="{'invisible':[('state','!=','init')]}" groups="rod_cooperativa.group_rod_cooperativa_operator"/>-->
+                        <button name="action_confirmation" string="Confirmar" class="oe_highlight" type="object" />
 <!--                        <button name="approval_state" string="Aprobar prestamo" class="oe_highlight" type="object" attrs="{'invisible': [('state','!=','verificate')]}" groups="rod_cooperativa.group_rod_cooperativa_administrator"/>-->
 <!--                        <button name="refinance" string="Refinanciar" type="object" attrs="{'invisible': [('state','!=','progress')]}" groups="rod_cooperativa.group_rod_cooperativa_administrator,rod_cooperativa.group_rod_cooperativa_operator"/>-->
                         <field name="state" widget="statusbar"/>
@@ -46,10 +51,13 @@
                         <group>
                             <group string="Prestamo de servicio">
                                 <field name="partner_id" readonly="1"/>
-                                <field name="external_partner_id" readonly="1"/>
+                                <field name="external_partner_id" readonly="1" invisible="1"/>
+                                <field name="name_partner"/>
+                                <field name="ci_partner"/>
+                                <field name="mobile_partner"/>
                                 <field name="loan_date" />
                                 <field name="loan_max_amount"/>
-<!--                                <field name="total_amount"/>-->
+                                <field name="amount_consumed"/>
                             </group>
                             <group string="Datos del prestamo">
                                 <field name="interest_rate"/>
@@ -57,7 +65,17 @@
                         </group>
                         <notebook>
                             <page string="Registro de pagos">
-                                <field name="payment_ids" />
+                                <field name="payment_ids" >
+                                    <tree editable="bottom">
+                                        <field name="name" readonly="1"/>
+                                        <field name="date"/>
+                                        <field name="detail"/>
+                                        <field name="amount" sum="Total"/>
+                                        <field name="state" decoration-info="state == 'draft'" decoration-success="state == 'paid'" widget="badge"/>
+                                        <button name="open_service_loan_payment" type="object" class="oe_highlight"
+                                                icon="fa-eye"/>
+                                    </tree>
+                                </field>
                             </page>
                         </notebook>
                     </sheet>
@@ -76,9 +94,12 @@
             <!--            <field name="inherit_id" ref="base.view_res_partner_filter"/>-->
             <field name="arch" type="xml">
                 <search string="Buscar asociados">
+                    <field name="name_partner"/>
                     <field name="code_contact"/>
-                    <!--                    <field name="vat" string="C.I."/>-->
-                    <field name="partner_id"/>
+                    <field name="ci_partner" string="C.I."/>
+
+
+
                     <!--                    <filter name="quantity_capital_initial"-->
                     <!--                            string="Capital inicial"-->
                     <!--                            domain="[('capital_initial', '!=', 0)]"/>-->

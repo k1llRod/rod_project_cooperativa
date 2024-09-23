@@ -8,6 +8,7 @@ class ExternalPartner(models.Model):
     _description = 'External Partner'
     _inherit=['mail.thread', 'mail.activity.mixin']
 
+    code_external_partner = fields.Char(string='Código', required=True)
     name = fields.Char(string='Nombre')
     name_contact = fields.Char(string='Nombres', require=True)
     paternal_surname = fields.Char(string='Apellido paterno')
@@ -16,9 +17,10 @@ class ExternalPartner(models.Model):
     ci = fields.Char(string='C.I.', required=True)
     mobile = fields.Char(string='Movil')
     state = fields.Selection([
-        ('Activo', 'Activo'),
+        ('draft', 'Borrador'),
+        ('active', 'Activo'),
         ('Rechazado', 'Rechazado'),
-    ], string='Estado', default='active', required=True)
+    ], string='Estado', default='draft')
     # loan_ids = fields.One2many('service.loan', 'external_partner_id', string='Préstamos')
     # total_loans = fields.Integer(string='Total de préstamos', compute='_compute_total_loans', store=True)
 
@@ -54,7 +56,7 @@ class ExternalPartner(models.Model):
         }
     @api.model
     def create(self, vals):
-        vals['name'] = self.env['ir.sequence'].next_by_code('external.partner')
+        vals['code_external_partner'] = self.env['ir.sequence'].next_by_code('external.partner')
         return super(ExternalPartner, self).create(vals)
 
 

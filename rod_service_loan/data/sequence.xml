@@ -13,10 +13,10 @@
             <field name="prefix">PSERV</field>
             <field name="padding">4</field>
         </record>
-        <record id="seq_" model="ir.sequence">
-            <field name="name">Secuencia de pagos prestamos de servicio</field>
+        <record id="seq_service_loan_payment" model="ir.sequence">
+            <field name="name">Secuencia de pagos prestamos de consumo</field>
             <field name="code">service.loan.payment</field>
-            <field name="prefix">PAGSER</field>
+            <field name="prefix">PAG</field>
             <field name="padding">4</field>
         </record>
     </data>

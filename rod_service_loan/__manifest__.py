@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','contacts'],
+    'depends': ['base','contacts','mail'],
 
     # always loaded
     'data': [
@@ -28,7 +28,9 @@
         'data/sequence.xml',
         'views/service_loan.xml',
         'views/external_partner.xml',
+        'views/service_loan_payment.xml',
         'views/rod_service_loan_menuitem.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -50,6 +50,8 @@ odoo.define('rod_dynamic_report.contact_report', function(require) {
           [this.wizard_id]
         ],
       }).then(function(datas) {
+        console.log('DATAS', datas)
+        console.log('FILTERS',datas['filters'])
         if (initial_render) {
           self.$('.filter_view_cr').html(QWeb.render('ContactFilterView', {  // Plantilla adaptada para contactos
             filter_data: datas['filters'],
@@ -64,7 +66,7 @@ odoo.define('rod_dynamic_report.contact_report', function(require) {
             filter: datas['filters'],
             contacts: datas['contacts'],
             report_lines: datas['report_lines'],
-            main_lines: datas['report_main_line']
+//            main_lines: datas['report_main_line']
           }));
       });
     },

@@ -1,0 +1,58 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="rod_consumer_loan.list">
+      <field name="name">rod_consumer_loan list</field>
+      <field name="model">rod_consumer_loan.rod_consumer_loan</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_consumer_loan">
+      <field name="name">rod_consumer_loan window</field>
+      <field name="res_model">rod_consumer_loan.rod_consumer_loan</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="rod_consumer_loan.action_server">
+      <field name="name">rod_consumer_loan server</field>
+      <field name="model_id" ref="model_rod_consumer_loan_rod_consumer_loan"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="rod_consumer_loan" id="rod_consumer_loan.menu_root"/>
+
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="rod_consumer_loan.menu_1" parent="rod_consumer_loan.menu_root"/>
+    <menuitem name="Menu 2" id="rod_consumer_loan.menu_2" parent="rod_consumer_loan.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="rod_consumer_loan.menu_1_list" parent="rod_consumer_loan.menu_1"
+              action="rod_consumer_loan.action_window"/>
+    <menuitem name="Server to list" id="rod_consumer_loan" parent="rod_consumer_loan.menu_2"
+              action="rod_consumer_loan.action_server"/>
+-->
+  </data>
+</odoo>

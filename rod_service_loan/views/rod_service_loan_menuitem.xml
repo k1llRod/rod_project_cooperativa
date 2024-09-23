@@ -5,7 +5,7 @@
       <menuitem name="Prestamos de servicio"
                 id="rod_service_loan.menu_root"
                 sequence="7"
-                web_icon="rod_service_loan,static/description/coaa.png" />
+                web_icon="rod_service_loan,static/description/rod_service_loan.png" />
 
       <menuitem id="rod_service_loan.rod_service_loan"
                 name="Prestamos de servicio"

@@ -39,7 +39,7 @@ class DynamicContactReport(models.Model):
                 'date_to': report_values.date_to,
             })
         filters = self.get_filter(option)
-        lines = self._get_report_values(data).get('CONTACT')
+        lines = self._get_report_values(data)
         sub_line = self.get_report_child_lines()
         return {
             'name': "Contacts Report",
@@ -75,13 +75,18 @@ class DynamicContactReport(models.Model):
             report_sub_lines.append(report_by_contact)
         return report_sub_lines
 
-    def get_filter(self, option):
-        # Implementar el método de filtros según tus necesidades para contactos
-        pass
-
     def _get_report_values(self, data):
+        report_sub_lines = []
+        query = '''
+            SELECT *
+            FROM res_partner
+            
+              '''
+        self._cr.execute(query)
+        report_by_order = self._cr.dictfetchall()
+        report_sub_lines.append(report_by_order)
+        return report_sub_lines
         # Implementar lógica para obtener valores del reporte según los datos y tipo de reporte
-        return {}
 
     def get_report_child_lines(self):
         # Implementar lógica para obtener líneas hijas del reporte

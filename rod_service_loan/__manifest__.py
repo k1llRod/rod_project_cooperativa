@@ -30,6 +30,7 @@
         'views/external_partner.xml',
         'views/service_loan_payment.xml',
         'views/rod_service_loan_menuitem.xml',
+        'views/res_config_settings.xml',
 
     ],
     # only loaded in demonstration mode

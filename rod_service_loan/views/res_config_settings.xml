@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="rod_service_loan_config_settings_view_form" model="ir.ui.view">
+        <field name="name">service.loan.config.settings</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Prestamos de consunmo" string="Cooperativa de ahorro y credito de vinculo laboral" >
+                    <h2>Valores para prestamos de consumo</h2>
+                    <div class="row mt16 o_settings_container" name="taxes_setting_container">
+                        <div class="col-12 col-lg-6 o_setting_box"
+                            id="default_sales_tax_setting"
+                            title="Valores para parametrizar prestamos de consumo.">
+                            <div class="o_setting_right_pane">
+                                <div class="content-group mt16">
+                                    <label string="Interes mensual%" for="interest_rate"/>
+                                    <div class="text-muted">
+                                        Establecer el porcentaje de interes mensual.
+                                    </div>
+                                    <div>
+                                        <field name="interest_rate" colspan="4" nolabel="1"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <div class="content-group mt16">
+                                    <label string="Monto maximo" for="loan_max_amount"/>
+                                    <div class="text-muted">
+                                        Establecer el porcentaje de fondo de contingencia.
+                                    </div>
+                                    <div>
+                                        <field name="loan_max_amount" colspan="4" nolabel="1"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="rod_service_loan_config_settings_menu" model="ir.actions.act_window">
+        <field name="name">Configuración de Prestamos de consumo</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="rod_service_loan_config_settings_view_form"/>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Agregar al menú de configuración general -->
+    <menuitem id="rod_service_loan.menu_service_loan_settings"
+              name="Configuracion"
+              parent="rod_service_loan.menu_root"
+              sequence="3"
+              action="rod_service_loan_config_settings_menu"/>
+</odoo>

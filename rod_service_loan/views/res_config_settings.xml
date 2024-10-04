@@ -27,7 +27,7 @@
                                 <div class="content-group mt16">
                                     <label string="Monto maximo" for="loan_max_amount"/>
                                     <div class="text-muted">
-                                        Establecer el porcentaje de fondo de contingencia.
+                                        Establecer Monto maximo de prestamo.
                                     </div>
                                     <div>
                                         <field name="loan_max_amount" colspan="4" nolabel="1"/>

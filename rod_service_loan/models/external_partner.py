@@ -16,6 +16,7 @@ class ExternalPartner(models.Model):
     code_external_contact = fields.Char(string='Código', required=True)
     ci = fields.Char(string='C.I.', required=True)
     mobile = fields.Char(string='Movil')
+
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('active', 'Activo'),
@@ -58,6 +59,15 @@ class ExternalPartner(models.Model):
     def create(self, vals):
         vals['code_external_partner'] = self.env['ir.sequence'].next_by_code('external.partner')
         return super(ExternalPartner, self).create(vals)
+
+    def _count_service_loan(self):
+        for record in self:
+            record.count_service_loan = 1
+
+    count_service_loan = fields.Integer(string='Préstamos', store=True, compute='_count_service_loan')
+    def button_count_service_loan(self):
+        for record in self:
+            record.count_service_loan = 1
 
 
     # @api.depends('loan_ids')

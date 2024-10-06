@@ -1,0 +1,589 @@
+[33mcommit eab17c72b1c8ab27fd3c485a837f6a71bed14497[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m, [m[1;31morigin/dev[m[33m)[m
+Author: Rodrigo Loza <kurt.gf@gmail.com>
+Date:   Mon Sep 23 07:54:11 2024 -0400
+
+    [FIX]rod_cooperativa,rod_cooperativa_aportes,account
+    
+    Arreglos en general
+
+[33mcommit 8361f7de568dde860be59f79625c11f82042c2a3[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Fri Sep 20 20:00:51 2024 -0400
+
+    [FIX]rod_cooperativa,rod_cooperativa_aportes,rod_account_coa
+    
+    Arreglos
+
+[33mcommit 301d570b6376641319bb072e72d207bd92caf428[m
+Author: Rodrigo Loza <kurt.gf@gmail.com>
+Date:   Wed Sep 18 22:58:57 2024 -0400
+
+    [FIX]rod_cooperativa
+    
+    Arreglos en liquidacion de prestamos
+
+[33mcommit dd29fc49cb97af0214e04557d7950251546d8fa8[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Wed Sep 18 21:48:10 2024 -0400
+
+    [FIX]rod_cooperativa, rod_service_loan
+    
+    Arreglos y complementos
+
+[33mcommit 19302ac54562717278e86fb93a861c62dccacb3f[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Mon Sep 16 13:15:33 2024 -0400
+
+    [FIX]rod_cooperativa
+    
+    Arreglo de condición de pago de cuota de préstamo
+
+[33mcommit 7dcc9ca8a39adba7ceba33ec8c82cf081f582978[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Sep 12 22:52:39 2024 -0400
+
+    [ADD]muk_web, rod_cooperativa_aportes
+    
+    Arreglos de dependencia, y arreglos de prestamos de servicios
+
+[33mcommit 22c110678f8c6a89f198cd7b40cf86b20d460716[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Sep 12 13:02:52 2024 -0400
+
+    [FIX]rod_cooperativa_aportes
+    
+    Arreglo de registro de correlativo
+
+[33mcommit 3e226cb516015d50976ffc1e026405fd040cf7f9[m
+Author: Rodrigo Loza <kurt.gf@gmail.com>
+Date:   Wed Sep 11 23:57:41 2024 -0400
+
+    [ADD]rod_service_loan
+
+[33mcommit 4933cc361833770b43a5fc85ed5851b08d12373a[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Wed Sep 11 09:15:18 2024 -0400
+
+    [FIX]carga de modulo whatsapp
+    
+    Generacion de asientos contables
+
+[33mcommit 9fdbe6449da9ef5d23efc97961542237e088102b[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Sep 5 10:31:23 2024 -0400
+
+    [FIX]arreglos contabilidad prestamos ingresos
+
+[33mcommit 1f907ccf10610599c87312d4e85cb3bff311bcbe[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Wed Sep 4 13:11:44 2024 -0400
+
+    [FIX]arreglo modulo de contabilidad COA
+
+[33mcommit 1d76152d5e8147279879be10dde83dfa2ddcf815[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Wed Sep 4 12:51:35 2024 -0400
+
+    [FIX]arreglos LAPTOP
+
+[33mcommit 37a5bc619f0e9a5a4e3d99a0e782c5eb61cc00f1[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Aug 29 15:20:02 2024 -0400
+
+    [FIX]cambios en los campos de devolucion
+
+[33mcommit fe48eb5cd9d3e5a72b92fb4a3ab64b780d479fe6[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Aug 29 15:01:44 2024 -0400
+
+    [FIX]arreglos egresos de prestamos
+
+[33mcommit d2c64504a6b0a4a60ae95626f6214f486df00817[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Mon Aug 26 11:46:01 2024 -0400
+
+    [FIX]arreglo del campo arma
+
+[33mcommit c1901fbf90355f50e52a27b140539d17e2c17576[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Mon Aug 26 09:10:22 2024 -0400
+
+    [FIX]arreglos en el campo arma
+
+[33mcommit b4f71da9dfbfe6434d9201fe8af8840430ccedcf[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Aug 22 13:48:27 2024 -0400
+
+    [FIX]arreglos LAPTOP verificar
+
+[33mcommit 85d341cc0672925c3e4e82786e8b7b803ce71a86[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Wed Aug 14 11:36:31 2024 -0400
+
+    [FIX]arreglos de estado
+
+[33mcommit f6bdde7ca6029ad1b7844423b5f9734c8be50431[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Wed Aug 14 11:24:23 2024 -0400
+
+    [FIX]arreglos de roles y actividades LAPTOP
+
+[33mcommit f5a15d254ea30c4972afb88eff1ab73e87e4be7a[m
+Author: Rodrigo Loza <kurt.gf@gmail.com>
+Date:   Wed Aug 14 02:05:46 2024 -0400
+
+    [FIX]arreglos
+
+[33mcommit 2c71b7e36000ced31d6b7049215d98fc977308da[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Tue Aug 13 16:01:50 2024 -0400
+
+    [FIX]arreglo cuota fija
+
+[33mcommit 775eb3821268536692243e65919f85759c900524[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Tue Aug 13 15:33:42 2024 -0400
+
+    [FIX]arreglos LAPTOP
+
+[33mcommit 7ad9355bd22a34cfd9677c95f8156bb2d7ac3a46[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Tue Aug 13 15:18:46 2024 -0400
+
+    [FIX]arreglos LAPTOP
+
+[33mcommit 4640d8648bc462b097b7161d7309a738e2fd3893[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Tue Aug 13 15:05:39 2024 -0400
+
+    [FIX]arreglo glosa LAPTOP
+
+[33mcommit 67b0cba920d6bc39d6015d67a520510e272b302a[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Tue Aug 13 14:59:02 2024 -0400
+
+    [FIX]arreglos LAPTOP
+
+[33mcommit 6ea9de3db2639a2505f3da8c7105d0f31af4848a[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Mon Aug 12 12:53:00 2024 -0400
+
+    [FIX]arreglos reportes balance sheet
+
+[33mcommit 7a87cb9dd32354a6a1372be7673be2bf1e7d7ce8[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Fri Aug 2 14:54:38 2024 -0400
+
+    [FIX]arreglos reportes LAPTOP
+
+[33mcommit 48c42442a476418755ed462b8529aa4d2dfac30b[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Fri Aug 2 12:40:39 2024 -0400
+
+    [FIX]arreglos y generacion de reporte LAPTOP
+
+[33mcommit 43bd747416c1a96218e217d9c30060387e54e9bc[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Aug 1 09:10:33 2024 -0400
+
+    [FIX]reporte comprobante de pago
+
+[33mcommit 8bb3cb0011423d12ae3ed96125a2b2fde747a7ba[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Wed Jul 31 13:38:45 2024 -0400
+
+    [FIX]arreglos prestamos LAPTOP
+
+[33mcommit e2053e3cce05bf5fff14c2c1da021efa197692af[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Fri Jul 26 10:16:53 2024 -0400
+
+    [FIX]arreglo de condecoraciones
+
+[33mcommit b676a560c25188df70063348478474af0ef01bd9[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Jul 25 12:37:12 2024 -0400
+
+    [FIX]arreglos LAPTOP
+
+[33mcommit ae5b733547186eb807c2dafbef925368902c3e06[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Jul 25 11:53:49 2024 -0400
+
+    [FIX]arreglo de generacion de asientos COAA
+
+[33mcommit 52287200ab5cd4aa888c01667dd9522a8d9bf39f[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Wed Jul 24 12:29:50 2024 -0400
+
+    [FIX]arreglos LAPTOP
+
+[33mcommit 3ef2021d10a86a3297d66158167ea18f35ca3a71[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Wed Jul 24 11:48:23 2024 -0400
+
+    [FIX]union de pagos para generacion de sientos contables LAPTOP
+
+[33mcommit 165c0ed90ffac0b0f5fd1357d138af5f487bda6a[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Wed Jul 24 09:59:17 2024 -0400
+
+    [FIX]arreglos de asientos contables LAPTOP
+
+[33mcommit 8df6fc9ad6a8c1e4fa941f65f516bc6b4f98d565[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Tue Jul 23 11:36:26 2024 -0400
+
+    [FIX]arreglo de wizard de aportes masivos
+
+[33mcommit c4d19ff61a1dcfd0b32520ba72f3ac7941eb7d2b[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Tue Jul 23 10:25:36 2024 -0400
+
+    [FIX]arreglos wizard de aportes account
+
+[33mcommit 5e3bae9e44945c5dbe017f4f41d31734810b34f0[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Fri Jul 19 12:23:12 2024 -0400
+
+    [FIX]arreglos LAPTOP
+    
+    Arreglo en capos literales
+
+[33mcommit be6540173b79597a628a9deebee207fa5e116722[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Fri Jul 19 08:49:13 2024 -0400
+
+    [FIX]arreglos LAPTOP
+
+[33mcommit b3f0797f126d907d7ee822353bdd055021a16ba1[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Fri Jul 12 10:02:32 2024 -0400
+
+    [FIX]rod_decoration_partners
+    
+    Arreglos y aumento de reportes
+
+[33mcommit 729d699a25a2abeb0e5faa9f1a643200ba9f26e8[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Fri Jul 12 09:32:08 2024 -0400
+
+    [FIX]rod_decoration_partners: arreglos
+
+[33mcommit 327a765b99a1da6a06729922c6c70d38d2736917[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Fri Jul 12 09:06:54 2024 -0400
+
+    [FIX]rod_decoration_partners arreglos
+
+[33mcommit e54cd41bd894ff8de43f601eae8839344f57eb14[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Jul 11 12:32:26 2024 -0400
+
+    [FIX]arreglos laptop condecorados
+
+[33mcommit 77108e9dca6f04585cb4cca0f9900146316a026c[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Jul 11 10:48:52 2024 -0400
+
+    [FIX]arreglos para asientos contables
+
+[33mcommit 7cb7821d744fd36e856757228a00de9f474844de[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Jul 11 09:25:33 2024 -0400
+
+    [FIX]arreglos fechas
+
+[33mcommit e76f0244906c0ea552ef3fcb889dbd111925533f[m
+Author: Rodrigo Loza <kurt.gf@gmail.com>
+Date:   Thu Jul 11 08:26:20 2024 -0400
+
+    [FIX]arreglos pc house
+
+[33mcommit e3df46683213c7ed03c5e7d5c6aaa710b03908fd[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Wed Jul 10 21:32:46 2024 -0400
+
+    [FIX]arreglos laptop
+
+[33mcommit c6be5b39bc2c6534d312b009fd1aaefd3b83e75a[m
+Author: Rodrigo Loza <kurt.gf@gmail.com>
+Date:   Wed Jul 10 01:21:05 2024 -0400
+
+    [FIX]arreglos cpu house
+
+[33mcommit a571a4d77b5cdb2ead7353d21e9059faef8ba5f6[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Tue Jul 9 15:31:16 2024 -0400
+
+    [FIX]add modulo de condecoraciones
+
+[33mcommit e7e7b779d85c1b9240a4a7063cadbbae64280a21[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Wed Jul 3 09:45:57 2024 -0400
+
+    [FIX]arreglos asientos contables
+
+[33mcommit 350fb8adf8dbaae521e597620bf17ba61c1b567e[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Wed Jul 3 09:24:31 2024 -0400
+
+    [FIX]arreglos asientos contables aportes
+
+[33mcommit 6631c710da4b8dba98595795378af6093d154712[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Wed Jul 3 09:04:16 2024 -0400
+
+    [FIX]arreglos asientos contables
+
+[33mcommit f2313a622607e6981790e22afbbf59b0b1461c18[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Tue Jul 2 22:36:57 2024 -0400
+
+    [FIX]rod_account_coa: arreglos
+
+[33mcommit f2b5b8612ebfba4828ad8c7e047e7f4dae2351e5[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Tue Jul 2 15:27:19 2024 -0400
+
+    [FIX]arreglos botones inteligentes
+
+[33mcommit 53b5c0646f38de9ff6d0cc467249dd644817bf0a[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Tue Jul 2 14:53:21 2024 -0400
+
+    [FIX]aumentos y arreglos en el asiento contable
+
+[33mcommit d852a10c0214403ad413c9f02f5ad81f5a6d6b96[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Mon Jul 1 10:43:00 2024 -0400
+
+    [FIX]rod_account_coa: arreglos
+
+[33mcommit 402e0961b9bbeb79941785a797c8fbe81f5513be[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Mon Jul 1 09:21:09 2024 -0400
+
+    [FIX]actualizacion de modulo de contabilidad COA
+
+[33mcommit 179ac97c7159ecf4b0c7b9464c0ff482398f6723[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Wed Jun 26 10:53:51 2024 -0400
+
+    [FIX]loan_count
+
+[33mcommit bce64e6236ad1be2c1ecaedb8af99770cc8c8cc3[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Wed Jun 26 10:50:36 2024 -0400
+
+    [FIX]agregar campo a vista tree prestamos
+
+[33mcommit 7606fc6716e859ba19e2c61a19cc003c9edbf696[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Fri Jun 14 11:39:48 2024 -0400
+
+    [FIX]add account_coa
+
+[33mcommit b1b30b438e72c1be4bc6005c27de9036cddd40fe[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Mon Jun 10 11:46:17 2024 -0400
+
+    [FIX]arreglo de reporte
+
+[33mcommit a51832bd71d97917783f265c8c7d139134df0175[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Mon Jun 10 11:19:32 2024 -0400
+
+    [FIX]arreglo de reporte, espacios y orden alfabetico
+
+[33mcommit 193d3813c1675692b7d4d5a493d6191b1b9bb66d[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Jun 6 15:56:06 2024 -0400
+
+    [FIX]contributions_count
+
+[33mcommit 39a79a53160662371ca58f37b9e6bf9863ccfc36[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Jun 6 15:50:16 2024 -0400
+
+    [FIX]arreglos reporte total
+
+[33mcommit 7c7c8e25fd5a7c6d65004af23297c046782be72a[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Jun 6 14:25:25 2024 -0400
+
+    [FIX]add contributions_count
+
+[33mcommit c463767470c99aba21b7d2ecc442ec10609c3d51[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Jun 6 14:13:09 2024 -0400
+
+    [FIX]add campo estado de asociado
+
+[33mcommit ce3d69b552712a87749b53532ad040a3ab544c21[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Tue May 28 11:06:41 2024 -0400
+
+    FIX
+
+[33mcommit 06d56c78e904fee3f1049b28e9dce75560d3e269[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Wed May 22 11:18:36 2024 -0400
+
+    [FIX]actualizacion de formulario de reportes
+
+[33mcommit 7659216ee8b1f7aab057d29ab476602447b3ca20[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Fri May 17 13:03:01 2024 -0400
+
+    [FIX]arreglo de reporte
+
+[33mcommit ae727ca09d3f2c9f0dff246a72e67318ba9bb2fc[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Fri May 17 12:48:34 2024 -0400
+
+    [FIX]arreglo de reporte extracto de aportes
+
+[33mcommit c5f118d0a8c46a07f49823ba1320e15869ff86c6[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu May 16 14:06:25 2024 -0400
+
+    [FIX]arreglos
+
+[33mcommit b4394b4c131880f988e3139c98a2af5f452ce413[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu May 16 14:01:34 2024 -0400
+
+    [FIX]acciones de estado
+
+[33mcommit 3a9d275c1c545a8d1fbd958b9417b2ac3edaf3ff[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu May 9 18:39:00 2024 -0400
+
+    [FIX]arreglo reportes
+
+[33mcommit c6367b187d93fe62fb7a664a8f29ec769825c5ae[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu May 9 16:09:59 2024 -0400
+
+    [FIX]arreglos
+
+[33mcommit 8061d32d8fb67a332e09aa79963a687a07f6b788[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu May 9 16:07:24 2024 -0400
+
+    [FIX]arreglos
+
+[33mcommit 16c8ad8f56b0f2631195befc24974966426f893f[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Mon May 6 10:16:48 2024 -0400
+
+    [FIX]arreglo de post mortem
+
+[33mcommit 516035cd154ae72e15e10f84f597bf27885f32f4[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Mon May 6 09:08:41 2024 -0400
+
+    [FIX]reporte post mortem
+
+[33mcommit 833552f4d8d6a071a8385029a237bae0d2fddab2[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Fri May 3 11:09:32 2024 -0400
+
+    [FIX]arreglo alcance post mortem
+
+[33mcommit bd3aa17e257800edecb11a4dfb2e30e797878b7e[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu May 2 11:11:22 2024 -0400
+
+    [FIX]arreglo formato de nota de pago
+
+[33mcommit 243d177e62f3cba2dccadb981ced07b3f2627317[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Tue Apr 30 14:44:24 2024 -0400
+
+    [FIX]arreglos solicitados
+
+[33mcommit a4f45db31cb54f817ee4a24bd75209d04842d966[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Tue Apr 30 00:47:07 2024 -0400
+
+    [FIX]arreglo de generacion de deudas
+
+[33mcommit 1ded29d0b05372518357c5fc9b7c417dfcbfccf2[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Tue Apr 30 00:38:27 2024 -0400
+
+    [FIX]arreglo de generacion de deudas
+
+[33mcommit 52c4f022b5c0eba64d16866160f26f63ad3ede35[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Mon Apr 29 16:10:43 2024 -0400
+
+    [FIX]Verificar
+
+[33mcommit 018b1a6b6dc517eeec4211ed4ea5d88803f08fbf[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Mon Apr 29 13:29:27 2024 -0400
+
+    [FIX]arreglo de sumatorias
+
+[33mcommit 012147b46ae5847f7036732a9320648503cb7b0b[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Mon Apr 29 12:59:27 2024 -0400
+
+    [FIX]arreglo reportes inscripcion
+
+[33mcommit b03d30dc46359dba25c569acf7b73d1af7fdd622[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Mon Apr 29 12:10:01 2024 -0400
+
+    [FIX]
+
+[33mcommit dc1c32e516d95fe998504cc397c6eb3238dd5f76[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Mon Apr 29 12:03:23 2024 -0400
+
+    [FIX]arreglo de reporte
+
+[33mcommit 329a7ca5cea3c480ad16edbcf7fd8969ee19c04b[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Apr 25 06:15:09 2024 -0400
+
+    [FIX]arreglo de bugs
+
+[33mcommit cfe623eebee7fc7436f6b27267b86ecbcd843df7[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Apr 25 05:33:13 2024 -0400
+
+    [FIX]arreglo bugs
+
+[33mcommit 511db36a430a3b4d24463e42d8a4381e839ecf65[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Apr 25 05:21:44 2024 -0400
+
+    [FIX]arreglo bugs reportes
+
+[33mcommit 763a5d55ca9730ac9d6e1df921bb1070b8af4c91[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Apr 25 04:41:54 2024 -0400
+
+    [FIX]install librerias
+
+[33mcommit a92d4cdf027708aadd8945a485241b17de883900[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Apr 25 04:36:33 2024 -0400
+
+    [FIX]librerias
+
+[33mcommit 1ca8db0768a7b71cd87d58d99e338c21becb71e5[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Thu Apr 25 04:34:16 2024 -0400
+
+    [FIX]Arreglo de reporte de deudas cat B
+
+[33mcommit a867656d687468bde96fea89108e7f2c9415ed75[m
+Author: Rodrigo <kurt.gf@gmail.com>
+Date:   Wed Apr 24 17:54:17 2024 -0400
+
+    [FIX]arreglo reportes

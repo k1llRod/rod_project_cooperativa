@@ -14,6 +14,7 @@
                     <field name="finalized_loan_id" readonly="1"/>
                     <field name="nro_cheque"/>
                     <field name="literal_number"/>
+                    <field name="value_dolar" readonly="1"/>
                 </xpath>
                 <xpath expr="//button[@name='action_post']" position="after">
                     <button name="wizard_payroll_all" string="Ingreso aportes" class="oe_highlight" type="object" attrs="{'invisible': [('state','!=','draft')]}"/>

@@ -19,7 +19,7 @@ class ServiceLoan(models.Model):
     loan_date = fields.Date(string='Fecha de préstamo', required=True)
     loan_max_amount = fields.Float(string='Monto máximo de préstamo', required=True, track_visibility='always')
     amount_consumed = fields.Float(string='Monto consumido', compute='_compute_amount_consumed', store=True, track_visibility='always')
-    interest_rate = fields.Float(string='Tasa de interés', required=True, track_visibility='always')
+    interest_rate = fields.Float(string='Tasa de interés', required=True, track_visibility='always', default=lambda self: self.env['ir.config_parameter'].sudo().get_param('service_loan.interest_rate'))
     payment_ids = fields.One2many('service.loan.payment', 'loan_id', string='Pagos', track_visibility='always')
     # total_paid = fields.Float(string='Total pagado', compute='_compute_total_paid', store=True, track_visibility='always')
     # total_interest = fields.Float(string='Total de intereses', compute='_compute_total_interest', store=True)

@@ -55,20 +55,26 @@ class ExternalPartner(models.Model):
             'type': 'ir.actions.act_window',
             'target': 'current',
         }
+    loan_service_ids = fields.One2many('service.loan', 'external_partner_id', string='Préstamos')
+    loan_count = fields.Integer(string='Préstamos',compute='compute_loan_count', store=True)
+
+    def compute_loan_count(self):
+        for record in self:
+            loans = len(record.env['service.loan'].search([('external_partner_id', '=', record.id)]))
+            record.loan_count = loans
+
     @api.model
     def create(self, vals):
         vals['code_external_partner'] = self.env['ir.sequence'].next_by_code('external.partner')
         return super(ExternalPartner, self).create(vals)
 
-    def _count_service_loan(self):
-        for record in self:
-            record.count_service_loan = 1
-
-    count_service_loan = fields.Integer(string='Préstamos', store=True, compute='_count_service_loan')
-    def button_count_service_loan(self):
-        for record in self:
-            record.count_service_loan = 1
-
+    def action_view_loans(self):
+        self.ensure_one()
+        action = self.env["ir.actions.actions"]._for_xml_id("rod_service_loan.action_service_loan")
+        action['domain'] = [
+            ('external_partner_id.id', '=', self.id),
+        ]
+        return action
 
     # @api.depends('loan_ids')
     # def _compute_total_loans(self):

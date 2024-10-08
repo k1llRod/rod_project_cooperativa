@@ -10,7 +10,12 @@
                                 <center><img t-att-src="'/rod_account_coa/static/src/img/coaa.png'" style="width:150px;"/></center>
                             </td>
                             <td style="width:60%;padding:0;"><center>COOPERATIVA DE AHORRO Y CREDITO DE VINCULO LABORAL</center></td>
-                            <td style="width:20%;padding:0;" rowspan="7"><center><span t-field="o.name" style="color:red;font-weight:bold;"/></center></td>
+                            <td style="width:20%;padding:0;" rowspan="7">
+                                <ul style="list-style:none;">
+                                    <li><center><span t-field="o.name" style="color:red;font-weight:bold;"/></center></li>
+                                    <li><center>Tipo de cambio: <span t-field="o.value_dolar"/></center></li>
+                                </ul>
+                            </td>
                         </tr>
                         <tr>
 

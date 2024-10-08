@@ -13,6 +13,7 @@ class AccountMove(models.Model):
     loan_payment_id = fields.Many2one('loan.payment', string='Cuota de prestamo')
     finalized_loan_id = fields.Many2one('finalized.loan', string='Liquidacion de prestamo')
     nro_cheque = fields.Char(string='Nro. de cheque')
+
     @api.model
     def _get_default_journal(self):
         ''' Get the default journal.
@@ -85,16 +86,6 @@ class AccountMove(models.Model):
         if self.journals_ids:
             self.journal_id = self.journals_ids
 
-    # @api.model
-    # def create(self, vals):
-    #     if 'journals_ids' in vals:
-    #         vals['journal_id'] = vals['journals_ids']
-    #     return super(AccountMove, self).create(vals)
-
-    # def action_post(self):
-    #     res = super(AccountMove, self).action_post()
-    #     a = 1
-    #     return res
 
     def print_account_move(self):
         a = 1
@@ -119,3 +110,11 @@ class AccountMove(models.Model):
         ''')
         res = self.env.cr.fetchall()
         return res
+
+    def _compute_value_dolar(self):
+        dollar = self.env['res.currency'].search([('name', '=', 'USD')], limit=1)
+        return round(dollar.inverse_rate, 2)
+
+    value_dolar = fields.Float(string='Tipo de cambio',default=_compute_value_dolar)
+
+

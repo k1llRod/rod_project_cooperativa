@@ -10,7 +10,7 @@
         <record id="seq_service_loan" model="ir.sequence">
             <field name="name">Secuencia de planilla prestamo servicio</field>
             <field name="code">service.loan</field>
-            <field name="prefix">PSERV</field>
+            <field name="prefix">PCONS</field>
             <field name="padding">4</field>
         </record>
         <record id="seq_service_loan_payment" model="ir.sequence">

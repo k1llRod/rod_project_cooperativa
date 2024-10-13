@@ -42,12 +42,12 @@
         </field>
     </record>
 
-    <record id="rod_service_loan_config_settings_menu" model="ir.actions.act_window">
+    <record id="rod_service_loan.action_service_loan_config" model="ir.actions.act_window">
         <field name="name">Configuración de Prestamos de consumo</field>
+        <field name="type">ir.actions.act_window</field>
         <field name="res_model">res.config.settings</field>
         <field name="view_mode">form</field>
-        <field name="view_id" ref="rod_service_loan_config_settings_view_form"/>
-        <field name="target">current</field>
+        <field name="target">inline</field>
     </record>
 
     <!-- Agregar al menú de configuración general -->
@@ -55,5 +55,5 @@
               name="Configuracion"
               parent="rod_service_loan.menu_root"
               sequence="3"
-              action="rod_service_loan_config_settings_menu"/>
+              action="action_service_loan_config"/>
 </odoo>

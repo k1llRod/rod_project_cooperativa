@@ -43,8 +43,8 @@ class ExternalPartner(models.Model):
             'external_partner_id': self.id,
             'code_contact': self.code_external_contact,
             'loan_date': datetime.now(),
-            'loan_max_amount': 0,
-            'interest_rate': 0,
+            'loan_max_amount': self.env['ir.config_parameter'].sudo().get_param('rod_service_loan.loan_max_amount'),
+            'interest_rate': self.env['ir.config_parameter'].sudo().get_param('rod_service_loan.interest_rate'),
             'state': 'draft',
         })
         return {
@@ -58,6 +58,7 @@ class ExternalPartner(models.Model):
     loan_service_ids = fields.One2many('service.loan', 'external_partner_id', string='Préstamos')
     loan_count = fields.Integer(string='Préstamos',compute='compute_loan_count', store=True)
 
+    @api.depends('loan_service_ids')
     def compute_loan_count(self):
         for record in self:
             loans = len(record.env['service.loan'].search([('external_partner_id', '=', record.id)]))

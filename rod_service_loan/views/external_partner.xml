@@ -62,7 +62,7 @@
                             </group>
                         </group>
                         <notebook>
-                            <page string>
+                            <page string="Prestamos de consumo">
                                 <field name="loan_service_ids"/>
                             </page>
                         </notebook>

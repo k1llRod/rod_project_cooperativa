@@ -64,7 +64,7 @@
                             </group>
                         </group>
                         <notebook>
-                            <page string="Registro de pagos">
+                            <page string="Registro de consumo">
                                 <field name="payment_ids" >
                                     <tree editable="bottom">
                                         <field name="name" readonly="1"/>

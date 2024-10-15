@@ -40,6 +40,7 @@ class ServiceLoan(models.Model):
         ('approved', 'Aprobado'),
         ('paid', 'Pagado'),
         ('cancel', 'Cancelado'),
+        ('rejected','Rechazado'),
     ], string='Estado', default='draft', required=True, track_visibility='always')
 
     @api.depends('payment_ids')
@@ -125,4 +126,12 @@ class ServiceLoan(models.Model):
 
     def action_draft(self):
         self.state = 'draft'
+        return True
+
+    def action_paid(self):
+        self.state = 'paid'
+        return True
+
+    def action_rejected(self ):
+        self.state = 'rejected'
         return True

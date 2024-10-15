@@ -20,6 +20,12 @@
                     <field name="loan_max_amount"/>
                     <field name="amount_consumed"/>
                     <field name="state" decoration-warning="state == 'draft'" decoration-success="state == 'approved'" decoration-danger="state == 'paid'" widget="badge"/>
+                    <button name="action_paid" type="object" class="oe_highlight" icon="fa-credit-card-alt"/>
+                    <button name="action_rejected"
+                            type="object"
+                            class="oe_highlight"
+                            icon="fa-window-close"
+                            confirm="Desea rechazar el prestamo?."/>
 <!--                    <field name="interest_rate"/>-->
 <!--                    <field name="payment_ids"/>-->
 <!--                    <field name="total_paid" optional="hidden"/>-->
@@ -39,7 +45,7 @@
                     <header>
                         <button name="action_confirmation" string="Confirmar" class="oe_highlight" type="object" />
                         <button name="action_draft" string="Borrador" class="oe_highlight" type="object" />
-<!--                        <button name="refinance" string="Refinanciar" type="object" attrs="{'invisible': [('state','!=','progress')]}" groups="rod_cooperativa.group_rod_cooperativa_administrator,rod_cooperativa.group_rod_cooperativa_operator"/>-->
+                        <button name="action_rejected" string="Rechazar" type="object" confirm="Desea rechazar el prestamo?."/>
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>

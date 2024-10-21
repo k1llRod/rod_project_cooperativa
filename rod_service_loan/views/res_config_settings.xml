@@ -51,9 +51,9 @@
     </record>
 
     <!-- Agregar al menú de configuración general -->
-    <menuitem id="rod_service_loan.menu_service_loan_settings"
-              name="Configuracion"
-              parent="rod_service_loan.menu_root"
-              sequence="3"
-              action="action_service_loan_config"/>
+<!--    <menuitem id="rod_service_loan.menu_service_loan_settings"-->
+<!--              name="Configuracion"-->
+<!--              parent="rod_service_loan.menu_root"-->
+<!--              sequence="3"-->
+<!--              action="action_service_loan_config"/>-->
 </odoo>

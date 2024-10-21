@@ -1,4 +1,10 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_wizard_payroll,wizard.payroll,model_wizard_payroll,rod_cooperativa_aportes.group_rod_cooperativa_aportes_administrator,1,1,1,1
-access_wizard_loan,wizard.loan,model_wizard_loan,rod_cooperativa_aportes.group_rod_cooperativa_aportes_administrator,1,1,1,1
-access_wizard_account_report,wizard.account.report,model_wizard_account_report,rod_cooperativa_aportes.group_rod_cooperativa_aportes_administrator,1,1,1,1
+access_wizard_payroll_administrator,wizard.payroll,model_wizard_payroll,rod_account_coa.group_rod_account_coa_administrator,1,1,1,1
+access_wizard_payroll_user,wizard.payroll,model_wizard_payroll,rod_account_coa.group_rod_account_coa_user,1,1,0,0
+
+access_wizard_loan_administrator,wizard.loan,model_wizard_loan,rod_account_coa.group_rod_account_coa_administrator,1,1,1,1
+access_wizard_loan_user,wizard.loan,model_wizard_loan,rod_account_coa.group_rod_account_coa_user,1,1,0,0
+
+access_wizard_account_report_administrator,wizard.account.report,model_wizard_account_report,rod_account_coa.group_rod_account_coa_administrator,1,1,1,1
+access_wizard_account_report_user,wizard.account.report,model_wizard_account_report,rod_account_coa.group_rod_account_coa_user,1,1,0,0
+

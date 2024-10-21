@@ -1,3 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_loan_application_emergency,loan.application.emergency,model_loan_application_emergency,base.group_user,1,1,1,1
-access_loan_payment_emergency,loan.payment.emergency,model_loan_payment_emergency,base.group_user,1,1,1,1
+access_loan_application_emergency_administrator,loan.application.emergency,model_loan_application_emergency,rod_loan_emergency.group_rod_loan_emergency_administrator,1,1,1,1
+access_loan_application_emergency_user,loan.application.emergency,model_loan_application_emergency,rod_loan_emergency.group_rod_loan_emergency_user,1,1,0,0
+
+access_loan_payment_emergency_administrator,loan.payment.emergency,model_loan_payment_emergency,rod_loan_emergency.group_rod_loan_emergency_administrator,1,1,1,1
+access_loan_payment_emergency_user,loan.payment.emergency,model_loan_payment_emergency,rod_loan_emergency.group_rod_loan_emergency_user,1,1,0,0

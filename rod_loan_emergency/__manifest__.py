@@ -25,6 +25,7 @@
     # always loaded
     'data': [
         'data/sequence.xml',
+        'security/security.xml',
         'security/ir.model.access.csv',
         'views/loan_application_emergency.xml',
         'views/loan_payment_emergency.xml',

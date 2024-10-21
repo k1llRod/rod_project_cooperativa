@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.module.category" id="module_rod_loan_emergency">
+        <field name="name">Prestamos de emergencia</field>
+        <field name="description">Rol de usuarios para Prestamos de emergencia</field>
+        <field name="sequence">62</field>
+    </record>
+    <record id="group_rod_loan_emergency_user" model="res.groups">
+        <field name="name">Usuario</field>
+        <field name="category_id" ref="module_rod_loan_emergency"/>
+    </record>
+    <record id="group_rod_loan_emergency_administrator" model="res.groups">
+        <field name="name">Administrador</field>
+        <field name="category_id" ref="module_rod_loan_emergency"/>
+        <field name="implied_ids" eval="[(4, ref('rod_loan_emergency.group_rod_loan_emergency_user'))]"/>
+    </record>
+<!--    <record id="group_rod_cooperativa_administrator" model="res.groups">-->
+<!--        <field name="name">Administrador</field>-->
+<!--        <field name="category_id" ref="module_rod_cooperativa"/>-->
+<!--        <field name="implied_ids"-->
+<!--               eval="[(4, ref('rod_cooperativa.group_rod_cooperativa_user')),(4, ref('rod_cooperativa.group_rod_cooperativa_operator'))]"/>-->
+<!--    </record>-->
+</odoo>

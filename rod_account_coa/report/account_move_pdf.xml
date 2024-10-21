@@ -142,6 +142,11 @@
                                                     <li>
                                                         <span t-field="p.partner_id.name"/>
                                                     </li>
+                                                    <li>
+                                                        <t if="p.name != ''">
+                                                             <span t-field="p.name"/>
+                                                        </t>
+                                                    </li>
                                                 </ul>
 
                                             </td>

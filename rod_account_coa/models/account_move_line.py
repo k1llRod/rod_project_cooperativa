@@ -15,6 +15,9 @@ class AccountMoveLine(models.Model):
     @api.onchange('partner_id')
     def _onchange_partner_id(self):
         for record in self:
-            label_name = record.partner_id.bank_ids.bank_name if record.partner_id.bank_ids else False
-            label_number = record.partner_id.bank_ids.acc_number if record.partner_id.bank_ids else False
-            record.name = label_name + ' - ' + label_number if label_name and label_number else False
+            if record.move_id.journal_id.default_account_id == record.account_id:
+                record.name = record.move_id.journal_bank_account_id
+            else:
+                label_name = record.partner_id.bank_ids.bank_name if record.partner_id.bank_ids else False
+                label_number = record.partner_id.bank_ids.acc_number if record.partner_id.bank_ids else False
+                record.name = label_number + ' - ' + label_name if label_name and label_number else False

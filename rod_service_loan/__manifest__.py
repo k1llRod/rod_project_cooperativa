@@ -20,13 +20,14 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','contacts','mail'],
+    'depends': ['base','contacts','mail','sale'],
 
     # always loaded
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
         'data/sequence.xml',
+        'views/res_partner.xml',
         'views/service_loan.xml',
         'views/external_partner.xml',
         'views/service_loan_payment.xml',

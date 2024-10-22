@@ -7,7 +7,8 @@ class AccountPayment(models.Model):
     # def action_post(self):
     #     res = super(AccountPayment, self).action_post()
     #     for line in self.move_id.line_ids:
-    #         line.name = "Ingreso a la cuenta " + self.journal_id.bank_acc_number
+    #         if line.account_id.id == line.journal_id.default_debit_account_id.id:
+    #             line.name = line.journal_id.bank_account_id
     #     return res
 
 

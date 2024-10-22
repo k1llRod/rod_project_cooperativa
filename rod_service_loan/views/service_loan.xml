@@ -122,13 +122,10 @@
                     <field name="name_partner"/>
                     <field name="code_contact"/>
                     <field name="ci_partner" string="C.I."/>
-
-
-
-                    <!--                    <filter name="quantity_capital_initial"-->
-                    <!--                            string="Capital inicial"-->
-                    <!--                            domain="[('capital_initial', '!=', 0)]"/>-->
                     <separator />
+                    <filter name="state_approved"
+                            string="Aprobados"
+                            domain="[('state', '=', 'approved')]"/>
 
                 </search>
             </field>
@@ -140,6 +137,7 @@
             <field name="name">Solicitud de préstamos de servicio</field>
             <field name="res_model">service.loan</field>
             <field name="view_mode">tree,form,pivot</field>
+            <field name="context">{'search_default_state_approved': 1}</field>
         </record>
 
     </data>

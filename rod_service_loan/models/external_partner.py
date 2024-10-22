@@ -77,6 +77,12 @@ class ExternalPartner(models.Model):
         ]
         return action
 
+    def action_state_active(self):
+        self.write({'state': 'active'})
+
+    def action_state_rechazado(self):
+        self.write({'state': 'Rechazado'})
+
     # @api.depends('loan_ids')
     # def _compute_total_loans(self):
     #     for record in self:

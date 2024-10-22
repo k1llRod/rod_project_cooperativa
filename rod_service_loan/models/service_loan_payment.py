@@ -44,3 +44,8 @@ class ServiceLoanPayment(models.Model):
             'type': 'ir.actions.act_window',
             'target': 'current',
         }
+
+    @api.onchange('amount')
+    def _onchange_amount(self):
+        if self.amount < 0:
+            raise ValidationError(_('El monto no puede ser negativo'))

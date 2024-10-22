@@ -13,7 +13,7 @@ class AccountMove(models.Model):
     loan_payment_id = fields.Many2one('loan.payment', string='Cuota de prestamo')
     finalized_loan_id = fields.Many2one('finalized.loan', string='Liquidacion de prestamo')
     nro_cheque = fields.Char(string='Nro. de cheque')
-
+    journal_bank_account_id = fields.Char(string='Cuenta bancaria', related='journal_id.bank_account_id.display_name')
     @api.model
     def _get_default_journal(self):
         ''' Get the default journal.
@@ -116,5 +116,12 @@ class AccountMove(models.Model):
         return round(dollar.inverse_rate, 2)
 
     value_dolar = fields.Float(string='Tipo de cambio',default=_compute_value_dolar)
+
+    # def action_post(self):
+    #     res = super(AccountMove, self).action_post()
+    #     for line in self.line_ids:
+    #         if line.account_id.id == line.journal_id.default_debit_account_id.id:
+    #             line.name = line.journal_id.bank_account_id
+    #     return res
 
 

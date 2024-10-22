@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="res_partner_form_inh_service_loan">
+            <field name="name">res.partner.form.inh.service.loan</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="rod_cooperativa.res_partner_form_inh"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="init_loan" string="Iniciar prestamo de consumo" type="object"
+                            attrs="{'invisible': ['|',('state', '!=', 'activate'),('loan_count','>','0')]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

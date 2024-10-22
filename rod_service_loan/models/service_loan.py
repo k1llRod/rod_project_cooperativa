@@ -135,3 +135,11 @@ class ServiceLoan(models.Model):
     def action_rejected(self ):
         self.state = 'rejected'
         return True
+
+    @api.onchange('payment_ids')
+    def _onchange_payment_ids(self):
+        sum = 0
+        for record in self.payment_ids:
+            sum += record.amount
+            if sum > self.loan_max_amount:
+                raise ValidationError(_('El monto excede el monto máximo del préstamo'))

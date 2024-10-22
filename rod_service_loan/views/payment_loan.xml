@@ -57,26 +57,26 @@
             </field>
         </record>
 
-        <record id="service_loan_view_search" model="ir.ui.view">
-            <field name="name">service.loan.view.search</field>
-            <field name="model">service.loan</field>
-            <!--            <field name="inherit_id" ref="base.view_res_partner_filter"/>-->
-            <field name="arch" type="xml">
-                <search string="Buscar asociados">
-                    <field name="name_partner"/>
-                    <field name="code_contact"/>
-                    <field name="ci_partner" string="C.I."/>
+<!--        <record id="service_loan_view_search" model="ir.ui.view">-->
+<!--            <field name="name">service.loan.view.search</field>-->
+<!--            <field name="model">service.loan</field>-->
+<!--            &lt;!&ndash;            <field name="inherit_id" ref="base.view_res_partner_filter"/>&ndash;&gt;-->
+<!--            <field name="arch" type="xml">-->
+<!--                <search string="Buscar asociados">-->
+<!--                    <field name="name_partner"/>-->
+<!--                    <field name="code_contact"/>-->
+<!--                    <field name="ci_partner" string="C.I."/>-->
 
 
 
-                    <!--                    <filter name="quantity_capital_initial"-->
-                    <!--                            string="Capital inicial"-->
-                    <!--                            domain="[('capital_initial', '!=', 0)]"/>-->
-                    <separator />
+<!--                    &lt;!&ndash;                    <filter name="quantity_capital_initial"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            string="Capital inicial"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            domain="[('capital_initial', '!=', 0)]"/>&ndash;&gt;-->
+<!--                    <separator />-->
 
-                </search>
-            </field>
-        </record>
+<!--                </search>-->
+<!--            </field>-->
+<!--        </record>-->
 
         <!-- Accion para visualizar loan.application -->
 

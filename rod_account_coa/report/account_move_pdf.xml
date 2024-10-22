@@ -52,33 +52,33 @@
                 <div class="row">
                     <table class="table table-bordered" style="width:100%;">
                         <tr>
-                            <td rowspan="4" style="width:20%;"></td>
-                            <td rowspan="4" style="width:20%;"></td>
-                            <td rowspan="4" style="width:20%;"></td>
-                            <td style="width:20%;">
+                            <td rowspan="4" style="width:20%;border-color:gray;"></td>
+                            <td rowspan="4" style="width:20%;border-color:gray;"></td>
+                            <td rowspan="4" style="width:20%;border-color:gray;"></td>
+                            <td style="width:20%;border-color:gray;">
                                 Firma:
                             </td>
                         </tr>
                         <tr>
-                            <td rowspan="2" style="height:60px;">Nombre y Apellido:</td>
+                            <td rowspan="2" style="height:60px;border-color:gray;">Nombre y Apellido:</td>
                         </tr>
                         <tr>
 
                         </tr>
                         <tr>
-                            <td>C.I.:</td>
+                            <td style="border-color:gray;">C.I.:</td>
                         </tr>
                         <tr>
-                            <th>
+                            <th style="border-color:gray;">
                                 <center>OPERADOR</center>
                             </th>
-                            <th>
+                            <th style="border-color:gray;">
                                 <center>GERENTE GENERAL</center>
                             </th>
-                            <th>
+                            <th style="border-color:gray;">
                                 <center>PRESIDENTE</center>
                             </th>
-                            <th>
+                            <th style="border-color:gray;">
                                 <center>INTERESADO</center>
                             </th>
                         </tr>
@@ -107,22 +107,22 @@
                                 </ul>
                             </div>
                             <div>
-                                <table class="table table-striped" style="width:100%;">
+                                <table class="table table-bordered" style="width:100%;">
                                     <thead>
                                         <tr style="text-align:center;">
-                                            <th>
+                                            <th style="border-color:gray;">
                                                 <strong>CODIGO</strong>
                                             </th>
-                                            <th>
+                                            <th style="border-color:gray;">
                                                 <strong>DETALLE</strong>
                                             </th>
-                                            <th>
+                                            <th style="border-color:gray;">
                                                 <strong>PARCIAL</strong>
                                             </th>
-                                            <th>
+                                            <th style="border-color:gray;">
                                                 <strong>DEBE</strong>
                                             </th>
-                                            <th>
+                                            <th style="border-color:gray;">
                                                 <strong>HABER</strong>
                                             </th>
                                         </tr>
@@ -131,10 +131,10 @@
                                     <t t-foreach="o.line_ids" t-as="p">
                                         <t t-set="total_parcial" t-value="0"/>
                                         <tr style="font-size:12px;">
-                                            <td style="text-align:center;">
+                                            <td style="text-align:center;border-color:gray;">
                                                 <span t-field="p.account_id.code"/>
                                             </td>
-                                            <td>
+                                            <td style="border-color:gray;">
                                                 <ul style="list-style:none;">
                                                     <li>
                                                         <span t-field="p.account_id.name"/>
@@ -150,33 +150,33 @@
                                                 </ul>
 
                                             </td>
-                                            <td style="text-align:center;">
+                                            <td style="text-align:center;border-color:gray;">
                                                 <span t-field="p.parcial"/>
                                             </td>
-                                            <td style="text-align:center;">
+                                            <td style="text-align:center;border-color:gray;">
                                                 <span t-field="p.debit"/>
                                             </td>
-                                            <td style="text-align:center;">
+                                            <td style="text-align:center;border-color:gray;">
                                                 <span t-field="p.credit"/>
                                             </td>
                                         </tr>
 
                                     </t>
                                     <tr style="font-size:12px;">
-                                        <td>
+                                        <td style="border-color:gray;">
 
                                         </td>
-                                        <td style="text-align:right;font-weight:bold;">
+                                        <td style="text-align:right;font-weight:bold;border-color:gray;">
                                             TOTALES
                                         </td>
-                                        <td style="text-align:center;">
+                                        <td style="text-align:center;border-color:gray;">
                                             <t t-set="total_parcial" t-value="total_parcial + p.parcial"/>
                                             <t t-esc="total_parcial"/>
                                         </td>
-                                        <td style="text-align:center;">
+                                        <td style="text-align:center;border-color:gray;">
                                             <span t-field="o.amount_total"/>
                                         </td>
-                                        <td style="text-align:center;">
+                                        <td style="text-align:center;border-color:gray;">
                                             <span t-field="o.amount_total"/>
                                         </td>
                                     </tr>
@@ -191,16 +191,16 @@
                                 </p>
                             </div>
                             <div>
-                                <table class="table" style="width:100%;" >
+                                <table class="table table-bordered" style="width:100%;" >
                                     <tr>
-                                        <th>LA SUMA DE:</th>
-                                        <td>
+                                        <th style="border-color:gray;">LA SUMA DE:</th>
+                                        <td style="border-color:gray;">
                                             <span t-esc="o.literal_number"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>NUMERO DE CHEQUE:</th>
-                                        <td><span t-esc="o.nro_cheque"/></td>
+                                        <th style="border-color:gray;">NUMERO DE CHEQUE:</th>
+                                        <td style="border-color:gray;"><span t-esc="o.nro_cheque"/></td>
                                     </tr>
                                 </table>
                             </div>

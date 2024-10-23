@@ -8,6 +8,7 @@ class ExternalPartner(models.Model):
     _description = 'External Partner'
     _inherit=['mail.thread', 'mail.activity.mixin']
 
+    partner_id = fields.Many2one('res.partner', string='Socio')
     code_external_partner = fields.Char(string='Código', required=True)
     name = fields.Char(string='Nombre')
     name_contact = fields.Char(string='Nombres', require=True)

@@ -53,6 +53,7 @@
                         </div>
                         <group>
                             <group string="Solicitante">
+                                <field name="partner_id"/>
                                 <field name="name_contact" default_focus="1"/>
                                 <field name="paternal_surname" />
                                 <field name="maternal_surname" />

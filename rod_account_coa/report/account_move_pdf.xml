@@ -102,27 +102,27 @@
                                     </li>
                                     <li>
                                         CONCEPTO:
-                                        <span t-field="o.ref"/>
+                                        <span t-field="o.ref" /> <span t-field="o.journal_id.bank_account_id.bank_id" style="font-weight:bold;"/>-<span t-field="o.journal_id.bank_account_id.acc_number" style="font-weight:bold;"/>
                                     </li>
                                 </ul>
                             </div>
                             <div>
-                                <table class="table table-bordered" style="width:100%;">
+                                <table class="table table-striped" style="width:100%;">
                                     <thead>
-                                        <tr style="text-align:center;">
-                                            <th style="border-color:gray;">
+                                        <tr style="text-align:center;font-size:13px;">
+                                            <th >
                                                 <strong>CODIGO</strong>
                                             </th>
-                                            <th style="border-color:gray;">
+                                            <th >
                                                 <strong>DETALLE</strong>
                                             </th>
-                                            <th style="border-color:gray;">
+                                            <th >
                                                 <strong>PARCIAL</strong>
                                             </th>
-                                            <th style="border-color:gray;">
+                                            <th >
                                                 <strong>DEBE</strong>
                                             </th>
-                                            <th style="border-color:gray;">
+                                            <th >
                                                 <strong>HABER</strong>
                                             </th>
                                         </tr>
@@ -131,10 +131,10 @@
                                     <t t-foreach="o.line_ids" t-as="p">
                                         <t t-set="total_parcial" t-value="0"/>
                                         <tr style="font-size:12px;">
-                                            <td style="text-align:center;border-color:gray;">
+                                            <td style="text-align:center;">
                                                 <span t-field="p.account_id.code"/>
                                             </td>
-                                            <td style="border-color:gray;">
+                                            <td >
                                                 <ul style="list-style:none;">
                                                     <li>
                                                         <span t-field="p.account_id.name"/>
@@ -150,33 +150,33 @@
                                                 </ul>
 
                                             </td>
-                                            <td style="text-align:center;border-color:gray;">
+                                            <td style="text-align:center;">
                                                 <span t-field="p.parcial"/>
                                             </td>
-                                            <td style="text-align:center;border-color:gray;">
+                                            <td style="text-align:center;">
                                                 <span t-field="p.debit"/>
                                             </td>
-                                            <td style="text-align:center;border-color:gray;">
+                                            <td style="text-align:center;">
                                                 <span t-field="p.credit"/>
                                             </td>
                                         </tr>
 
                                     </t>
                                     <tr style="font-size:12px;">
-                                        <td style="border-color:gray;">
+                                        <td >
 
                                         </td>
-                                        <td style="text-align:right;font-weight:bold;border-color:gray;">
+                                        <td style="text-align:right;font-weight:bold;">
                                             TOTALES
                                         </td>
-                                        <td style="text-align:center;border-color:gray;">
+                                        <td style="text-align:center;">
                                             <t t-set="total_parcial" t-value="total_parcial + p.parcial"/>
                                             <t t-esc="total_parcial"/>
                                         </td>
-                                        <td style="text-align:center;border-color:gray;">
+                                        <td style="text-align:center;">
                                             <span t-field="o.amount_total"/>
                                         </td>
-                                        <td style="text-align:center;border-color:gray;">
+                                        <td style="text-align:center;">
                                             <span t-field="o.amount_total"/>
                                         </td>
                                     </tr>
@@ -191,7 +191,7 @@
                                 </p>
                             </div>
                             <div>
-                                <table class="table table-bordered" style="width:100%;" >
+                                <table class="table table-bordered" style="width:100%;font-size:12px;" >
                                     <tr>
                                         <th style="border-color:gray;">LA SUMA DE:</th>
                                         <td style="border-color:gray;">
